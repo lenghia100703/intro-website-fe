@@ -1,6 +1,6 @@
 <template>
     <div class="title-page">
-        <h1 class="intro-title">Lĩnh Vực Sản Xuất Bao Bì và Bìa Carton</h1>
+        <h1 class="intro-title">Lĩnh Vực Sản Xuất</h1>
     </div>
     <div class="spacing"></div>
     <div class="content">
@@ -107,16 +107,14 @@ onMounted(() => {
     font-weight: 800;
 }
 
-h1 {
-    color: #2c3e50;
-}
-
 h2 {
-    color: #34495e;
+    font-size: 24px;
+    font-weight: 800;
 }
 
 p, li {
-    color: #7f8c8d;
+    color: #687799;
+    font-size: 17px;
 }
 
 section {

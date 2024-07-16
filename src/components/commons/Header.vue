@@ -11,6 +11,25 @@ const infoRef = ref<InstanceType<typeof AvatarDrawers> | null>(null)
 
 const router = useRouter()
 
+const products = [
+    {
+        name: 'Thùng carton 3 lớp',
+        id: 1
+    },
+    {
+        name: 'Thùng carton 5 lớp',
+        id: 2
+    },
+    {
+        name: 'Giấy in offset',
+        id: 3
+    },
+    {
+        name: 'Sản phẩm từ bìa carton',
+        id: 4
+    },
+]
+
 const handleOpenDrawer = () => {
     infoRef.value?.openDrawer()
 }
@@ -56,28 +75,18 @@ const handleOpenDrawer = () => {
                 <el-menu-item class="no-hover" :route='PATHS.FIELD' :index='PATHS.FIELD'>
                     <div class="custom-menu-item">LĨNH VỰC SẢN XUẤT</div>
                 </el-menu-item>
-                <el-sub-menu class="no-hover" index="3">
+                <el-sub-menu class="no-hover">
                     <template #title>
                         <div class="custom-menu-item">SẢN PHẨM</div>
                     </template>
-                    <el-menu-item>
+                    <el-menu-item :route='PATHS.ALL_PRODUCT' :index='PATHS.ALL_PRODUCT'>
                         <div class="custom-menu-item">
-                            Thùng carton 3 lớp
+                            Tất cả sản phẩm
                         </div>
                     </el-menu-item>
-                    <el-menu-item>
+                    <el-menu-item v-for="product in products" :key="product.id" :route='"/detail-product/" + product.id' :index='"/detail-product/" + product.id'>
                         <div class="custom-menu-item">
-                            Thùng carton 5 lớp
-                        </div>
-                    </el-menu-item>
-                    <el-menu-item>
-                        <div class="custom-menu-item">
-                            Giấy in offset
-                        </div>
-                    </el-menu-item>
-                    <el-menu-item>
-                        <div class="custom-menu-item">
-                            Sản phầm từ bìa carton
+                            {{ product.name }}
                         </div>
                     </el-menu-item>
                 </el-sub-menu>

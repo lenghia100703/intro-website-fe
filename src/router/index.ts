@@ -10,6 +10,11 @@ import ContactView from '@/views/commons/ContactView.vue'
 import NewsView from '@/views/commons/NewsView.vue'
 import LoginView from '@/views/commons/LoginView.vue'
 import FieldView from '@/views/commons/FieldView.vue'
+import AllProductView from '@/views/commons/AllProductView.vue'
+import DetailProductView from '@/views/commons/DetailProductView.vue'
+import ManageMessageView from '@/views/admin/ManageMessageView.vue'
+import ManageNewsView from '@/views/admin/ManageNewsView.vue'
+import ManageProductView from '@/views/admin/ManageProductView.vue'
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -42,6 +47,36 @@ const router = createRouter({
                     path: PATHS.FIELD,
                     component: FieldView,
                     name: 'field',
+                },
+                {
+                    path: PATHS.ALL_PRODUCT,
+                    component: AllProductView,
+                    name: 'all-product',
+                },
+                {
+                    path: PATHS.DETAIL_PRODUCT,
+                    component: DetailProductView,
+                    name: 'detail-product',
+                },
+
+                // admin route
+                {
+                    path: PATHS.MANAGE_MESSAGE,
+                    component: ManageMessageView,
+                    name: 'manage-message',
+                    meta: { requiresAuth: true, role: 'ADMIN' }
+                },
+                {
+                    path: PATHS.MANAGE_NEWS,
+                    component: ManageNewsView,
+                    name: 'manage-news',
+                    meta: { requiresAuth: true, role: 'ADMIN' }
+                },
+                {
+                    path: PATHS.MANAGE_PRODUCT,
+                    component: ManageProductView,
+                    name: 'manage-product',
+                    meta: { requiresAuth: true, role: 'ADMIN' }
                 },
             ],
         },
