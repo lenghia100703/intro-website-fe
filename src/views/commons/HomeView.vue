@@ -4,13 +4,21 @@ import { useTransition } from '@vueuse/core'
 import BenefitCard from '@/components/cards/BenefitCard.vue'
 import ProductCard from '@/components/cards/ProductCard.vue'
 import NewsCard from '@/components/cards/NewsCard.vue'
-import { loadingFullScreen } from '@/utils/loadingFullScreen.ts'
+import { loadingFullScreen } from '@/utils/loadingFullScreen'
+import { useRouter } from 'vue-router'
+import { PATHS } from '@/router/paths'
 
 const source = ref(0)
 const outputValue = useTransition(source, {
     duration: 1500,
 })
 source.value = 172000
+
+const router = useRouter()
+
+const handleRoute = (path: string) => {
+    router.push(path)
+}
 
 const data = ref([
     {
@@ -154,7 +162,7 @@ onMounted(() => {
                     <div class="product-title">Cùng khám phá các sản phẩm của Công ty chúng tôi</div>
                 </el-col>
                 <el-col :span="6" style="display: flex; justify-content: flex-end; align-items: center;">
-                    <el-button type="success" size="large" round>Xem tất cả</el-button>
+                    <el-button @click="handleRoute(PATHS.ALL_PRODUCT)" type="success" size="large" round>Xem tất cả</el-button>
                 </el-col>
             </el-row>
             <br />
@@ -175,7 +183,7 @@ onMounted(() => {
                     <div class="product-title">Theo dõi tin tức mới nhất của Công ty chúng tôi</div>
                 </el-col>
                 <el-col :span="6" style="display: flex; justify-content: flex-end; align-items: center;">
-                    <el-button type="success" size="large" round>Xem tất cả</el-button>
+                    <el-button @click="handleRoute(PATHS.NEWS)" type="success" size="large" round>Xem tất cả</el-button>
                 </el-col>
             </el-row>
             <br />
@@ -234,6 +242,7 @@ onMounted(() => {
 
 .product {
     margin-top: 100px;
+    height: 550px;
 }
 
 .product-title {

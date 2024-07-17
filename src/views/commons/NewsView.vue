@@ -1,27 +1,45 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
-import { loadingFullScreen } from '@/utils/loadingFullScreen.ts'
+import { onMounted, ref } from 'vue'
+import { loadingFullScreen } from '@/utils/loadingFullScreen'
 import NewsCard from '@/components/cards/NewsCard.vue'
 import { Search } from '@element-plus/icons-vue'
+import { getNewsByPage } from '@/services/news'
 
-const news = [
+const news = ref<any[]>([])
+const totalData = ref<any>(3)
+
+const handleChangePage = async (val: any) => {
+    await loadData(val)
+}
+
+const loadData = async (page: any) => {
+    try {
+        const res = await getNewsByPage(page)
+        news.value = res.data
+        totalData.value = res.totalData
+    } catch (e) {
+        console.log(e)
+    }
+}
+
+const fake_news = [
     {
-        to: '/news/1',
+        to: '/detail-news/1',
         title: 'Bao jumbo quai ống: Ưu-nhược điểm',
         description: 'Bao Jumbo quai hình ống là một loại bao FIBC đặc biệt được tạo ra để giúp cho việc bốc xếp bằng xe nâng được dễ dàng hơn. Hai đai này được làm từ chính loại vải tạo nên bao jumbo nên có độ bền cơ học cao cũng như khả năng chịu tải lớn.'
     },
     {
-        to: '/news/1',
+        to: '/detail-news/1',
         title: 'Bao jumbo quai ống: Ưu-nhược điểm',
         description: 'Bao Jumbo quai hình ống là một loại bao FIBC đặc biệt được tạo ra để giúp cho việc bốc xếp bằng xe nâng được dễ dàng hơn. Hai đai này được làm từ chính loại vải tạo nên bao jumbo nên có độ bền cơ học cao cũng như khả năng chịu tải lớn.'
     },
     {
-        to: '/news/1',
+        to: '/detail-news/1',
         title: 'Bao jumbo quai ống: Ưu-nhược điểm',
         description: 'Bao Jumbo quai hình ống là một loại bao FIBC đặc biệt được tạo ra để giúp cho việc bốc xếp bằng xe nâng được dễ dàng hơn. Hai đai này được làm từ chính loại vải tạo nên bao jumbo nên có độ bền cơ học cao cũng như khả năng chịu tải lớn.'
     },
     {
-        to: '/news/1',
+        to: '/detail-news/1',
         title: 'Bao jumbo quai ống: Ưu-nhược điểm',
         description: 'Bao Jumbo quai hình ống là một loại bao FIBC đặc biệt được tạo ra để giúp cho việc bốc xếp bằng xe nâng được dễ dàng hơn. Hai đai này được làm từ chính loại vải tạo nên bao jumbo nên có độ bền cơ học cao cũng như khả năng chịu tải lớn.'
     },
@@ -65,10 +83,18 @@ onMounted(() => {
             </el-row>
             <br />
             <el-row justify="space-between">
-                <el-col style="margin-bottom: 40px" :span="7" v-for="item in news">
+                <el-col style="margin-bottom: 40px" :span="7" v-for="item in fake_news">
                     <NewsCard :title="item.title" :description="item.description" :to="item.to" />
                 </el-col>
             </el-row>
+            <div class='pagination'>
+                <el-pagination
+                    :page-size='8'
+                    layout='prev, pager, next'
+                    :total='totalData'
+                    @current-change='handleChangePage'
+                />
+            </div>
         </div>
     </div>
     <el-backtop :right="50" :bottom="100" />
@@ -102,5 +128,10 @@ onMounted(() => {
 .product-title {
     font-size: 30px;
     font-weight: 800;
+}
+
+.pagination {
+    margin-top: 30px;
+    float: right;
 }
 </style>

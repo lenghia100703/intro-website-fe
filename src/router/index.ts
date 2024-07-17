@@ -15,6 +15,7 @@ import DetailProductView from '@/views/commons/DetailProductView.vue'
 import ManageMessageView from '@/views/admin/ManageMessageView.vue'
 import ManageNewsView from '@/views/admin/ManageNewsView.vue'
 import ManageProductView from '@/views/admin/ManageProductView.vue'
+import DetailNewsView from '@/views/commons/DetailNewsView.vue'
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -57,6 +58,11 @@ const router = createRouter({
                     path: PATHS.DETAIL_PRODUCT,
                     component: DetailProductView,
                     name: 'detail-product',
+                },
+                {
+                    path: PATHS.DETAIL_NEWS,
+                    component: DetailNewsView,
+                    name: 'detail-news',
                 },
 
                 // admin route

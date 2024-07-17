@@ -58,7 +58,7 @@
                         <el-col :span="12">
                             <el-card style="border-top: 0; border-right: 0" shadow="none" class="box-card">
                                 <div class="card-content">
-                                    <span class="number">4+</span>
+                                    <span class="number">15+</span>
                                     <span class="description">Năm kinh nghiệm</span>
                                 </div>
                             </el-card>
@@ -74,7 +74,7 @@
                         <el-col :span="12">
                             <el-card style="border-bottom: 0; border-right: 0" shadow="none" class="box-card">
                                 <div class="card-content">
-                                    <span class="number">10+</span>
+                                    <span class="number">20+</span>
                                     <span class="description">Nhân sự cốt lõi</span>
                                 </div>
                             </el-card>

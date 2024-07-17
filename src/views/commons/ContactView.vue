@@ -68,7 +68,10 @@ onMounted(() => {
                     </div>
                     <br />
                     <div>
-                        <el-text size="large" tag="b">Số giấy chứng nhận đăng ký kinh doanh:</el-text>
+                        <el-text size="large" tag="b">
+                            Số giấy chứng nhận đăng ký kinh doanh:
+                        </el-text>
+                        <el-text size="large">5400312309 cấp ngày 07/04/2009 tại Chi cục Thuế khu vực Hòa Bình - Đà Bắc</el-text>
                     </div>
                     <br />
                     <div>

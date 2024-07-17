@@ -10,7 +10,7 @@ export const getNewsById = async (id: any) => {
     return (await http.get(NewsAPI.NEWS_BY_ID(id))).data.data
 }
 
-export const getAllNews = async (page: any) => {
+export const getNewsByPage = async (page: any) => {
     return (await http.get(NewsAPI.LIST_NEWS(page))).data
 }
 

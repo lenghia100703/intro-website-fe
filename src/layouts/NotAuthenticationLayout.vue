@@ -19,5 +19,7 @@ import Header from '@/components/commons/Header.vue'
 </template>
 
 <style scoped>
-
+.el-header {
+    --el-header-padding: 0;
+}
 </style>

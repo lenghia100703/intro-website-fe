@@ -10,7 +10,7 @@ export const getProductById = async (id: any) => {
     return (await http.get(ProductAPI.PRODUCT_BY_ID(id))).data.data
 }
 
-export const getAllProduct = async (page: any) => {
+export const getProductByPage = async (page: any) => {
     return (await http.get(ProductAPI.LIST_PRODUCTS(page))).data
 }
 

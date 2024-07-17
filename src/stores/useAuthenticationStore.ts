@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
-// import { logout } from '@/services/auth'
-// import { getCurrentUser } from '@/services/user'
+import { logout } from '@/services/auth'
+import { getCurrentUser } from '@/services/user'
 
 export const useAuthenticationStore = defineStore('authentication', {
     state: () => ({
@@ -13,9 +13,9 @@ export const useAuthenticationStore = defineStore('authentication', {
     actions: {
         async loadFromServer() {
             try {
-                // const resUser = await getCurrentUser()
-                // this.userInfo = resUser.data
-                // this.role = resUser.data.role
+                const resUser = await getCurrentUser()
+                this.userInfo = resUser.data
+                this.role = resUser.data.role
             } catch (e: any) {
                 if (e.response && e.response.status === 401) {
                     this.userInfo = null
@@ -24,7 +24,7 @@ export const useAuthenticationStore = defineStore('authentication', {
         },
         async logout() {
             try {
-                // await logout().then()
+                await logout().then()
                 this.userInfo = null
             } catch (e: any) {
                 if (e.response && e.response.status === 401) {

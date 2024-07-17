@@ -24,32 +24,36 @@ const handleClick = () => {
 </script>
 
 <template>
-    <div class="container">
-        <div class="img-container">
-            <img class="img" :src="props.img" alt="san-pham" />
-        </div>
-        <div class="cards">
-            <div class="card-button">
-                <el-button @click="handleClick" type="success" size="large" :icon="Right" circle />
+    <el-row gutter={20} justify="center" class="card-container">
+        <el-col :span="24" class="img-container">
+            <div class="image-wrapper">
+                <img class="img" :src="props.img" alt="san-pham" />
+                <div class="card-button">
+                    <el-button @click="handleClick" type="success" size="large" :icon="Right" circle />
+                </div>
             </div>
-            <el-card style="border-radius: 20px">
+        </el-col>
+        <el-col :span="19" class="cards">
+            <el-card style="border-radius: 20px; position: relative;">
                 <div class="title">{{ props.title }}</div>
                 <div class="text">{{ props.description }}</div>
             </el-card>
-        </div>
-    </div>
+        </el-col>
+    </el-row>
 </template>
 
 <style scoped>
-.container {
-    position: relative;
+.card-container {
     text-align: center;
+    margin-top: 20px;
 }
 
 .img-container {
-    position: relative;
-    z-index: 1;
     border-radius: 20px;
+}
+
+.image-wrapper {
+    position: relative;
 }
 
 .img {
@@ -58,21 +62,19 @@ const handleClick = () => {
 }
 
 .cards {
-    position: absolute;
-    left: 50%;
-    transform: translate(-40%, -20px);
     width: 280px;
-    z-index: 10;
+    margin-top: -20px;
 }
 
 .card-button {
-    height: 0;
-    float: right;
-    margin-top: -10px;
+    position: absolute;
+    bottom: 0;
+    right: 50px;
+    z-index: 2;
 }
 
 .card-button:hover {
-    margin-top: -12px;
+    bottom: 2px;
 }
 
 .title {
