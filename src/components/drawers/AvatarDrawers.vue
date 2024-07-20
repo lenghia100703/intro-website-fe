@@ -4,15 +4,35 @@ import { useAuthenticationStore } from '@/stores/useAuthenticationStore'
 import { PATHS } from '@/router/paths'
 import { useRouter } from 'vue-router'
 import FAIcon from '@/components/commons/FAIcon.vue'
+import { role } from '@/constants/role'
 
 const authenticationStore = useAuthenticationStore()
 const visible = ref<boolean>(false)
 const userInfo = ref<any>()
 const router = useRouter()
 
+const adminRoute = [
+    {
+        path: PATHS.MANAGE_MESSAGE,
+        icon: 'fa-regular fa-message',
+        label: 'Quản lý tin nhắn'
+    },
+    {
+        path: PATHS.MANAGE_NEWS,
+        icon: 'fa-regular fa-newspaper',
+        label: 'Quản lý tin tức'
+    },
+    {
+        path: PATHS.MANAGE_PRODUCT,
+        icon: 'fa-brands fa-product-hunt',
+        label: 'Quản lý sản phẩm'
+    },
+]
+
 function openDrawer() {
     visible.value = true
     userInfo.value = authenticationStore.userInfo
+    console.log(authenticationStore.role, role.ADMIN)
 }
 
 const handleLogout = async () => {
@@ -36,9 +56,11 @@ defineExpose({
                 <FAIcon size='large' icon='fa-solid fa-user' class='icon' color="" />
                 Hồ sơ cá nhân
             </el-menu-item>
-            <el-menu-item :index='PATHS.SETTING' :route='PATHS.SETTING' @click='visible = false'>
-                <FAIcon size='large' icon='fa-solid fa-gear' class='icon' color="" />
-                Cài đặt
+            <el-menu-item v-if="authenticationStore?.role.toString() === role.ADMIN"
+                          v-for="item in adminRoute"
+                          :index='item.path' :route='item.path' @click='visible = false'>
+                <FAIcon size='large' :icon='item.icon' class='icon' color="" />
+                {{ item.label }}
             </el-menu-item>
             <el-menu-item @click='handleLogout'>
                 <FAIcon size='large' icon='fa-solid fa-right-from-bracket' class='icon' color="" />

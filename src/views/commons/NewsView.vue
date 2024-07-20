@@ -4,6 +4,7 @@ import { loadingFullScreen } from '@/utils/loadingFullScreen'
 import NewsCard from '@/components/cards/NewsCard.vue'
 import { Search } from '@element-plus/icons-vue'
 import { getNewsByPage } from '@/services/news'
+import * as async_hooks from 'node:async_hooks'
 
 const news = ref<any[]>([])
 const totalData = ref<any>(3)
@@ -16,6 +17,7 @@ const loadData = async (page: any) => {
     try {
         const res = await getNewsByPage(page)
         news.value = res.data
+        console.table(news.value)
         totalData.value = res.totalData
     } catch (e) {
         console.log(e)
@@ -45,8 +47,9 @@ const fake_news = [
     },
 ]
 
-onMounted(() => {
+onMounted(async () => {
     loadingFullScreen()
+    await loadData(1)
 })
 </script>
 
@@ -83,8 +86,8 @@ onMounted(() => {
             </el-row>
             <br />
             <el-row justify="space-between">
-                <el-col style="margin-bottom: 40px" :span="7" v-for="item in fake_news">
-                    <NewsCard :title="item.title" :description="item.description" :to="item.to" />
+                <el-col style="margin-bottom: 40px" :span="7" v-for="item in news">
+                    <NewsCard :title="item.title" :img="item.image" :description="item.description" :to='"/detail-news/" + item.id' />
                 </el-col>
             </el-row>
             <div class='pagination'>

@@ -1,8 +1,9 @@
 <script setup lang="ts">
 
 import ProductCard from '@/components/cards/ProductCard.vue'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { getProductByPage } from '@/services/product'
+import { loadingFullScreen } from '@/utils/loadingFullScreen'
 
 const products = ref<any[]>([])
 const totalData = ref<any>(3)
@@ -48,6 +49,11 @@ const fake_products = [
         to: 'thung-carton-3',
     }
 ]
+
+onMounted(async () => {
+    loadingFullScreen()
+    await loadData(1)
+})
 </script>
 
 <template>
@@ -58,8 +64,8 @@ const fake_products = [
         <div class="spacing"></div>
         <div class="content">
             <el-row gutter="20">
-                <el-col :span="8" v-for="item in fake_products">
-                    <ProductCard :title="item.name" :description="item.description" :to="item.to" />
+                <el-col :span="8" v-for="item in products">
+                    <ProductCard :title="item.name" :img="item.image" :description="item.description" :to='"/detail-product/" + item.id' />
                 </el-col>
             </el-row>
 
@@ -73,8 +79,7 @@ const fake_products = [
             </div>
         </div>
     </div>
-
-
+    <el-backtop :right="50" :bottom="100" />
 </template>
 
 <style scoped>

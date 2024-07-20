@@ -38,17 +38,42 @@ const handleOpenDrawer = () => {
 <template>
     <div class='header-content'>
         <template v-if='authenticationStore.authenticated'>
-            <el-menu class='menu' mode='horizontal' :ellipsis='false' background-color='#e3eefc' menu-trigger='click'
-                     :default-active='$route.path'>
+            <el-menu class='menu' mode='horizontal' text-color="#333" :ellipsis='false' active-text-color="#67c23a" background-color='#fff' menu-trigger='click'
+                     :default-active='$route.path' router>
                 <el-menu-item class='desktop-logo-container no-hover' @click='router.push("/")'>
-                    <h1>
-                        Introduce
-                    </h1>
+                    <img class="desktop-logo" src="../../assets/images/logo.jpg" alt="logo" />
                 </el-menu-item>
 
                 <div class='flex-grow'></div>
-                <el-menu-item class='no-hover'>
-                    Về chúng tôi
+                <el-menu-item class='no-hover' :route='PATHS.HOME' :index='PATHS.HOME'>
+                    <div class="custom-menu-item">TRANG CHỦ</div>
+                </el-menu-item>
+                <el-menu-item class='no-hover' :route='PATHS.ABOUT' :index='PATHS.ABOUT'>
+                    <div class="custom-menu-item">GIỚI THIỆU</div>
+                </el-menu-item>
+                <el-menu-item class="no-hover" :route='PATHS.FIELD' :index='PATHS.FIELD'>
+                    <div class="custom-menu-item">LĨNH VỰC SẢN XUẤT</div>
+                </el-menu-item>
+                <el-sub-menu class="no-hover">
+                    <template #title>
+                        <div class="custom-menu-item">SẢN PHẨM</div>
+                    </template>
+                    <el-menu-item :route='PATHS.ALL_PRODUCT' :index='PATHS.ALL_PRODUCT'>
+                        <div class="custom-menu-item">
+                            Tất cả sản phẩm
+                        </div>
+                    </el-menu-item>
+                    <el-menu-item v-for="product in products" :key="product.id" :route='"/detail-product/" + product.id' :index='"/detail-product/" + product.id'>
+                        <div class="custom-menu-item">
+                            {{ product.name }}
+                        </div>
+                    </el-menu-item>
+                </el-sub-menu>
+                <el-menu-item class='no-hover' :route='PATHS.NEWS' :index='PATHS.NEWS'>
+                    <div class="custom-menu-item">TIN TỨC</div>
+                </el-menu-item>
+                <el-menu-item class='no-hover' :route='PATHS.CONTACT' :index='PATHS.CONTACT'>
+                    <div class="custom-menu-item">LIÊN HỆ</div>
                 </el-menu-item>
                 <el-menu-item class='no-hover'>
                     <span class='name-user' @click='handleOpenDrawer'>

@@ -2,34 +2,33 @@
 
 import { useRoute } from 'vue-router'
 import ProductCard from '@/components/cards/ProductCard.vue'
+import { onMounted, ref } from 'vue'
+import { loadingFullScreen } from '@/utils/loadingFullScreen'
+import { getProductById, getProductByPage } from '@/services/product'
 
 const route = useRoute()
 const id = route.params.id
 
-const product = {
-    name: 'Thùng carton 3 lớp',
-    image: 'https://baobinhuamienbac.com/images/attachment/thumb/2913bao-jumbo-dung-hat-dieu-hanh-nhan-xuat-khau.jpg',
-    description: 'Thùng carton 3 lớp là bao bì chắc chắn, bảo vệ hàng hóa an toàn trong vận chuyển. Sản phẩm chịu lực tốt, phù hợp cho nhiều loại hàng hóa, và dễ dàng in ấn để quảng bá thương hiệu.',
-    to: '/detail-product/1',
+const product = ref()
+const list_products = ref([])
+
+const loadData = async () => {
+    try {
+        product.value = await getProductById(id)
+        list_products.value = (await getProductByPage(1)).data
+        list_products.value.filter(item =>
+            item.id.toString() === id
+        ).slice(0, 3)
+        console.log(list_products.value)
+    } catch (e) {
+        console.log(e)
+    }
 }
 
-const fake_products = [
-    {
-        name: 'Thùng carton 3 lớp',
-        description: 'Thùng carton 3 lớp là bao bì chắc chắn, bảo vệ hàng hóa an toàn trong vận chuyển. Sản phẩm chịu lực tốt, phù hợp cho nhiều loại hàng hóa, và dễ dàng in ấn để quảng bá thương hiệu.',
-        to: '/detail-product/1',
-    },
-    {
-        name: 'Thùng carton 5 lớp',
-        description: 'Thùng carton 3 lớp là bao bì chắc chắn, bảo vệ hàng hóa an toàn trong vận chuyển. Sản phẩm chịu lực tốt, phù hợp cho nhiều loại hàng hóa, và dễ dàng in ấn để quảng bá thương hiệu.',
-        to: 'thung-carton-5',
-    },
-    {
-        name: 'Thùng carton 3 lớp',
-        description: 'Thùng carton 3 lớp là bao bì chắc chắn, bảo vệ hàng hóa an toàn trong vận chuyển. Sản phẩm chịu lực tốt, phù hợp cho nhiều loại hàng hóa, và dễ dàng in ấn để quảng bá thương hiệu.',
-        to: 'thung-carton-3',
-    }
-]
+onMounted(async () => {
+    loadingFullScreen()
+    await loadData()
+})
 </script>
 
 <template>
@@ -41,11 +40,11 @@ const fake_products = [
         <el-row>
             <el-col :span="11">
                 <div>
-                    <img class="img-product" alt="img" :src="product.image" />
+                    <img class="img-product" alt="img" :src="product?.image" />
                 </div>
             </el-col>
             <el-col :span="11">
-                <div class="name-product">{{ product.name }}</div>
+                <div class="name-product">{{ product?.name }}</div>
                 <div>
                     <el-text type="info" size="large" tag="b">Giá: </el-text>
                     <el-text size="large" tag="b" type="danger">Liên hệ giá tốt nhất</el-text>
@@ -54,7 +53,7 @@ const fake_products = [
                 <div class="name-product">Thông tin chi tiết</div>
                 <div class="desc-product">
                     <el-text type="info" size="large" tag="b">
-                        {{ product.description }}
+                        {{ product?.description }}
                     </el-text>
                 </div>
                 <el-divider />
@@ -79,11 +78,12 @@ const fake_products = [
         </div>
         <br />
         <el-row gutter="20">
-            <el-col :span="8" v-for="item in fake_products">
-                <ProductCard :title="item.name" :description="item.description" :to="item.to" />
+            <el-col :span="8" v-for="item in list_products">
+                <ProductCard :title="item.name" :img="item.image" :description="item.description" :to='"/detail-product/" + item.id' />
             </el-col>
         </el-row>
     </div>
+    <el-backtop :right="50" :bottom="100" />
 </template>
 
 <style scoped>

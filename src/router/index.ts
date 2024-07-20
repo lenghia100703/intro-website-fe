@@ -16,6 +16,7 @@ import ManageMessageView from '@/views/admin/ManageMessageView.vue'
 import ManageNewsView from '@/views/admin/ManageNewsView.vue'
 import ManageProductView from '@/views/admin/ManageProductView.vue'
 import DetailNewsView from '@/views/commons/DetailNewsView.vue'
+import ProfileView from '../views/commons/ProfileView.vue'
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -28,6 +29,11 @@ const router = createRouter({
                     path: PATHS.HOME,
                     component: HomeView,
                     name: 'home',
+                },
+                {
+                    path: PATHS.PROFILE,
+                    component: ProfileView,
+                    name: 'profile',
                 },
                 {
                     path: PATHS.ABOUT,
