@@ -56,7 +56,6 @@ onMounted(async () => {
             </el-row>
         </div>
     </div>
-    <el-backtop :right="50" :bottom="100" />
 </template>
 
 <style scoped>
@@ -96,5 +95,11 @@ onMounted(async () => {
 
 .img-news {
     max-width: 700px;
+}
+
+@media only screen and (max-width: 767px) {
+    .content {
+        width: 85%;
+    }
 }
 </style>

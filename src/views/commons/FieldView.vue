@@ -99,7 +99,6 @@
             </p>
         </section>
     </div>
-    <el-backtop :right="50" :bottom="100" />
 </template>
 
 <script setup lang="ts">
@@ -145,5 +144,11 @@ p, li {
 
 section {
     margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 767px) {
+    .content {
+        width: 85%;
+    }
 }
 </style>

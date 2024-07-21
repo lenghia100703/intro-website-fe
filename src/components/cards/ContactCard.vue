@@ -17,7 +17,7 @@ const props = withDefaults(
 </script>
 
 <template>
-    <el-card style="max-width: 330px; border-radius: 20px; text-align: center; min-height: 260px" shadow="always">
+    <el-card class="custom-contact-card" shadow="always">
         <div class="icon-container">
             <FAIcon :icon="props.icon" color="#3878F7" class="icon" />
         </div>
@@ -29,6 +29,13 @@ const props = withDefaults(
 </template>
 
 <style scoped>
+.custom-contact-card {
+    width: 330px;
+    border-radius: 20px;
+    text-align: center;
+    min-height: 260px
+}
+
 .icon-container {
     display: flex;
     align-items: center;
@@ -58,5 +65,11 @@ const props = withDefaults(
     -webkit-line-clamp: 11;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+@media only screen and (max-width: 550px) {
+    .custom-contact-card {
+        width: 100%;
+    }
 }
 </style>

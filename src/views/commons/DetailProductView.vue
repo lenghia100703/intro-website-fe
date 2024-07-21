@@ -38,12 +38,12 @@ onMounted(async () => {
     <div class="spacing"></div>
     <div class="content">
         <el-row>
-            <el-col :span="11">
+            <el-col class="mobile-margin-bottom-css" :xs='24' :sm='16' :md='14' :lg='11' :span="11">
                 <div>
                     <img class="img-product" alt="img" :src="product?.image" />
                 </div>
             </el-col>
-            <el-col :span="11">
+            <el-col :xs='24' :sm='16' :md='14' :lg='11' :span="11">
                 <div class="name-product">{{ product?.name }}</div>
                 <div>
                     <el-text type="info" size="large" tag="b">Giá:</el-text>
@@ -78,13 +78,12 @@ onMounted(async () => {
         </div>
         <br />
         <el-row gutter="20">
-            <el-col :span="8" v-for="item in list_products">
+            <el-col :xs='24' :sm='11' :md='11' :lg='8' :span="8" v-for="item in list_products">
                 <ProductCard :title="item.name" :img="item.image" :description="item.description"
                              :to='"/detail-product/" + item.id' />
             </el-col>
         </el-row>
     </div>
-    <el-backtop :right="50" :bottom="100" />
 </template>
 
 <style scoped>
@@ -126,5 +125,24 @@ onMounted(async () => {
 .img-product {
     width: 450px;
     height: auto;
+}
+
+@media only screen and (max-width: 767px) {
+    .content {
+        width: 85%;
+    }
+
+    .img-product {
+        width: 100%;
+    }
+
+    .contact-info {
+        width: 100%;
+        padding: 8px 0;
+    }
+
+    .mobile-margin-bottom-css {
+        margin-bottom: 30px;
+    }
 }
 </style>

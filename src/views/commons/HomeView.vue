@@ -77,8 +77,8 @@ onMounted(async () => {
 
 <template>
     <div style="margin-top: 10px">
-        <el-carousel :interval='5000' trigger='click' arrow='always' height='663px'>
-            <el-carousel-item style='height: 663px' v-for='item in data' :key='item'>
+        <el-carousel :interval='5000' trigger='click' arrow='always' class="custom-carousel">
+            <el-carousel-item v-for='item in data' :key='item'>
                 <el-image :src='item.image' fit='fill' />
             </el-carousel-item>
         </el-carousel>
@@ -87,8 +87,8 @@ onMounted(async () => {
     <br />
     <div class="container">
         <div class="benefit">
-            <el-row justify="space-evenly">
-                <el-col :span="(24 / benefitCards.length) - 1" v-for="item in benefitCards">
+            <el-row justify="center" :gutter="30">
+                <el-col style="margin-bottom: 30px" :xs='24' :sm='12' :md='12' :lg='7' v-for="item in benefitCards">
                     <BenefitCard :number="item.number" :icon="item.icon" :title="item.title"
                                  :description="item.description" />
                 </el-col>
@@ -98,7 +98,7 @@ onMounted(async () => {
         <div class="value">
             <div class="value-content">
                 <el-row justify="space-evenly">
-                    <el-col :span="11">
+                    <el-col :xs='24' :sm='12' :md='12' :lg='11' :span="11">
                         <div>
                             <el-button style="background-color: #fff" type="success" round plain text>Giá trị cốt lõi
                             </el-button>
@@ -107,14 +107,14 @@ onMounted(async () => {
                             Nâng tầm giá trị của khách hàng
                         </div>
                         <el-row justify="space-between" gutter="5">
-                            <el-col :span="10">
+                            <el-col class="mobile-margin-bottom-css" :xs='24' :sm='12' :md='12' :lg='11' :span="11">
                                 <div class="sub-title-value">Sứ mệnh</div>
                                 <div>
                                     Với sứ mệnh “Bảo vệ và đồng hành cùng sản phẩm của bạn”
                                     chúng tôi mang đến bao bì chất lượng cao, giá hợp lí
                                 </div>
                             </el-col>
-                            <el-col :span="10">
+                            <el-col class="mobile-margin-bottom-css" :xs='24' :sm='12' :md='12' :lg='11' :span="11">
                                 <div class="sub-title-value">Tầm nhìn</div>
                                 <div>
                                     Trở thành công ty dẫn đầu trong ngành sản xuất bao bì carton tại Việt Nam,
@@ -124,7 +124,7 @@ onMounted(async () => {
                             </el-col>
                         </el-row>
                     </el-col>
-                    <el-col :span="11">
+                    <el-col :xs='24' :sm='12' :md='12' :lg='11' :span="11">
                         <div style="float: right" class="statistical">
                             <div class="number-statistical">+60</div>
                             <div class="text-statistical">tỉnh thành có mặt</div>
@@ -139,52 +139,53 @@ onMounted(async () => {
         </div>
 
         <div class="product">
-            <div>
-                <el-button style="background-color: #f0f9eb; color: #67c23a" type="success" round plain>Sản phẩm tiêu
-                    biểu
+            <div class="mobile-center-css">
+                <el-button style="background-color: #f0f9eb; color: #67c23a" type="success" round plain>
+                    Sản phẩm tiêu biểu
                 </el-button>
             </div>
             <br />
             <el-row justify="space-between">
-                <el-col :span="11">
+                <el-col class="mobile-margin-bottom-css" :xs='24' :sm='12' :md='12' :lg='11' :span="11">
                     <div class="product-title">Cùng khám phá các sản phẩm của Công ty chúng tôi</div>
                 </el-col>
-                <el-col :span="6" style="display: flex; justify-content: flex-end; align-items: center;">
-                    <el-button @click="handleRoute(PATHS.ALL_PRODUCT)" type="success" size="large" round>Xem tất cả
+                <el-col :xs='24' :sm='12' :md='12' :lg='6' :span="6" class="button-more-style">
+                    <el-button @click="handleRoute(PATHS.ALL_PRODUCT)" type="success" size="large" round>
+                        Xem tất cả
                     </el-button>
                 </el-col>
             </el-row>
             <br />
             <el-row justify="space-between">
-                <el-col :span="7" v-for="item in products">
-                    <ProductCard :title="item.name" :description="item.description" :to="item.to" />
+                <el-col :xs='24' :sm='12' :md='12' :lg='7' :span="7" v-for="item in products">
+                    <ProductCard :img="item.image" :title="item.name" :description="item.description" :to='"/detail-product/" + item.id' />
                 </el-col>
             </el-row>
         </div>
 
         <div class="news">
-            <div>
-                <el-button style="background-color: #f0f9eb; color: #67c23a" type="success" round plain>Tin tức mới
+            <div class="mobile-center-css">
+                <el-button style="background-color: #f0f9eb; color: #67c23a" type="success" round plain>
+                    Tin tức mới
                 </el-button>
             </div>
             <br />
             <el-row justify="space-between">
-                <el-col :span="11">
+                <el-col class="mobile-margin-bottom-css" :xs='24' :sm='12' :md='12' :lg='11' :span="11">
                     <div class="product-title">Theo dõi tin tức mới nhất của Công ty chúng tôi</div>
                 </el-col>
-                <el-col :span="6" style="display: flex; justify-content: flex-end; align-items: center;">
+                <el-col :xs='24' :sm='12' :md='12' :lg='6' :span="6" class="button-more-style">
                     <el-button @click="handleRoute(PATHS.NEWS)" type="success" size="large" round>Xem tất cả</el-button>
                 </el-col>
             </el-row>
             <br />
             <el-row justify="space-between">
-                <el-col :span="7" v-for="item in news">
-                    <NewsCard :title="item.title" :description="item.description" :to="item.to" />
+                <el-col :xs='24' :sm='12' :md='12' :lg='7' :span="7" v-for="item in news">
+                    <NewsCard :img="item.image" :title="item.title" :description="item.description" :to='"/detail-news/" + item.id' />
                 </el-col>
             </el-row>
         </div>
     </div>
-    <el-backtop :right="50" :bottom="100" />
 </template>
 
 <style scoped>
@@ -195,6 +196,9 @@ onMounted(async () => {
     padding-bottom: 200px;
 }
 
+.custom-carousel {
+    height: 663px;
+}
 
 .value {
     margin-top: 100px;
@@ -206,6 +210,12 @@ onMounted(async () => {
 .value-title {
     font-size: 45px;
     font-weight: 800;
+}
+
+.button-more-style {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .sub-title-value {
@@ -242,5 +252,29 @@ onMounted(async () => {
 
 .news {
     margin-top: 100px;
+}
+
+@media only screen and (max-width: 883px) {
+    .container {
+        width: 85%;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .mobile-margin-bottom-css {
+        margin-bottom: 30px;
+    }
+
+    .custom-carousel {
+        height: auto;
+    }
+
+    .button-more-style {
+        justify-content: center;
+    }
+
+    .news {
+        margin-top: 200px;
+    }
 }
 </style>

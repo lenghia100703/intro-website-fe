@@ -6,10 +6,10 @@
         <div class="spacing"></div>
         <div class="content">
             <el-row justify="space-between">
-                <el-col :span="10">
+                <el-col :xs='24' :sm='16' :md='14' :lg='10' :span="10">
                     <div>
-                        <el-button style="background-color: #f0f9eb; color: #67c23a" type="success" round plain>Giới
-                            thiệu
+                        <el-button style="background-color: #f0f9eb; color: #67c23a" type="success" round plain>
+                            Giới thiệu
                         </el-button>
                     </div>
                     <br />
@@ -24,7 +24,7 @@
                         và hiệu quả cho mọi loại hàng hóa.
                     </div>
                 </el-col>
-                <el-col :span="12" class="intro-text">
+                <el-col :xs='24' :sm='16' :md='14' :lg='12' :span="12" class="intro-text">
                     Công ty chúng tôi sở hữu dây chuyền sản xuất hiện đại, công nghệ tiên tiến cùng đội ngũ kỹ thuật
                     viên giàu kinh nghiệm,
                     luôn sẵn sàng đáp ứng mọi nhu cầu khắt khe của thị trường. Chúng tôi cung cấp đa dạng các loại bao
@@ -45,9 +45,9 @@
             <br />
 
             <el-row justify="space-between" align="middle">
-                <el-col :span="10">
+                <el-col :xs='24' :sm='16' :md='14' :lg='10' :span="10">
                     <el-row>
-                        <el-col :span="12">
+                        <el-col :xs='24' :lg='12' :span="12">
                             <el-card style="border-top: 0; border-left: 0" shadow="none" class="box-card">
                                 <div class="card-content">
                                     <span class="number">390k+</span>
@@ -55,7 +55,7 @@
                                 </div>
                             </el-card>
                         </el-col>
-                        <el-col :span="12">
+                        <el-col :xs='24' :lg='12' :span="12">
                             <el-card style="border-top: 0; border-right: 0" shadow="none" class="box-card">
                                 <div class="card-content">
                                     <span class="number">15+</span>
@@ -63,16 +63,16 @@
                                 </div>
                             </el-card>
                         </el-col>
-                        <el-col :span="12">
-                            <el-card style="border-bottom: 0; border-left: 0" shadow="none" class="box-card">
+                        <el-col :xs='24' :lg='12' :span="12">
+                            <el-card class="border-card-left box-card" shadow="none">
                                 <div class="card-content">
                                     <span class="number">6+</span>
                                     <span class="description">Sản phẩm cốt lõi</span>
                                 </div>
                             </el-card>
                         </el-col>
-                        <el-col :span="12">
-                            <el-card style="border-bottom: 0; border-right: 0" shadow="none" class="box-card">
+                        <el-col :xs='24' :lg='12' :span="12">
+                            <el-card class="border-card-right box-card" shadow="none">
                                 <div class="card-content">
                                     <span class="number">20+</span>
                                     <span class="description">Nhân sự cốt lõi</span>
@@ -81,13 +81,12 @@
                         </el-col>
                     </el-row>
                 </el-col>
-                <el-col :span="12">
+                <el-col :xs='24' :sm='16' :md='14' :lg='10' :span="12">
                     <img style="width: 100%" src="../../assets/images/background.jpg" alt="bg" />
                 </el-col>
             </el-row>
         </div>
     </div>
-    <el-backtop :right="50" :bottom="100" />
 </template>
 
 <script setup lang="ts">
@@ -139,6 +138,16 @@ onMounted(() => {
     text-align: center;
 }
 
+.border-card-left {
+    border-bottom: 0;
+    border-left: 0
+}
+
+.border-card-right {
+    border-bottom: 0;
+    border-right: 0
+}
+
 .card-content {
     display: flex;
     flex-direction: column;
@@ -154,5 +163,20 @@ onMounted(() => {
 .description {
     margin-top: 10px;
     font-size: 1.2em;
+}
+
+@media only screen and (max-width: 767px) {
+    .content {
+        width: 85%;
+    }
+
+    .box-card {
+        border: none;
+        border-bottom: 1px solid var(--el-card-border-color);
+    }
+
+    .border-card-right .border-card-left {
+        border-bottom: 1px solid var(--el-card-border-color);
+    }
 }
 </style>

@@ -44,13 +44,13 @@ onMounted(() => {
             </div>
             <br />
             <el-row justify="space-between">
-                <el-col :span="11">
+                <el-col :xs='24' :sm='16' :md='14' :lg='11' :span="11">
                     <div class="product-title">Hãy liên hệ và tìm hiểu thêm về chúng tôi</div>
                 </el-col>
             </el-row>
             <br />
             <el-row justify="space-between">
-                <el-col :span="11">
+                <el-col :xs='24' :sm='16' :md='14' :lg='11' :span="11" class="mobile-margin-bottom-css">
                     <GoogleMap
                         api-key="AIzaSyAAW4kIQfRSxfpKQaysriN2G766CvY5Kbw"
                         style="width: 100%; height: 400px"
@@ -60,7 +60,7 @@ onMounted(() => {
                         <Marker :options="{ position: center }" />
                     </GoogleMap>
                 </el-col>
-                <el-col :span="11">
+                <el-col :xs='24' :sm='16' :md='14' :lg='11' :span="11">
                     <div>
                         <el-text size="large" tag="b">Công ty Cổ phần Đầu tư và Thương mại An Quý Cường</el-text>
                     </div>
@@ -94,14 +94,13 @@ onMounted(() => {
             <br />
             <br />
             <br />
-            <el-row justify="space-between">
-                <el-col :span="7" v-for="item in contact">
+            <el-row justify="center">
+                <el-col class="mobile-margin-bottom-css" :xs='24' :sm='7' :md='7' :lg='7' :span="7" v-for="item in contact">
                     <ContactCard :title="item.title" :description="item.description" :icon="item.icon" />
                 </el-col>
             </el-row>
         </div>
     </div>
-    <el-backtop :right="50" :bottom="100" />
 </template>
 
 <style scoped>
@@ -132,5 +131,15 @@ onMounted(() => {
 .product-title {
     font-size: 30px;
     font-weight: 800;
+}
+
+@media only screen and (max-width: 767px) {
+    .content {
+        width: 85%;
+    }
+
+    .mobile-margin-bottom-css {
+        margin-bottom: 30px;
+    }
 }
 </style>

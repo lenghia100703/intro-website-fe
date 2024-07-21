@@ -205,8 +205,6 @@ onMounted(async () => {
     <AddProductModal ref='addProductModal' :call-back='() => loadData(1)' />
     <EditProductModal ref='editProductModal' :call-back='() => loadData(1)' />
     <DeleteProductModal ref='deleteProductModal' :call-back='() => loadData(1)' />
-
-    <el-backtop :right="50" :bottom="100" />
 </template>
 
 <style scoped>

@@ -24,7 +24,7 @@ const handleClick = () => {
 </script>
 
 <template>
-    <el-row gutter={20} justify="center" class="card-container">
+    <el-row justify="center" class="card-container">
         <el-col :span="24" class="img-container">
             <div class="image-wrapper">
                 <img class="img" :src="props.img" alt="san-pham" />
@@ -90,5 +90,11 @@ const handleClick = () => {
     -webkit-line-clamp: 3;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+@media only screen and (max-width: 550px) {
+    .img {
+        width: 100%;
+    }
 }
 </style>

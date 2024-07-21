@@ -204,8 +204,6 @@ onMounted(async () => {
     <AddNewsModal ref='addNewsModal' :call-back='() => loadData(1)' />
     <EditNewsModal ref='editNewsModal' :call-back='() => loadData(1)' />
     <DeleteNewsModal ref='deleteNewsModal' :call-back='() => loadData(1)' />
-
-    <el-backtop :right="50" :bottom="100" />
 </template>
 
 <style scoped>

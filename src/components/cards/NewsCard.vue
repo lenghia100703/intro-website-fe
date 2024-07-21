@@ -44,7 +44,7 @@ const handleClick = () => {
 
 <style scoped>
 .img {
-    max-width: 350px;
+    width: 350px;
     height: auto;
     border-radius: 20px;
     cursor: pointer;
@@ -68,5 +68,11 @@ const handleClick = () => {
     -webkit-line-clamp: 3;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+@media only screen and (max-width: 550px) {
+    .img {
+        width: 100%;
+    }
 }
 </style>

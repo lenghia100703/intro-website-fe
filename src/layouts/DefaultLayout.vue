@@ -2,19 +2,27 @@
 import Header from '@/components/commons/Header.vue'
 import Footer from '@/components/commons/Footer.vue'
 import FAIcon from '@/components/commons/FAIcon.vue'
+import HeaderMobile from '@/components/commons/HeaderMobile.vue'
+import FooterMobile from '@/components/commons/FooterMobile.vue'
 </script>
 
 <template>
     <div class='common-layout'>
         <el-container>
-            <el-header id='header'>
+            <el-header id='header' class='hidden-sm-and-down'>
                 <Header />
+            </el-header>
+            <el-header class='hidden-md-and-up'>
+                <HeaderMobile />
             </el-header>
             <el-main id='main'>
                 <router-view></router-view>
             </el-main>
-            <el-footer id="footer">
+            <el-footer class='footer hidden-sm-and-down'>
                 <Footer />
+            </el-footer>
+            <el-footer class='footer hidden-md-and-up'>
+                <FooterMobile />
             </el-footer>
         </el-container>
         <div class="contact-icon">
@@ -29,8 +37,8 @@ import FAIcon from '@/components/commons/FAIcon.vue'
                     <img style="width: 30px" src="../assets/images/zalo-icon.svg" alt="icon-zalo" />
                 </el-button>
             </el-row>
-
         </div>
+        <el-backtop :right="20" :bottom="100" />
     </div>
 </template>
 
@@ -44,7 +52,7 @@ import FAIcon from '@/components/commons/FAIcon.vue'
     overflow: hidden;
 }
 
-#footer {
+.footer {
     padding: 0;
 }
 
@@ -54,5 +62,15 @@ import FAIcon from '@/components/commons/FAIcon.vue'
     right: 50px;
     width: 40px;
     height: 40px;
+}
+
+@media only screen and (max-width: 600px) {
+    .contact-icon {
+        position: fixed;
+        bottom: 200px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+    }
 }
 </style>

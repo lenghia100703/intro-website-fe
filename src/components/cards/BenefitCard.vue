@@ -19,7 +19,7 @@ const props = withDefaults(
 </script>
 
 <template>
-    <el-card style="max-width: 330px; border-radius: 50px" body-style="padding: 0 0 40px 40px" shadow="always">
+    <el-card class="custom-card" body-style="padding: 0 0 40px 40px" shadow="always">
         <div class="elementor-widget-container">
             <div class="elementor-widget">
                 <h2 class="number">{{ props.number }}</h2>
@@ -40,6 +40,11 @@ const props = withDefaults(
     display: flex;
     justify-content: flex-end;
     height: 80px;
+}
+
+.custom-card {
+    max-width: 330px;
+    border-radius: 50px;
 }
 
 .elementor-widget {
@@ -77,5 +82,15 @@ const props = withDefaults(
     -webkit-line-clamp: 11;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+@media only screen and (max-width: 883px) {
+    .title {
+        height: 80px;
+    }
+
+    .custom-card {
+        max-width: 100%;
+    }
 }
 </style>

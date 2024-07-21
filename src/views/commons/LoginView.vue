@@ -89,10 +89,10 @@ onMounted(() => {
 <template>
     <div class='container'>
         <el-row justify='center'>
-            <el-col :xs='16' :sm='14' :md='12' :lg='8'>
+            <el-col :xs='24' :sm='16' :md='14' :lg='10'>
                 <el-card>
                     <template #header><h2 class='title'>Đăng nhập</h2></template>
-                    <el-form label-position='top' :model='loginForm' :rules='rules' ref='loginFormRef'>
+                    <el-form :hide-required-asterisk="true" label-position='top' :model='loginForm' :rules='rules' ref='loginFormRef'>
                         <el-form-item label='Email' prop='email'>
                             <el-input v-model='loginForm.email' type='text' clearable />
                         </el-form-item>
@@ -103,6 +103,7 @@ onMounted(() => {
                             <div class='action'>
                                 <span class='redirect'>
                                     Bạn chưa có tài khoản?
+                                    <br />
                                     <router-link to='/register' class='to-register'>Đăng ký</router-link>
                                 </span>
                                 <el-button

@@ -83,7 +83,7 @@ onMounted(() => {
 
 <template>
     <div class='profile-page'>
-        <h1>Thông tin tài khoản</h1>
+        <h1 class="hidden-sm-and-down">Thông tin tài khoản</h1>
         <br />
         <div class='user-container'>
             <div class='user-info-detail'>
@@ -161,5 +161,13 @@ onMounted(() => {
 
 .avatar-image-block {
     text-align: center;
+}
+
+@media only screen and (max-width: 767px) {
+    .profile-page {
+        margin-left: auto;
+        width: 85%;
+        margin-right: auto;
+    }
 }
 </style>

@@ -36,7 +36,7 @@ onMounted(async () => {
         <div class="spacing"></div>
         <div class="content">
             <el-row gutter="20">
-                <el-col :span="8" v-for="item in products">
+                <el-col :xs='24' :sm='16' :md='14' :lg='8' :span="8" v-for="item in products">
                     <ProductCard :title="item.name" :img="item.image" :description="item.description"
                                  :to='"/detail-product/" + item.id' />
                 </el-col>
@@ -52,7 +52,6 @@ onMounted(async () => {
             </div>
         </div>
     </div>
-    <el-backtop :right="50" :bottom="100" />
 </template>
 
 <style scoped>

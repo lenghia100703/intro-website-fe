@@ -1,6 +1,6 @@
 <script setup lang='ts'>
 
-import { reactive, ref } from 'vue'
+import { computed, onMounted, onUnmounted, reactive, ref } from 'vue'
 import { ElForm, ElMessage, FormRules } from 'element-plus'
 import { changePassword } from '@/services/user'
 import { PATHS } from '@/router/paths'
@@ -13,6 +13,24 @@ const router = useRouter()
 const editLoading = ref<boolean>(false)
 const userId = ref()
 const editFormRef = ref<typeof ElForm | null>(null)
+const isSmallScreen = ref<boolean>(false)
+
+const checkScreenWidth = () => {
+    isSmallScreen.value = window.innerWidth < 767
+}
+
+onMounted(() => {
+    checkScreenWidth()
+    window.addEventListener('resize', checkScreenWidth)
+})
+
+onUnmounted(() => {
+    window.removeEventListener('resize', checkScreenWidth)
+})
+
+const dialogWidthClass = computed(() => {
+    return isSmallScreen.value ? 'small-dialog' : ''
+})
 const editForm = ref({
     oldPassword: '',
     newPassword: '',
@@ -104,8 +122,8 @@ defineExpose({
 </script>
 
 <template>
-    <el-dialog v-model='visible' title='Thay đổi mật khẩu' width='40%' top='14vh' :hide-required-asterisk='true'>
-        <el-form :model='editForm' label-position='left' ref='editFormRef' :rules='rules' label-width='150px'>
+    <el-dialog v-model='visible' title='Thay đổi mật khẩu' width='500' :class="dialogWidthClass" top='14vh' align-center :hide-required-asterisk='true'>
+        <el-form :model='editForm' :label-position='dialogWidthClass ? "top" : "left"' ref='editFormRef' :rules='rules' label-width='150px'>
             <el-form-item label='Mật khẩu hiện tại' prop='oldPassword'>
                 <el-input v-model='editForm.oldPassword' placeholder='Nhập mật khẩu hiện tại' type='password'
                           :show-password='true' clearable />
@@ -134,5 +152,11 @@ defineExpose({
 <style scoped>
 .left-dialog-footer {
     float: left;
+}
+
+@media (max-width: 767px) {
+    .small-dialog {
+        width: 85% !important;
+    }
 }
 </style>

@@ -44,10 +44,10 @@ onMounted(async () => {
             </div>
             <br />
             <el-row justify="space-between">
-                <el-col :span="11">
+                <el-col :xs='24' :sm='16' :md='14' :lg='11' :span="11">
                     <div class="product-title">Theo dõi tin tức mới nhất của Công ty chúng tôi</div>
                 </el-col>
-                <el-col :span="6" style="display: flex; justify-content: flex-end; align-items: center;">
+                <el-col :xs='24' :sm='16' :md='14' :lg='10' :span="6" style="display: flex; justify-content: flex-end; align-items: center;">
                     <el-input
                         v-model="searchValue"
                         size="large"
@@ -65,7 +65,7 @@ onMounted(async () => {
             </el-row>
             <br />
             <el-row justify="space-between">
-                <el-col style="margin-bottom: 40px" :span="7" v-for="item in news">
+                <el-col :xs='24' :sm='16' :md='14' :lg='7' style="margin-bottom: 40px" :span="7" v-for="item in news">
                     <NewsCard :title="item.title" :img="item.image" :description="item.description"
                               :to='"/detail-news/" + item.id' />
                 </el-col>
@@ -80,7 +80,6 @@ onMounted(async () => {
             </div>
         </div>
     </div>
-    <el-backtop :right="50" :bottom="100" />
 </template>
 
 <style scoped>
@@ -116,5 +115,11 @@ onMounted(async () => {
 .pagination {
     margin-top: 30px;
     float: right;
+}
+
+@media only screen and (max-width: 767px) {
+    .content {
+        width: 85%;
+    }
 }
 </style>
