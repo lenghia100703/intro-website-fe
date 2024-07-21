@@ -22,34 +22,6 @@ const loadData = async (page: any) => {
     }
 }
 
-const fake_products = [
-    {
-        name: 'Thùng carton 3 lớp',
-        description: 'Thùng carton 3 lớp là bao bì chắc chắn, bảo vệ hàng hóa an toàn trong vận chuyển. Sản phẩm chịu lực tốt, phù hợp cho nhiều loại hàng hóa, và dễ dàng in ấn để quảng bá thương hiệu.',
-        to: '/detail-product/1',
-    },
-    {
-        name: 'Thùng carton 5 lớp',
-        description: 'Thùng carton 3 lớp là bao bì chắc chắn, bảo vệ hàng hóa an toàn trong vận chuyển. Sản phẩm chịu lực tốt, phù hợp cho nhiều loại hàng hóa, và dễ dàng in ấn để quảng bá thương hiệu.',
-        to: 'thung-carton-5',
-    },
-    {
-        name: 'Thùng carton 3 lớp',
-        description: 'Thùng carton 3 lớp là bao bì chắc chắn, bảo vệ hàng hóa an toàn trong vận chuyển. Sản phẩm chịu lực tốt, phù hợp cho nhiều loại hàng hóa, và dễ dàng in ấn để quảng bá thương hiệu.',
-        to: 'thung-carton-3',
-    },
-    {
-        name: 'Thùng carton 3 lớp',
-        description: 'Thùng carton 3 lớp là bao bì chắc chắn, bảo vệ hàng hóa an toàn trong vận chuyển. Sản phẩm chịu lực tốt, phù hợp cho nhiều loại hàng hóa, và dễ dàng in ấn để quảng bá thương hiệu.',
-        to: 'thung-carton-3',
-    },
-    {
-        name: 'Thùng carton 3 lớp',
-        description: 'Thùng carton 3 lớp là bao bì chắc chắn, bảo vệ hàng hóa an toàn trong vận chuyển. Sản phẩm chịu lực tốt, phù hợp cho nhiều loại hàng hóa, và dễ dàng in ấn để quảng bá thương hiệu.',
-        to: 'thung-carton-3',
-    }
-]
-
 onMounted(async () => {
     loadingFullScreen()
     await loadData(1)
@@ -65,7 +37,8 @@ onMounted(async () => {
         <div class="content">
             <el-row gutter="20">
                 <el-col :span="8" v-for="item in products">
-                    <ProductCard :title="item.name" :img="item.image" :description="item.description" :to='"/detail-product/" + item.id' />
+                    <ProductCard :title="item.name" :img="item.image" :description="item.description"
+                                 :to='"/detail-product/" + item.id' />
                 </el-col>
             </el-row>
 

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+
 import { onMounted } from 'vue'
 import { loadingFullScreen } from '@/utils/loadingFullScreen'
 import { GoogleMap, Marker } from 'vue3-google-map'
@@ -10,17 +11,17 @@ const contact = [
     {
         title: 'Địa chỉ',
         description: 'Số 73, Đại lộ Thịnh Lang, Phường Thịnh Lang, TP. Hòa Bình, Tỉnh Hòa Bình',
-        icon: 'fa-regular fa-map'
+        icon: 'fa-regular fa-map',
     },
     {
         title: 'Số điện thoại',
         description: '084 688 1815 – 091 394 5746',
-        icon: 'fa-solid fa-phone'
+        icon: 'fa-solid fa-phone',
     },
     {
         title: 'Địa chỉ Email',
         description: 'baobianquycuong@gmail.com',
-        icon: 'fa-regular fa-envelope'
+        icon: 'fa-regular fa-envelope',
     },
 ]
 
@@ -37,7 +38,9 @@ onMounted(() => {
         <div class="spacing"></div>
         <div class="content">
             <div>
-                <el-button  style="background-color: #f0f9eb; color: #67c23a" type="success" round plain>Liên hệ với chúng tôi</el-button>
+                <el-button style="background-color: #f0f9eb; color: #67c23a" type="success" round plain>Liên hệ với
+                    chúng tôi
+                </el-button>
             </div>
             <br />
             <el-row justify="space-between">
@@ -63,24 +66,27 @@ onMounted(() => {
                     </div>
                     <br />
                     <div>
-                        <el-text size="large" tag="b">Địa chỉ liên hệ: </el-text>
-                        <el-text size="large">Số 73, Đại lộ Thịnh Lang, Phường Thịnh Lang, TP. Hòa Bình, Tỉnh Hòa Bình</el-text>
+                        <el-text size="large" tag="b">Địa chỉ liên hệ:</el-text>
+                        <el-text size="large">Số 73, Đại lộ Thịnh Lang, Phường Thịnh Lang, TP. Hòa Bình, Tỉnh Hòa Bình
+                        </el-text>
                     </div>
                     <br />
                     <div>
                         <el-text size="large" tag="b">
                             Số giấy chứng nhận đăng ký kinh doanh:
                         </el-text>
-                        <el-text size="large">5400312309 cấp ngày 07/04/2009 tại Chi cục Thuế khu vực Hòa Bình - Đà Bắc</el-text>
+                        <el-text size="large">5400312309 cấp ngày 07/04/2009 tại Chi cục Thuế khu vực Hòa Bình - Đà
+                            Bắc
+                        </el-text>
                     </div>
                     <br />
                     <div>
-                        <el-text size="large" tag="b">Email: </el-text>
+                        <el-text size="large" tag="b">Email:</el-text>
                         <el-text size="large" type="primary">baobianquycuong@gmail.com</el-text>
                     </div>
                     <br />
                     <div>
-                        <el-text size="large" tag="b">Hotline: </el-text>
+                        <el-text size="large" tag="b">Hotline:</el-text>
                         <el-text size="large" type="primary">084 688 1815 – 091 394 5746</el-text>
                     </div>
                 </el-col>

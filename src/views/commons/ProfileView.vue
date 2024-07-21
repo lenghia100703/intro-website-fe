@@ -19,7 +19,7 @@ const form = ref({
     address: useAuthentication.userInfo?.address,
     age: useAuthentication.userInfo?.age,
     role: useAuthentication.userInfo?.role,
-    avatar: useAuthentication.userInfo?.avatar
+    avatar: useAuthentication.userInfo?.avatar,
 })
 
 const rules = reactive<FormRules>({
@@ -37,14 +37,14 @@ const handleSubmit = async (data: any) => {
     try {
         await editUser(useAuthentication.userInfo?.id, data)
         ElMessage({
-            type: "success",
-            message: "Sửa thành công"
+            type: 'success',
+            message: 'Sửa thành công',
         })
     } catch (e) {
         console.log(e)
         ElMessage({
-            type: "error",
-            message: "Sửa thất bại"
+            type: 'error',
+            message: 'Sửa thất bại',
         })
     } finally {
         editLoading.value = false
@@ -52,20 +52,20 @@ const handleSubmit = async (data: any) => {
 }
 
 const submitForm = (formEl: typeof ElForm | null) => {
-    if (!formEl) return;
+    if (!formEl) return
     formEl.validate(async (valid: any) => {
         if (valid) {
             const formData = new FormData()
-            formData.append("email", form.value.email)
-            formData.append("username", form.value.username)
-            formData.append("phone", form.value.phone)
-            formData.append("avatar", form.value.avatar)
-            await handleSubmit(formData);
+            formData.append('email', form.value.email)
+            formData.append('username', form.value.username)
+            formData.append('phone', form.value.phone)
+            formData.append('avatar', form.value.avatar)
+            await handleSubmit(formData)
         } else {
-            return false;
+            return false
         }
-    });
-};
+    })
+}
 
 const resetForm = (form: any) => {
     form.username = useAuthentication.userInfo?.username

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 
-
 import { onMounted, ref } from 'vue'
 import { convertDateTime } from '@/helpers/convertDateTime'
 import { getNewsByPage } from '@/services/news'
@@ -152,7 +151,8 @@ onMounted(async () => {
                 </el-table-column>
                 <el-table-column label='Ngày tạo' prop='createdAt' sortable>
                     <template #default='{ row }'>
-                        <el-popover placement='bottom' :width='200' trigger='click' :content='convertDateTime(row.createdAt)'>
+                        <el-popover placement='bottom' :width='200' trigger='click'
+                                    :content='convertDateTime(row.createdAt)'>
                             <template #reference
                             >
                                 <el-text truncated> {{ convertDateTime(row.createdAt) }}</el-text>
@@ -163,7 +163,8 @@ onMounted(async () => {
                 </el-table-column>
                 <el-table-column label='Ngày sửa' prop='updatedAt' sortable>
                     <template #default='{ row }'>
-                        <el-popover placement='bottom' :width='200' trigger='click' :content='convertDateTime(row.updatedAt)'>
+                        <el-popover placement='bottom' :width='200' trigger='click'
+                                    :content='convertDateTime(row.updatedAt)'>
                             <template #reference
                             >
                                 <el-text truncated> {{ convertDateTime(row.updatedAt) }}</el-text>
@@ -225,14 +226,6 @@ onMounted(async () => {
 
 .flex-grow {
     flex-grow: 1;
-}
-
-.search-input {
-    min-width: 180px;
-}
-
-.search-btn {
-    margin-left: 20px;
 }
 
 .title-page {

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 
-import { Search } from '@element-plus/icons-vue'
 import { useRoute } from 'vue-router'
 import { onMounted, ref } from 'vue'
 import { loadingFullScreen } from '@/utils/loadingFullScreen'

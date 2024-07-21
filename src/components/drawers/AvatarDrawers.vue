@@ -15,17 +15,17 @@ const adminRoute = [
     {
         path: PATHS.MANAGE_MESSAGE,
         icon: 'fa-regular fa-message',
-        label: 'Quản lý tin nhắn'
+        label: 'Quản lý tin nhắn',
     },
     {
         path: PATHS.MANAGE_NEWS,
         icon: 'fa-regular fa-newspaper',
-        label: 'Quản lý tin tức'
+        label: 'Quản lý tin tức',
     },
     {
         path: PATHS.MANAGE_PRODUCT,
         icon: 'fa-brands fa-product-hunt',
-        label: 'Quản lý sản phẩm'
+        label: 'Quản lý sản phẩm',
     },
 ]
 

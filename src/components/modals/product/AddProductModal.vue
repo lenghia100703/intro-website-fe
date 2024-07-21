@@ -14,8 +14,6 @@ const postForm = ref({
     file: null,
 })
 
-const constructionId = ref(0)
-
 const validateImageUrlOrImageFile = (rule: any, value: any, callback: any) => {
     if (!postForm.value.image && !postForm.value.file) {
         callback(new Error('Vui lòng nhập đường dẫn ảnh hoặc chọn ảnh'))
@@ -125,13 +123,16 @@ defineExpose({
     <el-dialog v-model='visible' title='Tạo sản phẩm mới' width='40%' top='8vh'>
         <el-form :model='postForm' label-position='top' ref='postFormRef' :rules='rules'>
             <el-form-item label='Tên sản phẩm:' prop='name'>
-                <el-input v-model='postForm.name' placeholder='Nhập tên sản phẩm' type='text' spellcheck='false' clearable />
+                <el-input v-model='postForm.name' placeholder='Nhập tên sản phẩm' type='text' spellcheck='false'
+                          clearable />
             </el-form-item>
             <el-form-item label='Mô tả sản phẩm:' prop='description'>
-                <el-input v-model='postForm.description' placeholder='Nhập mô tả sản phẩm' type='textarea' spellcheck='false' />
+                <el-input v-model='postForm.description' placeholder='Nhập mô tả sản phẩm' type='textarea'
+                          spellcheck='false' />
             </el-form-item>
             <el-form-item label='Ảnh minh họa:' prop='image'>
-                <el-input v-model='postForm.image' placeholder='Nhập đường dẫn ảnh' :disabled='postForm.file !== null' type='text' spellcheck='false' clearable />
+                <el-input v-model='postForm.image' placeholder='Nhập đường dẫn ảnh' :disabled='postForm.file !== null'
+                          type='text' spellcheck='false' clearable />
             </el-form-item>
             <div class='or'>Hoặc chọn ảnh từ thiết bị:</div>
             <el-form-item prop='file'>

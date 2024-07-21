@@ -18,7 +18,6 @@ export const UserAPI = {
     CREATE_USER: '/user',
     USER_BY_ID: (userId: any) => `/user/${userId}`,
     CHANGE_PASSWORD: (userId: any) => `/user/change-password/${userId}`,
-    ID_ROLE: (id: any, role: any) => `/user/${role}/${id}` // có cả Construction và User
 }
 
 export const NewsAPI = {

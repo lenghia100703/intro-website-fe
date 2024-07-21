@@ -16,7 +16,7 @@ import ManageMessageView from '@/views/admin/ManageMessageView.vue'
 import ManageNewsView from '@/views/admin/ManageNewsView.vue'
 import ManageProductView from '@/views/admin/ManageProductView.vue'
 import DetailNewsView from '@/views/commons/DetailNewsView.vue'
-import ProfileView from '../views/commons/ProfileView.vue'
+import ProfileView from '@/views/commons/ProfileView.vue'
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -76,19 +76,19 @@ const router = createRouter({
                     path: PATHS.MANAGE_MESSAGE,
                     component: ManageMessageView,
                     name: 'manage-message',
-                    meta: { requiresAuth: true, role: 'ADMIN' }
+                    meta: { requiresAuth: true, role: 'ADMIN' },
                 },
                 {
                     path: PATHS.MANAGE_NEWS,
                     component: ManageNewsView,
                     name: 'manage-news',
-                    meta: { requiresAuth: true, role: 'ADMIN' }
+                    meta: { requiresAuth: true, role: 'ADMIN' },
                 },
                 {
                     path: PATHS.MANAGE_PRODUCT,
                     component: ManageProductView,
                     name: 'manage-product',
-                    meta: { requiresAuth: true, role: 'ADMIN' }
+                    meta: { requiresAuth: true, role: 'ADMIN' },
                 },
             ],
         },
@@ -108,10 +108,8 @@ const router = createRouter({
         {
             path: PATHS.HOME,
             component: NotConfirmLayout,
-            children: [
-
-            ]
-        }
+            children: [],
+        },
     ],
 })
 

@@ -38,7 +38,8 @@ import FAIcon from '@/components/commons/FAIcon.vue'
                 <el-col :span='8'>
                     <p class='title'>VỀ CHÚNG TÔI</p>
                     <p>
-                        Chúng tôi là công ty chuyên sản xuất bao bì chất lượng cao, cung cấp giải pháp đóng gói an toàn và hiệu quả cho mọi loại hàng hóa. Với công nghệ hiện đại và đội ngũ chuyên nghiệp,
+                        Chúng tôi là công ty chuyên sản xuất bao bì chất lượng cao, cung cấp giải pháp đóng gói an toàn
+                        và hiệu quả cho mọi loại hàng hóa. Với công nghệ hiện đại và đội ngũ chuyên nghiệp,
                         chúng tôi cam kết mang đến sản phẩm vượt trội và dịch vụ tận tâm.
                     </p>
                 </el-col>
@@ -51,7 +52,7 @@ import FAIcon from '@/components/commons/FAIcon.vue'
                     <FAIcon class='icon' size="large" icon='fa-brands fa-facebook' color="blue" />
                 </el-button>
                 <el-button circle>
-                    <FAIcon class='icon' size='large' icon='fa-brands fa-youtube' color="red"  />
+                    <FAIcon class='icon' size='large' icon='fa-brands fa-youtube' color="red" />
                 </el-button>
                 <el-button circle>
                     <img style="width: 24px" src="../../assets/images/zalo-icon.svg" alt="icon-zalo" />

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 
-
 import { onMounted, ref } from 'vue'
 import { convertDateTime } from '@/helpers/convertDateTime'
 import { getProductByPage } from '@/services/product'
@@ -152,7 +151,8 @@ onMounted(async () => {
                 </el-table-column>
                 <el-table-column label='Ngày tạo' prop='createdAt' sortable>
                     <template #default='{ row }'>
-                        <el-popover placement='bottom' :width='200' trigger='click' :content='convertDateTime(row.createdAt)'>
+                        <el-popover placement='bottom' :width='200' trigger='click'
+                                    :content='convertDateTime(row.createdAt)'>
                             <template #reference
                             >
                                 <el-text truncated> {{ convertDateTime(row.createdAt) }}</el-text>
@@ -163,7 +163,8 @@ onMounted(async () => {
                 </el-table-column>
                 <el-table-column label='Ngày sửa' prop='updatedAt' sortable>
                     <template #default='{ row }'>
-                        <el-popover placement='bottom' :width='200' trigger='click' :content='convertDateTime(row.updatedAt)'>
+                        <el-popover placement='bottom' :width='200' trigger='click'
+                                    :content='convertDateTime(row.updatedAt)'>
                             <template #reference
                             >
                                 <el-text truncated> {{ convertDateTime(row.updatedAt) }}</el-text>
@@ -182,7 +183,8 @@ onMounted(async () => {
                             >
                         </el-tooltip>
                         <el-tooltip effect='dark' content='Xóa tin tức - sự kiện' placement='bottom'>
-                            <el-button type='danger' size='small' @click='deleteProductModal?.openModal(scope.row)' plain>
+                            <el-button type='danger' size='small' @click='deleteProductModal?.openModal(scope.row)'
+                                       plain>
                                 <FAIcon color='' icon='fa-regular fa-trash-can' />
                             </el-button>
                         </el-tooltip>
@@ -225,14 +227,6 @@ onMounted(async () => {
 
 .flex-grow {
     flex-grow: 1;
-}
-
-.search-input {
-    min-width: 180px;
-}
-
-.search-btn {
-    margin-left: 20px;
 }
 
 .title-page {

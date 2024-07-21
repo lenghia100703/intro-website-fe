@@ -14,19 +14,19 @@ const router = useRouter()
 const products = [
     {
         name: 'Thùng carton 3 lớp',
-        id: 1
+        id: 1,
     },
     {
         name: 'Thùng carton 5 lớp',
-        id: 2
+        id: 2,
     },
     {
         name: 'Giấy in offset',
-        id: 3
+        id: 3,
     },
     {
         name: 'Sản phẩm từ bìa carton',
-        id: 4
+        id: 4,
     },
 ]
 
@@ -38,7 +38,8 @@ const handleOpenDrawer = () => {
 <template>
     <div class='header-content'>
         <template v-if='authenticationStore.authenticated'>
-            <el-menu class='menu' mode='horizontal' text-color="#333" :ellipsis='false' active-text-color="#67c23a" background-color='#fff' menu-trigger='click'
+            <el-menu class='menu' mode='horizontal' text-color="#333" :ellipsis='false' active-text-color="#67c23a"
+                     background-color='#fff' menu-trigger='click'
                      :default-active='$route.path' router>
                 <el-menu-item class='desktop-logo-container no-hover' @click='router.push("/")'>
                     <img class="desktop-logo" src="../../assets/images/logo.jpg" alt="logo" />
@@ -63,7 +64,8 @@ const handleOpenDrawer = () => {
                             Tất cả sản phẩm
                         </div>
                     </el-menu-item>
-                    <el-menu-item v-for="product in products" :key="product.id" :route='"/detail-product/" + product.id' :index='"/detail-product/" + product.id'>
+                    <el-menu-item v-for="product in products" :key="product.id" :route='"/detail-product/" + product.id'
+                                  :index='"/detail-product/" + product.id'>
                         <div class="custom-menu-item">
                             {{ product.name }}
                         </div>
@@ -85,7 +87,8 @@ const handleOpenDrawer = () => {
         </template>
 
         <template v-else>
-            <el-menu class='menu' mode='horizontal' text-color="#333" :ellipsis='false' active-text-color="#67c23a" background-color='#fff' menu-trigger='click'
+            <el-menu class='menu' mode='horizontal' text-color="#333" :ellipsis='false' active-text-color="#67c23a"
+                     background-color='#fff' menu-trigger='click'
                      :default-active='$route.path' router>
                 <el-menu-item class='desktop-logo-container no-hover' @click='router.push("/")'>
                     <img class="desktop-logo" src="../../assets/images/logo.jpg" alt="logo" />
@@ -109,7 +112,8 @@ const handleOpenDrawer = () => {
                             Tất cả sản phẩm
                         </div>
                     </el-menu-item>
-                    <el-menu-item v-for="product in products" :key="product.id" :route='"/detail-product/" + product.id' :index='"/detail-product/" + product.id'>
+                    <el-menu-item v-for="product in products" :key="product.id" :route='"/detail-product/" + product.id'
+                                  :index='"/detail-product/" + product.id'>
                         <div class="custom-menu-item">
                             {{ product.name }}
                         </div>

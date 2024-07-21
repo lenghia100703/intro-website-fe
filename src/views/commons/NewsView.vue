@@ -1,13 +1,14 @@
 <script setup lang="ts">
+
 import { onMounted, ref } from 'vue'
 import { loadingFullScreen } from '@/utils/loadingFullScreen'
 import NewsCard from '@/components/cards/NewsCard.vue'
 import { Search } from '@element-plus/icons-vue'
 import { getNewsByPage } from '@/services/news'
-import * as async_hooks from 'node:async_hooks'
 
 const news = ref<any[]>([])
 const totalData = ref<any>(3)
+const searchValue = ref('')
 
 const handleChangePage = async (val: any) => {
     await loadData(val)
@@ -24,29 +25,6 @@ const loadData = async (page: any) => {
     }
 }
 
-const fake_news = [
-    {
-        to: '/detail-news/1',
-        title: 'Bao jumbo quai ống: Ưu-nhược điểm',
-        description: 'Bao Jumbo quai hình ống là một loại bao FIBC đặc biệt được tạo ra để giúp cho việc bốc xếp bằng xe nâng được dễ dàng hơn. Hai đai này được làm từ chính loại vải tạo nên bao jumbo nên có độ bền cơ học cao cũng như khả năng chịu tải lớn.'
-    },
-    {
-        to: '/detail-news/1',
-        title: 'Bao jumbo quai ống: Ưu-nhược điểm',
-        description: 'Bao Jumbo quai hình ống là một loại bao FIBC đặc biệt được tạo ra để giúp cho việc bốc xếp bằng xe nâng được dễ dàng hơn. Hai đai này được làm từ chính loại vải tạo nên bao jumbo nên có độ bền cơ học cao cũng như khả năng chịu tải lớn.'
-    },
-    {
-        to: '/detail-news/1',
-        title: 'Bao jumbo quai ống: Ưu-nhược điểm',
-        description: 'Bao Jumbo quai hình ống là một loại bao FIBC đặc biệt được tạo ra để giúp cho việc bốc xếp bằng xe nâng được dễ dàng hơn. Hai đai này được làm từ chính loại vải tạo nên bao jumbo nên có độ bền cơ học cao cũng như khả năng chịu tải lớn.'
-    },
-    {
-        to: '/detail-news/1',
-        title: 'Bao jumbo quai ống: Ưu-nhược điểm',
-        description: 'Bao Jumbo quai hình ống là một loại bao FIBC đặc biệt được tạo ra để giúp cho việc bốc xếp bằng xe nâng được dễ dàng hơn. Hai đai này được làm từ chính loại vải tạo nên bao jumbo nên có độ bền cơ học cao cũng như khả năng chịu tải lớn.'
-    },
-]
-
 onMounted(async () => {
     loadingFullScreen()
     await loadData(1)
@@ -61,7 +39,8 @@ onMounted(async () => {
         <div class="spacing"></div>
         <div class="content">
             <div>
-                <el-button  style="background-color: #f0f9eb; color: #67c23a" type="success" round plain>Tin tức mới</el-button>
+                <el-button style="background-color: #f0f9eb; color: #67c23a" type="success" round plain>Tin tức mới
+                </el-button>
             </div>
             <br />
             <el-row justify="space-between">
@@ -70,7 +49,7 @@ onMounted(async () => {
                 </el-col>
                 <el-col :span="6" style="display: flex; justify-content: flex-end; align-items: center;">
                     <el-input
-                        v-model="input3"
+                        v-model="searchValue"
                         size="large"
                         style="max-width: 800px"
                         placeholder="Tìm kiếm bài viết..."
@@ -87,7 +66,8 @@ onMounted(async () => {
             <br />
             <el-row justify="space-between">
                 <el-col style="margin-bottom: 40px" :span="7" v-for="item in news">
-                    <NewsCard :title="item.title" :img="item.image" :description="item.description" :to='"/detail-news/" + item.id' />
+                    <NewsCard :title="item.title" :img="item.image" :description="item.description"
+                              :to='"/detail-news/" + item.id' />
                 </el-col>
             </el-row>
             <div class='pagination'>

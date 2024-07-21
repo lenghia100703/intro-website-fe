@@ -17,7 +17,7 @@ const loadData = async () => {
         product.value = await getProductById(id)
         list_products.value = (await getProductByPage(1)).data
         list_products.value.filter(item =>
-            item.id.toString() === id
+            item.id.toString() === id,
         ).slice(0, 3)
         console.log(list_products.value)
     } catch (e) {
@@ -46,7 +46,7 @@ onMounted(async () => {
             <el-col :span="11">
                 <div class="name-product">{{ product?.name }}</div>
                 <div>
-                    <el-text type="info" size="large" tag="b">Giá: </el-text>
+                    <el-text type="info" size="large" tag="b">Giá:</el-text>
                     <el-text size="large" tag="b" type="danger">Liên hệ giá tốt nhất</el-text>
                 </div>
                 <el-divider />
@@ -79,7 +79,8 @@ onMounted(async () => {
         <br />
         <el-row gutter="20">
             <el-col :span="8" v-for="item in list_products">
-                <ProductCard :title="item.name" :img="item.image" :description="item.description" :to='"/detail-product/" + item.id' />
+                <ProductCard :title="item.name" :img="item.image" :description="item.description"
+                             :to='"/detail-product/" + item.id' />
             </el-col>
         </el-row>
     </div>

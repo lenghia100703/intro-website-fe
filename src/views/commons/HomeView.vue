@@ -1,18 +1,14 @@
 <script setup lang="ts">
+
 import { onMounted, ref } from 'vue'
-import { useTransition } from '@vueuse/core'
 import BenefitCard from '@/components/cards/BenefitCard.vue'
 import ProductCard from '@/components/cards/ProductCard.vue'
 import NewsCard from '@/components/cards/NewsCard.vue'
 import { loadingFullScreen } from '@/utils/loadingFullScreen'
 import { useRouter } from 'vue-router'
 import { PATHS } from '@/router/paths'
-
-const source = ref(0)
-const outputValue = useTransition(source, {
-    duration: 1500,
-})
-source.value = 172000
+import { getProductByPage } from '@/services/product'
+import { getNewsByPage } from '@/services/news'
 
 const router = useRouter()
 
@@ -22,11 +18,11 @@ const handleRoute = (path: string) => {
 
 const data = ref([
     {
-        image: "http://127.0.0.1:3030/src/assets/images/background.jpg"
+        image: 'http://127.0.0.1:3030/src/assets/images/background.jpg',
     },
     {
-        image: "http://127.0.0.1:3030/src/assets/images/background.jpg"
-    }
+        image: 'http://127.0.0.1:3030/src/assets/images/background.jpg',
+    },
 ])
 
 const benefitCards = ref([
@@ -48,47 +44,34 @@ const benefitCards = ref([
         icon: 'fa-solid fa-up-right-and-down-left-from-center',
         title: 'Giải pháp ở mọi quy mô',
         description: 'Dù bạn là doanh nghiệp nhỏ, vừa hay lớn, chúng tôi đều có các dịch vụ và sản phẩm được thiết kế để đáp ứng nhu cầu cụ thể của bạn. Với sự linh hoạt và chuyên nghiệp, chúng tôi đảm bảo rằng mọi khách hàng đều nhận được giá trị tối ưu và sự hỗ trợ tốt nhất, giúp bạn phát triển bền vững và thành công trên thị trường.',
-    }
+    },
 ])
 
-const products = [
-    {
-        name: 'Thùng carton 3 lớp',
-        description: 'Thùng carton 3 lớp là bao bì chắc chắn, bảo vệ hàng hóa an toàn trong vận chuyển. Sản phẩm chịu lực tốt, phù hợp cho nhiều loại hàng hóa, và dễ dàng in ấn để quảng bá thương hiệu.',
-        to: 'thung-carton-3',
-    },
-    {
-        name: 'Thùng carton 5 lớp',
-        description: 'Thùng carton 3 lớp là bao bì chắc chắn, bảo vệ hàng hóa an toàn trong vận chuyển. Sản phẩm chịu lực tốt, phù hợp cho nhiều loại hàng hóa, và dễ dàng in ấn để quảng bá thương hiệu.',
-        to: 'thung-carton-5',
-    },
-    {
-        name: 'Thùng carton 3 lớp',
-        description: 'Thùng carton 3 lớp là bao bì chắc chắn, bảo vệ hàng hóa an toàn trong vận chuyển. Sản phẩm chịu lực tốt, phù hợp cho nhiều loại hàng hóa, và dễ dàng in ấn để quảng bá thương hiệu.',
-        to: 'thung-carton-3',
+const products = ref<any[]>([])
+const news = ref<any[]>([])
+
+const loadProductData = async (page: any) => {
+    try {
+        const res = await getProductByPage(page)
+        products.value = res.data.slice(0, 3)
+    } catch (e) {
+        console.log(e)
     }
-]
+}
 
-const news = [
-    {
-        to: '/news/1',
-        title: 'Bao jumbo quai ống: Ưu-nhược điểm',
-        description: 'Bao Jumbo quai hình ống là một loại bao FIBC đặc biệt được tạo ra để giúp cho việc bốc xếp bằng xe nâng được dễ dàng hơn. Hai đai này được làm từ chính loại vải tạo nên bao jumbo nên có độ bền cơ học cao cũng như khả năng chịu tải lớn.'
-    },
-    {
-        to: '/news/1',
-        title: 'Bao jumbo quai ống: Ưu-nhược điểm',
-        description: 'Bao Jumbo quai hình ống là một loại bao FIBC đặc biệt được tạo ra để giúp cho việc bốc xếp bằng xe nâng được dễ dàng hơn. Hai đai này được làm từ chính loại vải tạo nên bao jumbo nên có độ bền cơ học cao cũng như khả năng chịu tải lớn.'
-    },
-    {
-        to: '/news/1',
-        title: 'Bao jumbo quai ống: Ưu-nhược điểm',
-        description: 'Bao Jumbo quai hình ống là một loại bao FIBC đặc biệt được tạo ra để giúp cho việc bốc xếp bằng xe nâng được dễ dàng hơn. Hai đai này được làm từ chính loại vải tạo nên bao jumbo nên có độ bền cơ học cao cũng như khả năng chịu tải lớn.'
-    },
-]
+const loadNewsData = async (page: any) => {
+    try {
+        const res = await getNewsByPage(page)
+        news.value = res.data.slice(0, 3)
+    } catch (e) {
+        console.log(e)
+    }
+}
 
-onMounted(() => {
+onMounted(async () => {
     loadingFullScreen()
+    await loadProductData(1)
+    await loadNewsData(1)
 })
 </script>
 
@@ -106,7 +89,8 @@ onMounted(() => {
         <div class="benefit">
             <el-row justify="space-evenly">
                 <el-col :span="(24 / benefitCards.length) - 1" v-for="item in benefitCards">
-                    <BenefitCard :number="item.number" :icon="item.icon" :title="item.title" :description="item.description" />
+                    <BenefitCard :number="item.number" :icon="item.icon" :title="item.title"
+                                 :description="item.description" />
                 </el-col>
             </el-row>
         </div>
@@ -116,7 +100,8 @@ onMounted(() => {
                 <el-row justify="space-evenly">
                     <el-col :span="11">
                         <div>
-                            <el-button style="background-color: #fff" type="success" round plain text>Giá trị cốt lõi</el-button>
+                            <el-button style="background-color: #fff" type="success" round plain text>Giá trị cốt lõi
+                            </el-button>
                         </div>
                         <div class="value-title">
                             Nâng tầm giá trị của khách hàng
@@ -133,7 +118,8 @@ onMounted(() => {
                                 <div class="sub-title-value">Tầm nhìn</div>
                                 <div>
                                     Trở thành công ty dẫn đầu trong ngành sản xuất bao bì carton tại Việt Nam,
-                                    An Quý Cường không ngừng đổi mới và áp dụng công nghệ tiên tiến nhằm nâng cao chất lượng sản phẩm và dịch vụ.
+                                    An Quý Cường không ngừng đổi mới và áp dụng công nghệ tiên tiến nhằm nâng cao chất
+                                    lượng sản phẩm và dịch vụ.
                                 </div>
                             </el-col>
                         </el-row>
@@ -154,7 +140,9 @@ onMounted(() => {
 
         <div class="product">
             <div>
-                <el-button  style="background-color: #f0f9eb; color: #67c23a" type="success" round plain>Sản phẩm tiêu biểu</el-button>
+                <el-button style="background-color: #f0f9eb; color: #67c23a" type="success" round plain>Sản phẩm tiêu
+                    biểu
+                </el-button>
             </div>
             <br />
             <el-row justify="space-between">
@@ -162,7 +150,8 @@ onMounted(() => {
                     <div class="product-title">Cùng khám phá các sản phẩm của Công ty chúng tôi</div>
                 </el-col>
                 <el-col :span="6" style="display: flex; justify-content: flex-end; align-items: center;">
-                    <el-button @click="handleRoute(PATHS.ALL_PRODUCT)" type="success" size="large" round>Xem tất cả</el-button>
+                    <el-button @click="handleRoute(PATHS.ALL_PRODUCT)" type="success" size="large" round>Xem tất cả
+                    </el-button>
                 </el-col>
             </el-row>
             <br />
@@ -175,7 +164,8 @@ onMounted(() => {
 
         <div class="news">
             <div>
-                <el-button  style="background-color: #f0f9eb; color: #67c23a" type="success" round plain>Tin tức mới</el-button>
+                <el-button style="background-color: #f0f9eb; color: #67c23a" type="success" round plain>Tin tức mới
+                </el-button>
             </div>
             <br />
             <el-row justify="space-between">
