@@ -20,24 +20,6 @@ const isOwner = computed(() => (authenticationStore.role.toString() === 'OWNER')
             Trang chủ
         </template>
     </el-menu-item>
-    <el-menu-item v-if="isOwner" :route='PATHS.MANAGE_EMPLOYEE' :index='PATHS.MANAGE_EMPLOYEE'>
-        <template #title>
-            <FAIcon icon='fa-solid fa-user' class='icon' color="" />
-            Quản lý nhân công
-        </template>
-    </el-menu-item>
-    <el-menu-item v-if="isOwner" :route='PATHS.MANAGE_CONSTRUCTION' :index='PATHS.MANAGE_CONSTRUCTION'>
-        <template #title>
-            <FAIcon icon='fa-solid fa-person-digging' class='icon' color="" />
-            Quản lý công trình
-        </template>
-    </el-menu-item>
-    <el-menu-item v-if="isOwner" :route='PATHS.MANAGE_EXPENSE' :index='PATHS.MANAGE_EXPENSE'>
-        <template #title>
-            <FAIcon icon='fa-solid fa-hand-holding-dollar' class='icon' color="" />
-            Quản lý chi tiêu
-        </template>
-    </el-menu-item>
 </template>
 
 <style scoped>

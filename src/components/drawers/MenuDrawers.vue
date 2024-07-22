@@ -70,12 +70,14 @@
 <script lang="ts" setup>
 import { ref, watch } from 'vue'
 import FAIcon from '@/components/commons/FAIcon.vue'
-import { PATHS } from '@/router/paths.ts'
-import { role } from '@/constants/role.ts'
-import { useAuthenticationStore } from '@/stores/useAuthenticationStore.ts'
+import { PATHS } from '@/router/paths'
+import { role } from '@/constants/role'
+import { useAuthenticationStore } from '@/stores/useAuthenticationStore'
 import { useRouter } from 'vue-router'
+import { storeToRefs } from 'pinia'
 
 const authenticationStore = useAuthenticationStore()
+const { authenticated } = storeToRefs(authenticationStore)
 const visible = ref<boolean>(false)
 const userInfo = ref<any>()
 const router = useRouter()
@@ -99,6 +101,11 @@ const adminRoute = [
 ]
 
 const commonRoute = [
+    {
+        path: PATHS.HOME,
+        icon: 'fa-regular fa-message',
+        label: 'Trang chủ',
+    },
     {
         path: PATHS.ABOUT,
         icon: 'fa-regular fa-message',
@@ -138,7 +145,7 @@ function openDrawer() {
 }
 
 watch(
-    authenticationStore?.authenticated,
+    authenticated,
     async (newAuth) => {
         if (newAuth) {
             await authenticationStore.loadFromServer()

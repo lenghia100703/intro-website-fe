@@ -120,7 +120,7 @@ defineExpose({
 </script>
 
 <template>
-    <el-dialog v-model='visible' title='Tạo sản phẩm mới' width='40%' top='8vh'>
+    <el-dialog v-model='visible' title='Tạo sản phẩm mới' width='500' top='8vh' align-center>
         <el-form :model='postForm' label-position='top' ref='postFormRef' :rules='rules'>
             <el-form-item label='Tên sản phẩm:' prop='name'>
                 <el-input v-model='postForm.name' placeholder='Nhập tên sản phẩm' type='text' spellcheck='false'

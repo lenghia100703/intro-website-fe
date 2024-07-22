@@ -81,14 +81,14 @@ onMounted(async () => {
                 class='table'
                 :default-sort="{ prop: 'id', order: 'ascending' }"
             >
-                <el-table-column fixed label='ID' prop='id' width='80' sortable :align="'center'">
+                <el-table-column fixed label='ID' prop='id' width='65' sortable :align="'center'">
                     <template #default='{ row }'>
                         <el-link :href="'/detail-news/' + row.id" type="primary" target="_blank">
                             <el-text truncated type="primary">{{ row.id }}</el-text>
                         </el-link>
                     </template>
                 </el-table-column>
-                <el-table-column label='Tiêu đề' prop='title' sortable>
+                <el-table-column label='Tiêu đề' width="150" prop='title'>
                     <template #default='{ row }'>
                         <el-popover placement='bottom' :width='200' trigger='click' :content='row.title'>
                             <template #reference
@@ -99,9 +99,9 @@ onMounted(async () => {
                         </el-popover>
                     </template>
                 </el-table-column>
-                <el-table-column label='Nội dung' prop='description'>
+                <el-table-column label='Nội dung' width="200" prop='description'>
                     <template #default='{ row }'>
-                        <el-popover placement='bottom' :width='800' trigger='click'>
+                        <el-popover placement='bottom' width='300' trigger='click'>
                             <template #reference>
                                 <el-text truncated> {{ row.description }}</el-text>
                             </template>
@@ -113,7 +113,7 @@ onMounted(async () => {
                         </el-popover>
                     </template>
                 </el-table-column>
-                <el-table-column label='Ảnh minh họa' prop='image'>
+                <el-table-column label='Ảnh minh họa' width="150" prop='image'>
                     <template #default='{ row }'>
                         <el-popover placement='bottom' :show-after='400' :width='300' trigger='hover'>
                             <template #reference>
@@ -127,7 +127,7 @@ onMounted(async () => {
                         </el-popover>
                     </template>
                 </el-table-column>
-                <el-table-column label='Người tạo' prop='createdBy'>
+                <el-table-column label='Người tạo' width="150" prop='createdBy'>
                     <template #default='{ row }'>
                         <el-popover placement='bottom' :width='200' trigger='click' :content='row.createdBy'>
                             <template #reference
@@ -138,7 +138,7 @@ onMounted(async () => {
                         </el-popover>
                     </template>
                 </el-table-column>
-                <el-table-column label='Người sửa' prop='updatedBy'>
+                <el-table-column label='Người sửa' width="150" prop='updatedBy'>
                     <template #default='{ row }'>
                         <el-popover placement='bottom' :width='200' trigger='click' :content='row.updatedBy'>
                             <template #reference
@@ -149,7 +149,7 @@ onMounted(async () => {
                         </el-popover>
                     </template>
                 </el-table-column>
-                <el-table-column label='Ngày tạo' prop='createdAt' sortable>
+                <el-table-column label='Ngày tạo' width="150" prop='createdAt' sortable>
                     <template #default='{ row }'>
                         <el-popover placement='bottom' :width='200' trigger='click'
                                     :content='convertDateTime(row.createdAt)'>
@@ -161,7 +161,7 @@ onMounted(async () => {
                         </el-popover>
                     </template>
                 </el-table-column>
-                <el-table-column label='Ngày sửa' prop='updatedAt' sortable>
+                <el-table-column label='Ngày sửa' width="150" prop='updatedAt' sortable>
                     <template #default='{ row }'>
                         <el-popover placement='bottom' :width='200' trigger='click'
                                     :content='convertDateTime(row.updatedAt)'>
@@ -173,7 +173,7 @@ onMounted(async () => {
                         </el-popover>
                     </template>
                 </el-table-column>
-                <el-table-column fixed='right' label='Hành động' width='130' :align="'center'">
+                <el-table-column fixed='right' label='Hành động' width='110' :align="'center'">
                     <template v-slot='scope' #default>
                         <el-tooltip effect='dark' content='Chỉnh sửa tin tức - sự kiện' placement='bottom'>
                             <el-button type='success' size='small' plain @click='editNewsModal?.openModal(scope.row)'
@@ -250,5 +250,11 @@ onMounted(async () => {
 .pagination {
     margin-top: 30px;
     float: right;
+}
+
+@media only screen and (max-width: 767px) {
+    .content {
+        width: 95%;
+    }
 }
 </style>

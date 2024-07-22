@@ -62,7 +62,7 @@ import FAIcon from '@/components/commons/FAIcon.vue'
         <div style="text-align: center">
             <img style="width: 100px" src="../../assets/images/logo.jpg" alt="icon-zalo" />
         </div>
-        <div style="text-align: center; font-size: 17px; font-weight: 600">
+        <div style="width: 95%; margin: 0 auto; text-align: center; font-size: 17px; font-weight: 600">
             Copyright © 2024 Công ty Cổ phần Đầu tư và Thương mại An Quý Cường
         </div>
     </div>

@@ -44,7 +44,7 @@ defineExpose({
 </script>
 
 <template>
-    <el-dialog v-model='visible' title='Xóa tin tức - sự kiện' width='30%' top='25vh'>
+    <el-dialog v-model='visible' title='Xóa tin tức - sự kiện' width='500' top='25vh' align-center>
         <span> Bạn có muốn xóa tin tức - sự kiện có
             <el-text type='danger' class='news-id'> ID = {{ newsId }} </el-text>
             không ?
