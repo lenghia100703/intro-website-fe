@@ -140,10 +140,10 @@ onMounted(() => {
                     </el-form-item>
                     <el-form-item>
                         <el-button type='success' @click='submitForm(editFormRef)' :loading='editLoading'>
-                            Lưu lại
+                            Lưu
                         </el-button>
                         <el-button @click='resetForm(form)'>
-                            Thiết lập lại
+                            Xóa
                         </el-button>
                     </el-form-item>
                 </el-form>

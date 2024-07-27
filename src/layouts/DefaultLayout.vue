@@ -50,7 +50,7 @@ const addNewContact = ref<InstanceType<typeof AddNewContact>>()
             </el-row>
         </div>
         <el-backtop class="hidden-sm-and-down" :right="50" :bottom="100" />
-        <el-backtop class="hidden-md-and-up" :right="20" :bottom="100" />
+        <el-backtop class="hidden-md-and-up" :right="20" :bottom="50" />
     </div>
     <AddNewContact ref="addNewContact" />
 </template>
@@ -80,7 +80,7 @@ const addNewContact = ref<InstanceType<typeof AddNewContact>>()
 @media only screen and (max-width: 600px) {
     .contact-icon {
         position: fixed;
-        bottom: 250px;
+        bottom: 200px;
         right: 20px;
         width: 40px;
         height: 40px;
