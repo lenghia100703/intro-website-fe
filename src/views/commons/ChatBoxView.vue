@@ -32,7 +32,7 @@
                 </div>
             </div>
             <el-divider />
-            <MessageDetail class="input-text" />
+            <MessageDetail :sender="getLocalStorage('sender')" class="input-text" />
         </el-col>
     </el-row>
 </template>
@@ -47,12 +47,11 @@ import { useAuthenticationStore } from '@/stores/useAuthenticationStore'
 import { storeToRefs } from 'pinia'
 import { getUserByEmail } from '@/services/user'
 import { ADMIN } from '@/constants/admin'
-
+import { getLocalStorage } from '@/helpers/localStorageHelper'
 
 const authenticationStore = useAuthenticationStore()
 const { authenticated } = storeToRefs(authenticationStore)
 const route = useRoute()
-const email = route.params.email
 const adminInfo = ref({
     avatar: '',
     username: '',

@@ -4,6 +4,7 @@ import { ElForm, ElMessage, FormRules } from 'element-plus'
 import { saveMessage } from '@/services/message'
 import { ADMIN } from '@/constants/admin'
 import { useRouter } from 'vue-router'
+import { getLocalStorage, putLocalStorage, removeLocalStorage } from '@/helpers/localStorageHelper'
 
 const contactFormRef = ref<typeof ElForm | null>(null)
 const visible = ref<boolean>(false)
@@ -44,9 +45,15 @@ const rules = reactive<FormRules<any>>({
 const createLoading = ref<boolean>(false)
 
 const handleSendMessage = async (data: any) => {
+    createLoading.value = true
+    const senderStorage = getLocalStorage('sender')
+    if (senderStorage !== data.sender) {
+        removeLocalStorage('sender')
+        putLocalStorage('sender', data.sender)
+    }
     try {
-        createLoading.value = true
         await saveMessage(data)
+        putLocalStorage('sender', data.sender)
         await router.push('/messages/t/' + ADMIN.EMAIL)
     } catch (e) {
         console.log(e)
