@@ -1,6 +1,6 @@
 <template>
     <el-drawer modal-class="padding: 0" v-model="visible" size="100%" :show-close="false">
-        <template #header="{ close, titleId, titleClass }">
+        <template #header="{ close }">
             <div class='header-content'>
                 <el-menu class='menu' mode='horizontal' text-color="#333" :ellipsis='false' active-text-color="#67c23a"
                          background-color='#fff' menu-trigger='click'
@@ -18,7 +18,8 @@
                 </el-menu>
             </div>
         </template>
-        <div v-if="!authenticationStore.authenticated" class="group-btn-auth" style="background:linear-gradient(180deg, #fee1e1 0%, #fff 42.1%)">
+        <div v-if="!authenticationStore.authenticated" class="group-btn-auth"
+             style="background:linear-gradient(180deg, #fee1e1 0%, #fff 42.1%)">
             <el-row justify="space-between">
                 <el-col :span="15">
                     <p class="">Đăng nhập hoặc đăng ký <br> để có thể liên hệ trực tiếp với chúng tôi</p>
@@ -45,7 +46,8 @@
         </div>
         <el-divider />
         <div>
-            <el-menu active-text-color="#67c23a" :ellipsis='false' class='menu-bar' menu-trigger='click' mode='vertical' router>
+            <el-menu active-text-color="#67c23a" :ellipsis='false' class='menu-bar' menu-trigger='click' mode='vertical'
+                     router>
                 <el-menu-item v-if="authenticationStore?.role.toString() === role.ADMIN"
                               v-for="item in adminRoute"
                               :index='item.path' :route='item.path' @click='visible = false'>

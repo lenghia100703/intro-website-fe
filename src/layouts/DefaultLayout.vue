@@ -1,9 +1,14 @@
 <script setup lang='ts'>
+
 import Header from '@/components/commons/Header.vue'
 import Footer from '@/components/commons/Footer.vue'
 import FAIcon from '@/components/commons/FAIcon.vue'
 import HeaderMobile from '@/components/commons/HeaderMobile.vue'
 import FooterMobile from '@/components/commons/FooterMobile.vue'
+import AddNewContact from '@/components/modals/message/AddNewContact.vue'
+import { ref } from 'vue'
+
+const addNewContact = ref<InstanceType<typeof AddNewContact>>()
 </script>
 
 <template>
@@ -27,6 +32,12 @@ import FooterMobile from '@/components/commons/FooterMobile.vue'
         </el-container>
         <div class="contact-icon">
             <el-row>
+                <el-button size="large" @click="addNewContact?.openModal()" circle>
+                    <FAIcon class='icon' style="font-size: 25px" icon='fa-regular fa-message' color="blue" />
+                </el-button>
+            </el-row>
+
+            <el-row style="margin-top: 10px">
                 <el-button size="large" circle>
                     <FAIcon class='icon' style="font-size: 30px" icon='fa-brands fa-facebook' color="blue" />
                 </el-button>
@@ -38,8 +49,10 @@ import FooterMobile from '@/components/commons/FooterMobile.vue'
                 </el-button>
             </el-row>
         </div>
-        <el-backtop :right="20" :bottom="100" />
+        <el-backtop class="hidden-sm-and-down" :right="50" :bottom="100" />
+        <el-backtop class="hidden-md-and-up" :right="20" :bottom="100" />
     </div>
+    <AddNewContact ref="addNewContact" />
 </template>
 
 <style scoped>
@@ -58,7 +71,7 @@ import FooterMobile from '@/components/commons/FooterMobile.vue'
 
 .contact-icon {
     position: fixed;
-    bottom: 200px;
+    bottom: 250px;
     right: 50px;
     width: 40px;
     height: 40px;
@@ -67,7 +80,7 @@ import FooterMobile from '@/components/commons/FooterMobile.vue'
 @media only screen and (max-width: 600px) {
     .contact-icon {
         position: fixed;
-        bottom: 200px;
+        bottom: 250px;
         right: 20px;
         width: 40px;
         height: 40px;

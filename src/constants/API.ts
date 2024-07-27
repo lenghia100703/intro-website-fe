@@ -7,11 +7,11 @@ export const AuthAPI = {
     CONFIRM_REGISTRATION: '/auth/confirm-registration',
 }
 
-
 export const UserAPI = {
     GET_CURRENT_USER: '/user/me',
     ALL_USERS: '/user',
     LIST_USERS: (page: any) => `/user?page=${page}`,
+    USER_BY_EMAIL: (email: string) => `/user/email/${email}`,
     USER_ROLE: '/user/role',
     EDIT_USER: (userId: any) => `/user/${userId}`,
     DELETE_USER: (userId: any) => `/user/${userId}`,
@@ -36,6 +36,13 @@ export const ProductAPI = {
     DELETE_PRODUCT: (productId: any) => `/product/${productId}`,
     CREATE_PRODUCT: '/product',
     PRODUCT_BY_ID: (productId: any) => `/product/${productId}`,
+}
+
+export const MessageAPI = {
+    GET_MESSAGE: (sender: any, receiver: any) => `/messages?sender=${sender}&receiver=${receiver}`,
+    SEND_MESSAGE: `/messages`,
+    SAVE_MESSAGE: `/messages`,
+    GET_MESSAGE_BY_SENDER: (sender: any) => `/messages/${sender}`,
 }
 
 

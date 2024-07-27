@@ -1,4 +1,5 @@
 <script setup lang="ts">
+
 import { onMounted, reactive, ref } from 'vue'
 import { ElForm, ElMessage, FormRules } from 'element-plus'
 import { createProduct } from '@/services/product'

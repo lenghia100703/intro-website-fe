@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 
 import FAIcon from '@/components/commons/FAIcon.vue'
 
@@ -19,7 +19,7 @@ const props = withDefaults(
 <template>
     <el-card class="custom-contact-card" shadow="always">
         <div class="icon-container">
-            <FAIcon :icon="props.icon" color="#3878F7" class="icon" />
+            <FAIcon :icon="props.icon" class="icon" color="#3878F7" />
         </div>
         <div class="title">{{ props.title }}</div>
         <div class="description">

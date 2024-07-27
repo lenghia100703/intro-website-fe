@@ -9,11 +9,9 @@
                 </div>
             </div>
             <el-divider />
-            <MessageList v-for="receiver in receivers"
-                         :key="receiver.id"
-                         :username="receiver.username"
-                         :email="receiver.email"
-                         :avatar="receiver.avatar" />
+            <MessageList :avatar="ADMIN.AVATAR"
+                         :username="ADMIN.USERNAME"
+                         :email="ADMIN.EMAIL" />
         </el-col>
 
         <el-col :span="18" class="right">
@@ -24,29 +22,15 @@
 </template>
 
 <script lang="ts" setup>
-
 import { Edit } from '@element-plus/icons-vue'
 import MessageList from '@/components/commons/MessageList.vue'
-import { onMounted, ref } from 'vue'
-import { getMessagesBySender } from '@/services/message'
-import { ADMIN } from '@/constants/admin'
+import { onMounted } from 'vue'
 import { loadingFullScreen } from '@/utils/loadingFullScreen'
+import { ADMIN } from '@/constants/admin'
 
-const receivers = ref([])
-
-const loadListReceiver = async () => {
-    try {
-        receivers.value = await getMessagesBySender(ADMIN.EMAIL)
-    } catch (e) {
-        console.log(e)
-    }
-}
-
-onMounted(async () => {
+onMounted(() => {
     loadingFullScreen()
-    await loadListReceiver()
 })
-
 </script>
 
 <style scoped>

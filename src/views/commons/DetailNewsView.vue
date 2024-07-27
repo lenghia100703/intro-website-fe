@@ -7,7 +7,6 @@ import { getNewsById } from '@/services/news'
 
 const route = useRoute()
 const id = route.params.id
-
 const news = ref()
 
 const loadData = async () => {

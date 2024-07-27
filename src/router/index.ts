@@ -17,6 +17,9 @@ import ManageNewsView from '@/views/admin/ManageNewsView.vue'
 import ManageProductView from '@/views/admin/ManageProductView.vue'
 import DetailNewsView from '@/views/commons/DetailNewsView.vue'
 import ProfileView from '@/views/commons/ProfileView.vue'
+import ChatBoxView from '@/views/commons/ChatBoxView.vue'
+import InboxView from '@/views/commons/InboxView.vue'
+import DetailMessageView from '../views/admin/DetailMessageView.vue'
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -72,12 +75,7 @@ const router = createRouter({
                 },
 
                 // admin route
-                {
-                    path: PATHS.MANAGE_MESSAGE,
-                    component: ManageMessageView,
-                    name: 'manage-message',
-                    meta: { requiresAuth: true, role: 'ADMIN' },
-                },
+
                 {
                     path: PATHS.MANAGE_NEWS,
                     component: ManageNewsView,
@@ -101,6 +99,28 @@ const router = createRouter({
                     path: PATHS.LOGIN,
                     component: LoginView,
                     name: 'login',
+                },
+                {
+                    path: PATHS.MESSAGES,
+                    component: ChatBoxView,
+                    name: 'messages',
+                },
+                {
+                    path: PATHS.INBOX,
+                    component: InboxView,
+                    name: 'inbox',
+                },
+                {
+                    path: PATHS.MANAGE_MESSAGE,
+                    component: ManageMessageView,
+                    name: 'manage-message',
+                    meta: { requiresAuth: true, role: 'ADMIN' },
+                },
+                {
+                    path: PATHS.DETAIL_MESSAGE,
+                    component: DetailMessageView,
+                    name: 'detail-manage-message',
+                    meta: { requiresAuth: true, role: 'ADMIN' },
                 },
             ],
         },

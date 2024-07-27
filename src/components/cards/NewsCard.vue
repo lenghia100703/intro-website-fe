@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 
 import FAIcon from '@/components/commons/FAIcon.vue'
 import { useRouter } from 'vue-router'
@@ -27,14 +27,14 @@ const handleClick = () => {
 <template>
     <div>
         <div @click="handleClick">
-            <img class="img" :src="props.img" alt="img" />
+            <img :src="props.img" alt="img" class="img" />
         </div>
         <div class="title" @click="handleClick">
             {{ props.title }}
         </div>
         <div>
             <span>
-                <FAIcon style="margin-right: 4px" icon="fa-regular fa-clock" color="" />
+                <FAIcon color="" icon="fa-regular fa-clock" style="margin-right: 4px" />
                 13/07/2024
             </span>
         </div>

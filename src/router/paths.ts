@@ -11,9 +11,12 @@ export const PATHS = {
     REGISTER: '/register',
     PROFILE: '/profile',
     SETTING: '/setting',
+    MESSAGES: '/messages/t/:email',
+    INBOX: '/messages/inbox',
 
     // admin
     MANAGE_MESSAGE: '/admin/manage-message',
+    DETAIL_MESSAGE: '/admin/manage-message/t/:email',
     MANAGE_NEWS: '/admin/manage-news',
     MANAGE_PRODUCT: '/admin/manage-product',
 }

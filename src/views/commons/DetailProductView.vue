@@ -8,7 +8,6 @@ import { getProductById, getProductByPage } from '@/services/product'
 
 const route = useRoute()
 const id = route.params.id
-
 const product = ref()
 const list_products = ref([])
 
@@ -19,7 +18,6 @@ const loadData = async () => {
         list_products.value.filter(item =>
             item.id.toString() === id,
         ).slice(0, 3)
-        console.log(list_products.value)
     } catch (e) {
         console.log(e)
     }

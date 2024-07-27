@@ -92,7 +92,8 @@ onMounted(() => {
             <el-col :xs='24' :sm='16' :md='14' :lg='10'>
                 <el-card>
                     <template #header><h2 class='title'>Đăng nhập</h2></template>
-                    <el-form :hide-required-asterisk="true" label-position='top' :model='loginForm' :rules='rules' ref='loginFormRef'>
+                    <el-form :hide-required-asterisk="true" label-position='top' :model='loginForm' :rules='rules'
+                             ref='loginFormRef'>
                         <el-form-item label='Email' prop='email'>
                             <el-input v-model='loginForm.email' type='text' clearable />
                         </el-form-item>

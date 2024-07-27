@@ -3,14 +3,10 @@
 import { PATHS } from '@/router/paths'
 import FAIcon from '@/components/commons/FAIcon.vue'
 import { useAuthenticationStore } from '@/stores/useAuthenticationStore'
-import { computed } from 'vue'
 
 const authenticationStore = useAuthenticationStore()
 
 authenticationStore.loadFromServer()
-
-const isOwner = computed(() => (authenticationStore.role.toString() === 'OWNER'))
-
 </script>
 
 <template>

@@ -158,7 +158,8 @@ onMounted(async () => {
             <br />
             <el-row justify="space-between">
                 <el-col :xs='24' :sm='12' :md='12' :lg='7' :span="7" v-for="item in products">
-                    <ProductCard :img="item.image" :title="item.name" :description="item.description" :to='"/detail-product/" + item.id' />
+                    <ProductCard :img="item.image" :title="item.name" :description="item.description"
+                                 :to='"/detail-product/" + item.id' />
                 </el-col>
             </el-row>
         </div>
@@ -181,7 +182,8 @@ onMounted(async () => {
             <br />
             <el-row justify="space-between">
                 <el-col :xs='24' :sm='12' :md='12' :lg='7' :span="7" v-for="item in news">
-                    <NewsCard :img="item.image" :title="item.title" :description="item.description" :to='"/detail-news/" + item.id' />
+                    <NewsCard :img="item.image" :title="item.title" :description="item.description"
+                              :to='"/detail-news/" + item.id' />
                 </el-col>
             </el-row>
         </div>

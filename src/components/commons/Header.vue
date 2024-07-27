@@ -1,9 +1,10 @@
 <script setup lang='ts'>
 import { useAuthenticationStore } from '@/stores/useAuthenticationStore'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import AvatarDrawers from '@/components/drawers/AvatarDrawers.vue'
 import { useRouter } from 'vue-router'
 import { PATHS } from '@/router/paths'
+import { getProductByPage } from '@/services/product'
 
 const authenticationStore = useAuthenticationStore()
 authenticationStore.loadFromServer()
@@ -11,28 +12,23 @@ const infoRef = ref<InstanceType<typeof AvatarDrawers> | null>(null)
 
 const router = useRouter()
 
-const products = [
-    {
-        name: 'Thùng carton 3 lớp',
-        id: 1,
-    },
-    {
-        name: 'Thùng carton 5 lớp',
-        id: 2,
-    },
-    {
-        name: 'Giấy in offset',
-        id: 3,
-    },
-    {
-        name: 'Sản phẩm từ bìa carton',
-        id: 4,
-    },
-]
+const products = ref([])
+
+const loadProduct = async () => {
+    try {
+        products.value = (await getProductByPage(0)).data
+    } catch (e) {
+        console.log(e)
+    }
+}
 
 const handleOpenDrawer = () => {
     infoRef.value?.openDrawer()
 }
+
+onMounted(async () => {
+    await loadProduct()
+})
 </script>
 
 <template>

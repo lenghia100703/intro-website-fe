@@ -1,9 +1,51 @@
 <script setup lang="ts">
 
-import { onMounted } from 'vue'
+import { onMounted, reactive, ref } from 'vue'
 import { loadingFullScreen } from '@/utils/loadingFullScreen'
 import { GoogleMap, Marker } from 'vue3-google-map'
 import ContactCard from '@/components/cards/ContactCard.vue'
+import { ElForm, ElMessage, type FormRules } from 'element-plus'
+import { useRouter } from 'vue-router'
+import { ADMIN } from '@/constants/admin'
+import { getLocalStorage, putLocalStorage, removeLocalStorage } from '@/helpers/localStorageHelper'
+import { sendMessage } from '@/services/message'
+
+const router = useRouter()
+const submitLoading = ref<boolean>(false)
+const contactForm = ref({
+    username: '',
+    email: '',
+    content: '',
+})
+const rules = reactive<FormRules<any>>({
+    email: [
+        {
+            required: true,
+            message: 'Vui lòng nhập email',
+            trigger: 'blur',
+        },
+        {
+            type: 'email',
+            message: 'Vui lòng nhập đúng email',
+            trigger: ['blur', 'change'],
+        },
+    ],
+    username: [
+        {
+            required: true,
+            message: 'Vui lòng nhập họ tên',
+            trigger: 'blur',
+        },
+    ],
+    content: [
+        {
+            required: true,
+            message: 'Vui lòng nhập nội dung',
+            trigger: 'blur',
+        },
+    ],
+})
+const contactFormRef = ref<typeof ElForm | null>(null)
 
 const center = { lat: 20.8378657, lng: 105.3430343 }
 
@@ -25,8 +67,50 @@ const contact = [
     },
 ]
 
+const handleSendMessage = async (data: any) => {
+    submitLoading.value = true
+    const senderStorage = getLocalStorage('sender')
+    if (senderStorage !== data.sender) {
+        removeLocalStorage('sender')
+        putLocalStorage('sender', data.sender)
+    }
+    try {
+        await sendMessage(data)
+        putLocalStorage('sender', data.sender)
+        await router.push('/messages/t/' + ADMIN.EMAIL)
+    } catch (e) {
+        console.log(e)
+        ElMessage.error(
+            e.response?.data?.data
+                ? e.response?.data?.data
+                : 'Có lỗi xảy ra trong khi gửi. Vui lòng thử lại!',
+        )
+    } finally {
+        submitLoading.value = false
+    }
+}
+
+const submitForm = (formEl: typeof ElForm | null) => {
+    if (!formEl) return
+    formEl.validate(async (valid: any) => {
+        if (valid) {
+            await handleSendMessage({
+                usernameSender: contactForm.value.username,
+                sender: contactForm.value.email,
+                content: contactForm.value.content,
+                receiver: ADMIN.EMAIL,
+                usernameReceiver: ADMIN.USERNAME,
+            })
+        } else {
+            return false
+        }
+    })
+}
+
 onMounted(() => {
+
     loadingFullScreen()
+
 })
 </script>
 
@@ -51,14 +135,33 @@ onMounted(() => {
             <br />
             <el-row justify="space-between">
                 <el-col :xs='24' :sm='16' :md='14' :lg='11' :span="11" class="mobile-margin-bottom-css">
-                    <GoogleMap
-                        api-key="AIzaSyAAW4kIQfRSxfpKQaysriN2G766CvY5Kbw"
-                        style="width: 100%; height: 400px"
-                        :center="center"
-                        :zoom="16"
-                    >
-                        <Marker :options="{ position: center }" />
-                    </GoogleMap>
+                    <el-form :hide-required-asterisk="true" label-position='top' :model='contactForm' :rules='rules'
+                             ref='contactFormRef'>
+                        <el-form-item label='Họ tên' prop='username'>
+                            <el-input v-model='contactForm.username' type='text' clearable />
+                        </el-form-item>
+                        <el-form-item label='Email' prop='email'>
+                            <el-input v-model='contactForm.email' type='text' clearable />
+                        </el-form-item>
+                        <el-form-item label='Nội dung' prop='content'>
+                            <el-input v-model='contactForm.content' type='textarea' />
+                        </el-form-item>
+                        <el-form-item>
+                            <div class='action'>
+                                <el-button
+                                    class='btn-submit'
+                                    size="large"
+                                    :loading='submitLoading'
+                                    type='success'
+                                    @click='submitForm(contactFormRef)'
+                                    @keyup.enter='submitForm(contactFormRef)'
+                                    native-type='submit'
+                                >
+                                    Gửi
+                                </el-button>
+                            </div>
+                        </el-form-item>
+                    </el-form>
                 </el-col>
                 <el-col :xs='24' :sm='16' :md='14' :lg='11' :span="11">
                     <div>
@@ -94,9 +197,25 @@ onMounted(() => {
             <br />
             <br />
             <br />
-            <el-row justify="center">
-                <el-col class="mobile-margin-bottom-css" :xs='24' :sm='7' :md='7' :lg='7' :span="7" v-for="item in contact">
+            <el-row justify="center" gutter="50">
+                <el-col class="mobile-margin-bottom-css" :xs='24' :sm='7' :md='7' :lg='7' :span="7"
+                        v-for="item in contact">
                     <ContactCard :title="item.title" :description="item.description" :icon="item.icon" />
+                </el-col>
+            </el-row>
+            <br />
+            <br />
+            <br />
+            <el-row>
+                <el-col>
+                    <GoogleMap
+                        api-key="AIzaSyAAW4kIQfRSxfpKQaysriN2G766CvY5Kbw"
+                        style="width: 100%; height: 400px"
+                        :center="center"
+                        :zoom="16"
+                    >
+                        <Marker :options="{ position: center }" />
+                    </GoogleMap>
                 </el-col>
             </el-row>
         </div>
@@ -140,6 +259,14 @@ onMounted(() => {
 
     .mobile-margin-bottom-css {
         margin-bottom: 30px;
+    }
+
+    .action {
+        width: 100%;
+    }
+
+    .btn-submit {
+        width: 100%;
     }
 }
 </style>

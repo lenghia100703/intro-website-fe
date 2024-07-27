@@ -6,7 +6,7 @@ import { ref } from 'vue'
 import MenuDrawers from '@/components/drawers/MenuDrawers.vue'
 
 const router = useRouter()
-const menuDrawers = ref<InstanceType<typeof MenuDrawers>>();
+const menuDrawers = ref<InstanceType<typeof MenuDrawers>>()
 
 const handleOpenDrawer = () => {
     menuDrawers.value?.openDrawer()
@@ -25,7 +25,7 @@ const handleOpenDrawer = () => {
 
             <div style="display: flex; align-items: center; margin-right: 8px" class='no-hover'>
                 <el-button type="success" size='large' @click='handleOpenDrawer()'>
-                    <FAIcon icon="fa-solid fa-bars" color="" size="large"  />
+                    <FAIcon icon="fa-solid fa-bars" color="" size="large" />
                 </el-button>
             </div>
         </el-menu>

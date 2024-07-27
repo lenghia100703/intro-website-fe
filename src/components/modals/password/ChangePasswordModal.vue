@@ -122,8 +122,10 @@ defineExpose({
 </script>
 
 <template>
-    <el-dialog v-model='visible' title='Thay đổi mật khẩu' width='500' :class="dialogWidthClass" top='14vh' align-center :hide-required-asterisk='true'>
-        <el-form :model='editForm' :label-position='dialogWidthClass ? "top" : "left"' ref='editFormRef' :rules='rules' label-width='150px'>
+    <el-dialog v-model='visible' title='Thay đổi mật khẩu' width='500' :class="dialogWidthClass" top='14vh' align-center
+               :hide-required-asterisk='true'>
+        <el-form :model='editForm' :label-position='dialogWidthClass ? "top" : "left"' ref='editFormRef' :rules='rules'
+                 label-width='150px'>
             <el-form-item label='Mật khẩu hiện tại' prop='oldPassword'>
                 <el-input v-model='editForm.oldPassword' placeholder='Nhập mật khẩu hiện tại' type='password'
                           :show-password='true' clearable />
@@ -154,9 +156,4 @@ defineExpose({
     float: left;
 }
 
-@media (max-width: 767px) {
-    .small-dialog {
-        width: 85% !important;
-    }
-}
 </style>

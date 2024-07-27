@@ -18,7 +18,6 @@ const loadData = async (page: any) => {
     try {
         const res = await getNewsByPage(page)
         news.value = res.data
-        console.table(news.value)
         totalData.value = res.totalData
     } catch (e) {
         console.log(e)
@@ -47,7 +46,8 @@ onMounted(async () => {
                 <el-col :xs='24' :sm='16' :md='14' :lg='11' :span="11">
                     <div class="product-title">Theo dõi tin tức mới nhất của Công ty chúng tôi</div>
                 </el-col>
-                <el-col :xs='24' :sm='16' :md='14' :lg='10' :span="6" style="display: flex; justify-content: flex-end; align-items: center;">
+                <el-col :xs='24' :sm='16' :md='14' :lg='10' :span="6"
+                        style="display: flex; justify-content: flex-end; align-items: center;">
                     <el-input
                         v-model="searchValue"
                         size="large"

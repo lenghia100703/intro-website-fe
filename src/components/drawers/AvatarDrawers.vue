@@ -1,5 +1,5 @@
 <script lang='ts' setup>
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
 import { useAuthenticationStore } from '@/stores/useAuthenticationStore'
 import { PATHS } from '@/router/paths'
 import { useRouter } from 'vue-router'
@@ -32,7 +32,6 @@ const adminRoute = [
 function openDrawer() {
     visible.value = true
     userInfo.value = authenticationStore.userInfo
-    console.log(authenticationStore.role, role.ADMIN)
 }
 
 const handleLogout = async () => {
@@ -40,8 +39,6 @@ const handleLogout = async () => {
     await router.push(PATHS.LOGIN)
     visible.value = false
 }
-
-watch()
 
 defineExpose({
     openDrawer,
@@ -53,7 +50,8 @@ defineExpose({
             <el-avatar :src='userInfo?.avatar' class='avatar-image' />
             <span class='avatar'>{{ userInfo?.username }}</span>
         </div>
-        <el-menu active-text-color="#67c23a" :ellipsis='false' class='menu-bar' menu-trigger='click' mode='vertical' router>
+        <el-menu active-text-color="#67c23a" :ellipsis='false' class='menu-bar' menu-trigger='click' mode='vertical'
+                 router>
             <el-menu-item :index='PATHS.PROFILE' :route='PATHS.PROFILE' @click='visible = false'>
                 <FAIcon size='large' icon='fa-solid fa-user' class='icon' color="" />
                 Hồ sơ cá nhân

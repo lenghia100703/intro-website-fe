@@ -11,6 +11,10 @@ export const getUserByPage = async (page: any) => {
     return (await http.get(UserAPI.LIST_USERS(page))).data
 }
 
+export const getUserByEmail = async (email: any) => {
+    return (await http.get(UserAPI.USER_BY_EMAIL(email))).data.data
+}
+
 export const getUserById = async (id: any) => {
     return (await http.get(UserAPI.USER_BY_ID(id))).data.data
 }

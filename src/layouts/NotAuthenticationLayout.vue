@@ -26,4 +26,19 @@ import HeaderMobile from '@/components/commons/HeaderMobile.vue'
 .el-header {
     --el-header-padding: 0;
 }
+
+#header {
+    z-index: 20;
+}
+
+#main {
+    padding-top: 0;
+    overflow: hidden;
+}
+
+@media only screen and (max-width: 767px) {
+    #main {
+        padding: 0;
+    }
+}
 </style>
