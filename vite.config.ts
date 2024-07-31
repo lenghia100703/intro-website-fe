@@ -7,11 +7,7 @@ export default defineConfig({
     plugins: [vue()],
     build: {
         rollupOptions: {
-            output: {
-                manualChunks: {
-                    miscExtensions: ['sockjs-client'],
-                },
-            },
+
         },
     },
 
@@ -21,14 +17,6 @@ export default defineConfig({
                 // @ts-ignore
                 '@': fileURLToPath(new URL('./src', import.meta.url)),
             },
-    },
-    server: {
-        port: 3030,
-        watch: {
-            usePolling: true,
-        },
-        strictPort: true,
-        host: true,
     },
 
     define: {

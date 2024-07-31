@@ -75,6 +75,7 @@ const handleClick = () => {
 @media only screen and (max-width: 550px) {
     .img {
         width: 100%;
+        height: auto;
     }
 }
 </style>

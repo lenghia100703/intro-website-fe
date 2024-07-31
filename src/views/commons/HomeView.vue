@@ -17,15 +17,6 @@ const handleRoute = (path: string) => {
     router.push(path)
 }
 
-const data = ref([
-    {
-        image: 'http://127.0.0.1:3030/src/assets/images/background.jpg',
-    },
-    {
-        image: 'http://127.0.0.1:3030/src/assets/images/background.jpg',
-    },
-])
-
 const benefitCards = ref([
     {
         number: '01',
@@ -184,8 +175,8 @@ onMounted(async () => {
                 </el-col>
             </el-row>
             <br />
-            <el-row justify="space-between">
-                <el-col :xs='24' :sm='12' :md='12' :lg='7' :span="7" v-for="item in news" v-if="news.length > 0">
+            <el-row gutter="20">
+                <el-col :xs='24' :sm='12' :md='12' :lg='8' :span="8" style="margin-bottom: 20px" v-for="item in news" v-if="news.length > 0">
                     <NewsCard :img="item.image" :title="item.title" :description="item.description"
                               :to='"/detail-news/" + item.id' :createdAt="convertDateTime(item.createdAt)" />
                 </el-col>
