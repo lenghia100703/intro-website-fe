@@ -9,6 +9,7 @@ import { useRouter } from 'vue-router'
 import { PATHS } from '@/router/paths'
 import { getProductByPage } from '@/services/product'
 import { getNewsByPage } from '@/services/news'
+import { convertDateTime } from '@/helpers/convertDateTime'
 
 const router = useRouter()
 
@@ -76,12 +77,8 @@ onMounted(async () => {
 </script>
 
 <template>
-    <div style="margin-top: 10px">
-        <el-carousel :interval='5000' trigger='click' arrow='always' class="custom-carousel">
-            <el-carousel-item v-for='item in data' :key='item'>
-                <el-image :src='item.image' fit='fill' />
-            </el-carousel-item>
-        </el-carousel>
+    <div style="margin-top: 10px; text-align: center">
+        <el-image src='../src/assets/images/background.jpg' fit='fill' />
     </div>
     <br />
     <br />
@@ -126,12 +123,16 @@ onMounted(async () => {
                     </el-col>
                     <el-col :xs='24' :sm='12' :md='12' :lg='11' :span="11">
                         <div style="float: right" class="statistical">
-                            <div class="number-statistical">+60</div>
-                            <div class="text-statistical">tỉnh thành có mặt</div>
+                            <div class="number-statistical">15+</div>
+                            <div class="text-statistical">năm kinh nghiệm</div>
                         </div>
                         <div style="margin-top: 170px" class="statistical">
-                            <div class="number-statistical">+10</div>
+                            <div class="number-statistical">4+</div>
                             <div class="text-statistical">sản phẩm</div>
+                        </div>
+                        <div style="float: right" class="statistical">
+                            <div class="number-statistical">20+</div>
+                            <div class="text-statistical">nhân sự cốt lõi</div>
                         </div>
                     </el-col>
                 </el-row>
@@ -157,9 +158,12 @@ onMounted(async () => {
             </el-row>
             <br />
             <el-row justify="space-between">
-                <el-col :xs='24' :sm='12' :md='12' :lg='7' :span="7" v-for="item in products">
+                <el-col :xs='24' :sm='12' :md='12' :lg='7' :span="7" v-for="item in products" v-if="products.length > 0">
                     <ProductCard :img="item.image" :title="item.name" :description="item.description"
                                  :to='"/detail-product/" + item.id' />
+                </el-col>
+                <el-col style="text-align: center" v-else>
+                    <div style="font-size: 20px; font-weight: 700; margin-top: 50px">Chưa có sản phẩm nào!</div>
                 </el-col>
             </el-row>
         </div>
@@ -181,9 +185,12 @@ onMounted(async () => {
             </el-row>
             <br />
             <el-row justify="space-between">
-                <el-col :xs='24' :sm='12' :md='12' :lg='7' :span="7" v-for="item in news">
+                <el-col :xs='24' :sm='12' :md='12' :lg='7' :span="7" v-for="item in news" v-if="news.length > 0">
                     <NewsCard :img="item.image" :title="item.title" :description="item.description"
-                              :to='"/detail-news/" + item.id' />
+                              :to='"/detail-news/" + item.id' :createdAt="convertDateTime(item.createdAt)" />
+                </el-col>
+                <el-col style="text-align: center" v-else>
+                    <div style="font-size: 20px; font-weight: 700; margin-top: 50px">Chưa có tin tức nào!</div>
                 </el-col>
             </el-row>
         </div>
@@ -244,7 +251,7 @@ onMounted(async () => {
 
 .product {
     margin-top: 100px;
-    height: 550px;
+    height: auto;
 }
 
 .product-title {
@@ -267,16 +274,8 @@ onMounted(async () => {
         margin-bottom: 30px;
     }
 
-    .custom-carousel {
-        height: auto;
-    }
-
     .button-more-style {
         justify-content: center;
-    }
-
-    .news {
-        margin-top: 200px;
     }
 }
 </style>

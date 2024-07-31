@@ -2,30 +2,53 @@
 
 import { useRoute } from 'vue-router'
 import ProductCard from '@/components/cards/ProductCard.vue'
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import { loadingFullScreen } from '@/utils/loadingFullScreen'
 import { getProductById, getProductByPage } from '@/services/product'
+import { ElMessage } from 'element-plus'
 
 const route = useRoute()
 const id = route.params.id
 const product = ref()
 const list_products = ref([])
 
-const loadData = async () => {
+const formattedDescription = computed(() => product.value?.description.replace(/\n/g, '<br />'))
+
+const loadData = async (id: any) => {
     try {
         product.value = await getProductById(id)
         list_products.value = (await getProductByPage(1)).data
-        list_products.value.filter(item =>
-            item.id.toString() === id,
-        ).slice(0, 3)
+        const filteredProducts = list_products.value.filter(item => item.id.toString() !== id)
+        console.log(filteredProducts)
+        list_products.value = filteredProducts.slice(0, 3)
     } catch (e) {
         console.log(e)
     }
 }
 
+const copyToClipboard = async (text: string) => {
+    try {
+        await navigator.clipboard.writeText(text)
+        ElMessage({
+            type: 'success',
+            message: 'Đã sao chép vào Clipboard!',
+        })
+    } catch (e) {
+        console.error('Failed to copy: ', e)
+    }
+}
+
+watch(
+    () => route.params.id,
+    async (value, oldValue, onCleanup) => {
+        loadingFullScreen()
+        await loadData(value)
+    },
+)
+
 onMounted(async () => {
     loadingFullScreen()
-    await loadData()
+    await loadData(id)
 })
 </script>
 
@@ -50,20 +73,28 @@ onMounted(async () => {
                 <el-divider />
                 <div class="name-product">Thông tin chi tiết</div>
                 <div class="desc-product">
-                    <el-text type="info" size="large" tag="b">
-                        {{ product?.description }}
+                    <el-text type="info" size="large" tag="b" v-html="formattedDescription">
                     </el-text>
                 </div>
                 <el-divider />
                 <div class="contact">
-                    <div class="contact-info">
-                        <div style="font-weight: 600">
-                            TƯ VẤN BÁN HÀNG
+                    <el-tooltip
+                        class="box-item"
+                        effect="light"
+                        content="Click để sao chép"
+                        placement="right"
+                    >
+                        <div class="contact-info">
+                            <div style="font-weight: 600">
+                                TƯ VẤN BÁN HÀNG
+                            </div>
+                            <div style="color: yellow; font-size: 24px; font-weight: 800">
+                                <span @click="copyToClipboard('0846881815')">084 688 1815 </span>
+                                <span class="hidden-sm-and-up">-</span>
+                                <span @click="copyToClipboard('0913945746')"> 091 394 5746</span>
+                            </div>
                         </div>
-                        <div style="color: yellow; font-size: 24px; font-weight: 800">
-                            091 394 5746
-                        </div>
-                    </div>
+                    </el-tooltip>
                 </div>
             </el-col>
         </el-row>
@@ -118,6 +149,7 @@ onMounted(async () => {
     color: white;
     padding: 8px 12px;
     border-radius: 12px;
+    cursor: pointer;
 }
 
 .img-product {

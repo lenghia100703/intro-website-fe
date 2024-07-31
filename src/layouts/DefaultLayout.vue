@@ -38,15 +38,28 @@ const addNewContact = ref<InstanceType<typeof AddNewContact>>()
             </el-row>
 
             <el-row style="margin-top: 10px">
-                <el-button size="large" circle>
-                    <FAIcon class='icon' style="font-size: 30px" icon='fa-brands fa-facebook' color="blue" />
-                </el-button>
+                <el-link href="https://www.facebook.com/profile.php?id=61563084612410" target="_blank" :underline="false">
+                    <el-button size="large" circle>
+                        <FAIcon class='icon' style="font-size: 30px" icon='fa-brands fa-facebook' color="blue" />
+                    </el-button>
+                </el-link>
             </el-row>
 
             <el-row style="margin-top: 10px">
-                <el-button size="large" circle>
-                    <img style="width: 30px" src="../assets/images/zalo-icon.svg" alt="icon-zalo" />
-                </el-button>
+                <el-link href="mailto:baobianquycuong@gmail.com"
+                         :underline="false">
+                    <el-button size="large" circle>
+                        <FAIcon class='icon' size='large' icon='fa-regular fa-envelope' color="red" />
+                    </el-button>
+                </el-link>
+            </el-row>
+
+            <el-row style="margin-top: 10px">
+                <el-link href="https://zalo.me/0846881815" target="_blank" :underline="false">
+                    <el-button size="large" circle>
+                        <img style="width: 30px" src="../assets/images/zalo-icon.svg" alt="icon-zalo" />
+                    </el-button>
+                </el-link>
             </el-row>
         </div>
         <el-backtop class="hidden-sm-and-down" :right="50" :bottom="100" />
@@ -71,7 +84,7 @@ const addNewContact = ref<InstanceType<typeof AddNewContact>>()
 
 .contact-icon {
     position: fixed;
-    bottom: 250px;
+    bottom: 300px;
     right: 50px;
     width: 40px;
     height: 40px;
@@ -80,7 +93,7 @@ const addNewContact = ref<InstanceType<typeof AddNewContact>>()
 @media only screen and (max-width: 600px) {
     .contact-icon {
         position: fixed;
-        bottom: 200px;
+        bottom: 250px;
         right: 20px;
         width: 40px;
         height: 40px;

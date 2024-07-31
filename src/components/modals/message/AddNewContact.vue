@@ -101,7 +101,7 @@ defineExpose({
 </script>
 
 <template>
-    <el-dialog v-model='visible' title="Liên hệ với Quản lý" width='500' top='8vh' align-center>
+    <el-dialog v-model='visible' title="Liên hệ trực tiếp với chúng tôi" width='500' top='8vh' align-center>
         <el-form :hide-required-asterisk="true" label-position='top' :model='contactForm' :rules='rules'
                  ref='contactFormRef'>
             <el-form-item label='Họ tên' prop='username'>

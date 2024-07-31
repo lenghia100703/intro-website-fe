@@ -10,12 +10,14 @@ const props = withDefaults(
         to?: string
         title?: string
         description?: string
+        createdAt?: string
     }>(),
     {
         img: 'https://metis.vn/wp-content/uploads/2024/06/Screenshot-2024-06-17-at-14.23.23-1024x568.png',
         title: 'Title',
         to: '/',
         description: 'Description',
+        createdAt: '2019-06-17T00:00:00.000Z',
     },
 )
 
@@ -35,7 +37,7 @@ const handleClick = () => {
         <div>
             <span>
                 <FAIcon color="" icon="fa-regular fa-clock" style="margin-right: 4px" />
-                13/07/2024
+                {{ props.createdAt }}
             </span>
         </div>
         <div class="description">{{ props.description }}</div>
@@ -45,7 +47,7 @@ const handleClick = () => {
 <style scoped>
 .img {
     width: 350px;
-    height: auto;
+    height: 166px;
     border-radius: 20px;
     cursor: pointer;
 }

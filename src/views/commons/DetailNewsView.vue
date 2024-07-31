@@ -1,13 +1,16 @@
 <script setup lang="ts">
 
 import { useRoute } from 'vue-router'
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { loadingFullScreen } from '@/utils/loadingFullScreen'
 import { getNewsById } from '@/services/news'
+import { convertDateTime } from '@/helpers/convertDateTime'
 
 const route = useRoute()
 const id = route.params.id
 const news = ref()
+
+const formattedDescription = computed(() => news.value?.description.replace(/\n/g, '<br />'))
 
 const loadData = async () => {
     try {
@@ -36,7 +39,7 @@ onMounted(async () => {
                 </el-col>
                 <el-divider style="margin-bottom: 8px" />
                 <el-col>
-                    <el-text tag="b" type="info" size="small">{{ news?.createdAt }}</el-text>
+                    <el-text tag="b" type="info" size="small">{{ convertDateTime(news?.createdAt) }}</el-text>
                 </el-col>
             </el-row>
 
@@ -48,9 +51,7 @@ onMounted(async () => {
                     <el-text tab="i" type="info" size="small">Hình minh họa cho {{ news?.title }}</el-text>
                 </el-col>
                 <el-col>
-                    <div class="news-desc">
-                        {{ news?.description }}
-                    </div>
+                    <div class="news-desc" v-html="formattedDescription"></div>
                 </el-col>
             </el-row>
         </div>

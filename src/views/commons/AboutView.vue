@@ -66,7 +66,7 @@
                         <el-col :xs='24' :lg='12' :span="12">
                             <el-card class="border-card-left box-card" shadow="none">
                                 <div class="card-content">
-                                    <span class="number">6+</span>
+                                    <span class="number">4+</span>
                                     <span class="description">Sản phẩm cốt lõi</span>
                                 </div>
                             </el-card>

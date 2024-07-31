@@ -59,6 +59,7 @@ const handleClick = () => {
 .img {
     border-radius: 20px;
     width: 300px;
+    height: 175px;
 }
 
 .cards {

@@ -5,6 +5,8 @@ import { loadingFullScreen } from '@/utils/loadingFullScreen'
 import NewsCard from '@/components/cards/NewsCard.vue'
 import { Search } from '@element-plus/icons-vue'
 import { getNewsByPage } from '@/services/news'
+import { searchNews } from '@/services/search'
+import { convertDateTime } from '@/helpers/convertDateTime'
 
 const news = ref<any[]>([])
 const totalData = ref<any>(3)
@@ -17,6 +19,17 @@ const handleChangePage = async (val: any) => {
 const loadData = async (page: any) => {
     try {
         const res = await getNewsByPage(page)
+        news.value = res.data
+        totalData.value = res.totalData
+    } catch (e) {
+        console.log(e)
+    }
+}
+
+const handleSearch = async (page: any, q: any) => {
+    loadingFullScreen()
+    try {
+        const res = await searchNews(page, q)
         news.value = res.data
         totalData.value = res.totalData
     } catch (e) {
@@ -58,16 +71,17 @@ onMounted(async () => {
                         spellcheck="false"
                     >
                         <template #append>
-                            <el-button style="width: 60px" type="success" :icon="Search" />
+                            <el-button style="width: 60px" type="success" :icon="Search"
+                                       @click='handleSearch(1, searchValue)' />
                         </template>
                     </el-input>
                 </el-col>
             </el-row>
             <br />
-            <el-row justify="space-between">
-                <el-col :xs='24' :sm='16' :md='14' :lg='7' style="margin-bottom: 40px" :span="7" v-for="item in news">
+            <el-row gutter="20">
+                <el-col :xs='24' :sm='16' :md='14' :lg='8' :span="8" style="margin-bottom: 40px" v-for="item in news">
                     <NewsCard :title="item.title" :img="item.image" :description="item.description"
-                              :to='"/detail-news/" + item.id' />
+                              :to='"/detail-news/" + item.id' :createdAt="convertDateTime(item.createdAt)" />
                 </el-col>
             </el-row>
             <div class='pagination'>

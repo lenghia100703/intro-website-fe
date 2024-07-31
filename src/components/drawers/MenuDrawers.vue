@@ -105,17 +105,17 @@ const adminRoute = [
 const commonRoute = [
     {
         path: PATHS.HOME,
-        icon: 'fa-regular fa-message',
+        icon: 'fa-solid fa-house',
         label: 'Trang chủ',
     },
     {
         path: PATHS.ABOUT,
-        icon: 'fa-regular fa-message',
+        icon: 'fa-solid fa-users',
         label: 'Giới thiệu',
     },
     {
         path: PATHS.FIELD,
-        icon: 'fa-regular fa-newspaper',
+        icon: 'fa-solid fa-truck-field',
         label: 'Lĩnh vực sản xuất',
     },
     {
@@ -125,12 +125,12 @@ const commonRoute = [
     },
     {
         path: PATHS.NEWS,
-        icon: 'fa-brands fa-product-hunt',
+        icon: 'fa-solid fa-newspaper',
         label: 'Tin tức',
     },
     {
         path: PATHS.CONTACT,
-        icon: 'fa-brands fa-product-hunt',
+        icon: 'fa-solid fa-phone-volume',
         label: 'Liên hệ',
     },
 ]

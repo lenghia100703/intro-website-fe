@@ -9,6 +9,7 @@ import EditProductModal from '@/components/modals/product/EditProductModal.vue'
 import DeleteProductModal from '@/components/modals/product/DeleteProductModal.vue'
 import FAIcon from '@/components/commons/FAIcon.vue'
 import { Search } from '@element-plus/icons-vue'
+import { searchProduct } from '@/services/search'
 
 const news = ref<any[]>([])
 const totalData = ref<any>(3)
@@ -21,12 +22,15 @@ const editProductModal = ref<InstanceType<typeof EditProductModal>>()
 const deleteProductModal = ref<InstanceType<typeof DeleteProductModal>>()
 
 const loadData = async (page: any) => {
+    tableLoading.value = true
     try {
         const res = await getProductByPage(page)
         news.value = res.data
         totalData.value = res.totalData
     } catch (e) {
         console.log(e)
+    } finally {
+        tableLoading.value = false
     }
 }
 
@@ -34,8 +38,18 @@ const handleChangePage = async (val: any) => {
     await loadData(val)
 }
 
-const handleSearch = async () => {
-    await loadData(1)
+const handleSearch = async (page: any, q: any) => {
+    tableLoading.value = true
+    loadingFullScreen()
+    try {
+        const res = await searchProduct(page, q)
+        news.value = res.data
+        totalData.value = res.totalData
+    } catch (e) {
+        console.log(e)
+    } finally {
+        tableLoading.value = false
+    }
 }
 
 onMounted(async () => {
@@ -68,7 +82,7 @@ onMounted(async () => {
                         class="input-with-select"
                     >
                         <template #append>
-                            <el-button :icon="Search" :loading='searchLoading' @click='handleSearch' />
+                            <el-button :icon="Search" :loading='searchLoading' @click='handleSearch(1, searchName)' />
                         </template>
                     </el-input>
                 </div>

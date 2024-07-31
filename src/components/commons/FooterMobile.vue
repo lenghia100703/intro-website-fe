@@ -36,7 +36,9 @@ import FAIcon from '@/components/commons/FAIcon.vue'
                             <p class='info'>
                                 EMAIL
                                 <span style="color: var(--el-color-primary)">
-                                    baobianquycuong@gmail.com
+                                    <el-link type="primary" href="mailto:baobianquycuong@gmail.com">
+                                        baobianquycuong@gmail.com
+                                    </el-link>
                                 </span>
                             </p>
                         </el-col>
@@ -48,13 +50,22 @@ import FAIcon from '@/components/commons/FAIcon.vue'
         <div class='copyright'>
             <div class='container-copyright'>
                 <el-button circle>
-                    <FAIcon class='icon' size="large" icon='fa-brands fa-facebook' color="blue" />
+                    <el-link href="https://www.facebook.com/profile.php?id=61563084612410" target="_blank"
+                             :underline="false">
+                        <FAIcon class='icon' style="font-size: 24px" icon='fa-brands fa-facebook' color="blue" />
+                    </el-link>
                 </el-button>
                 <el-button circle>
-                    <FAIcon class='icon' size='large' icon='fa-brands fa-youtube' color="red" />
+                    <el-link href="mailto:baobianquycuong@gmail.com"
+                             :underline="false">
+                        <FAIcon class='icon' size='large' icon='fa-regular fa-envelope' color="red" />
+                    </el-link>
                 </el-button>
                 <el-button circle>
-                    <img style="width: 24px" src="../../assets/images/zalo-icon.svg" alt="icon-zalo" />
+                    <el-link href="https://zalo.me/0846881815" target="_blank"
+                             :underline="false">
+                        <img style="width: 24px" src="../../assets/images/zalo-icon.svg" alt="icon-zalo" />
+                    </el-link>
                 </el-button>
             </div>
         </div>

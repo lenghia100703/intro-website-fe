@@ -89,7 +89,7 @@ onMounted(() => {
 <template>
     <div class='container'>
         <el-row justify='center'>
-            <el-col :xs='24' :sm='16' :md='14' :lg='10'>
+            <el-col :xs='24' :sm='16' :md='14' :lg='9'>
                 <el-card>
                     <template #header><h2 class='title'>Đăng nhập</h2></template>
                     <el-form :hide-required-asterisk="true" label-position='top' :model='loginForm' :rules='rules'
@@ -105,7 +105,7 @@ onMounted(() => {
                                 <span class='redirect'>
                                     Bạn chưa có tài khoản?
                                     <br />
-                                    <router-link to='/register' class='to-register'>Đăng ký</router-link>
+                                    <el-text type="primary">Đăng ký</el-text>
                                 </span>
                                 <el-button
                                     class='btn-submit'

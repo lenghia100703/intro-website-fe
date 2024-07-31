@@ -45,5 +45,10 @@ export const MessageAPI = {
     GET_MESSAGE_BY_SENDER: (sender: any) => `/messages/${sender}`,
 }
 
+export const SearchAPI = {
+    SEARCH_NEWS: (page: any, q: any) => `/search/news?page=${page}&q=${q}`,
+    SEARCH_PRODUCT: (page: any, q: any) => `/search/product?page=${page}&q=${q}`,
+}
+
 
 
