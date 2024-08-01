@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --port 3030",
     "build": "vite build",
     "preview": "vite preview"
   },
@@ -14,16 +14,12 @@
     "element-plus": "^2.7.3",
     "pinia": "^2.1.7",
     "sass": "^1.77.2",
-    "sockjs-client": "^1.6.1",
     "vue": "^3.4.29",
     "vue-router": "^4.3.2",
-    "vue3-google-map": "^0.20.0",
-    "ws": "^8.18.0"
+    "vue3-google-map": "^0.20.0"
   },
   "devDependencies": {
-    "@babel/types": "^7.25.2",
     "@types/node": "^20.12.12",
-    "@types/sockjs-client": "^1.5.4",
     "@types/stompjs": "^2.3.9",
     "@vitejs/plugin-vue": "^5.0.5",
     "prettier": "^3.2.5",

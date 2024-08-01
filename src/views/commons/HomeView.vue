@@ -69,7 +69,7 @@ onMounted(async () => {
 
 <template>
     <div style="margin-top: 10px; text-align: center">
-        <el-image src='../src/assets/images/background.jpg' fit='fill' />
+        <img src='../../../src/assets/images/background.jpg' alt="background" />
     </div>
     <br />
     <br />
