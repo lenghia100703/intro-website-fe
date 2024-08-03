@@ -42,6 +42,7 @@ import { getLocalStorage } from '@/helpers/localStorageHelper'
 import { WEBSOCKET } from '@/constants/websocket'
 import { Stomp } from '@stomp/stompjs'
 import { getUserByEmail } from '@/services/user'
+import { ADMIN } from '@/constants/admin'
 
 const props = withDefaults(
     defineProps<{
@@ -50,7 +51,7 @@ const props = withDefaults(
     }>(),
     {
         sender: getLocalStorage('sender') ? getLocalStorage('sender') : '',
-        receiver: 'admin@gmail.com',
+        receiver: ADMIN.EMAIL,
     },
 )
 const stompClient = ref(null)

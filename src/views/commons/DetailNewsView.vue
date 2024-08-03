@@ -101,5 +101,10 @@ onMounted(async () => {
     .content {
         width: 85%;
     }
+
+    .img-news {
+        width: 100%;
+        height: auto;
+    }
 }
 </style>

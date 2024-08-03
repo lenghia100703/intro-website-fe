@@ -137,6 +137,7 @@ const commonRoute = [
 
 const handleLogout = async () => {
     await authenticationStore.logout()
+    await authenticationStore.loadFromServer()
     await router.push(PATHS.LOGIN)
     visible.value = false
 }
@@ -225,6 +226,6 @@ defineExpose({
 }
 
 .el-drawer__header {
-    margin-bottom: 0;
+    margin-bottom: 0 !important;
 }
 </style>

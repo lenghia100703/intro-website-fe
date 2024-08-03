@@ -29,6 +29,8 @@ export const useAuthenticationStore = defineStore('authentication', {
             try {
                 await logout().then()
                 this.userInfo = null
+                this.role = ''
+                removeLocalStorage('sender')
             } catch (e: any) {
                 if (e.response && e.response.status === 401) {
                     this.userInfo = null

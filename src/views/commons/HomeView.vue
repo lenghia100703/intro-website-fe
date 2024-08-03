@@ -69,7 +69,7 @@ onMounted(async () => {
 
 <template>
     <div style="margin-top: 10px; text-align: center">
-        <img src='../../../src/assets/images/background.jpg' alt="background" />
+        <img src='../../../src/assets/images/background.jpg' class="bg-img" alt="background" />
     </div>
     <br />
     <br />
@@ -267,6 +267,11 @@ onMounted(async () => {
 
     .button-more-style {
         justify-content: center;
+    }
+
+    .bg-img {
+        width: 100%;
+        height: auto;
     }
 }
 </style>
