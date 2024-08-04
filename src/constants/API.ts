@@ -43,6 +43,7 @@ export const MessageAPI = {
     SEND_MESSAGE: `/messages`,
     SAVE_MESSAGE: `/messages`,
     GET_MESSAGE_BY_SENDER: (sender: any) => `/messages/${sender}`,
+    DELETE_MESSAGE: (email: any) => `/messages/${email}`,
 }
 
 export const SearchAPI = {

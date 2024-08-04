@@ -26,7 +26,7 @@
                 spellcheck="false"
                 clearable
             ></el-input>
-            <el-button type="success" plain @click="sendPrivateMessage">
+            <el-button type="primary" plain @click="sendPrivateMessage">
                 <FAIcon icon="fa-solid fa-paper-plane" color="" />
             </el-button>
         </div>
@@ -207,11 +207,11 @@ onMounted(async () => {
 }
 
 .message-content-other .message-text {
-    background-color: var(--el-color-success);
+    background-color: var(--el-color-primary);
 }
 
 .message-content-mine .message-text {
-    background-color: var(--el-color-success);
+    background-color: var(--el-color-primary);
 }
 
 .message-text {
@@ -225,7 +225,6 @@ onMounted(async () => {
     display: flex;
     align-items: center;
     padding: 8px 12px;
-    border: 1px solid var(--el-color-success);
     border-radius: 12px;
 }
 

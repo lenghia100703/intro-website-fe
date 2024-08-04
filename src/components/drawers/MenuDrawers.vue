@@ -22,9 +22,11 @@
              style="background:linear-gradient(180deg, #fee1e1 0%, #fff 42.1%)">
             <el-row justify="space-between">
                 <el-col :span="15">
-                    <p class="">Đăng nhập hoặc đăng ký <br> để có thể liên hệ trực tiếp với chúng tôi</p>
+                    <p class="">Vui lòng bấm nút liên hệ <br> để có thể liên hệ trực tiếp với chúng tôi</p>
                     <div>
-                        <el-button type='success' plain round @click="router.push(PATHS.REGISTER)">Đăng ký</el-button>
+                        <el-button type='danger' round @click="() => {router.push(PATHS.CONTACT); visible = false}">Liên
+                            hệ
+                        </el-button>
                         <el-button type='success' round @click="router.push(PATHS.LOGIN)">Đăng nhập</el-button>
                     </div>
                 </el-col>

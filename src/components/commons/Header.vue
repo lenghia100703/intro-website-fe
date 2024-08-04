@@ -118,12 +118,12 @@ onMounted(async () => {
                 <el-menu-item class='no-hover' :route='PATHS.NEWS' :index='PATHS.NEWS'>
                     <div class="custom-menu-item">TIN TỨC</div>
                 </el-menu-item>
-                <el-menu-item class='no-hover' :route='PATHS.CONTACT' :index='PATHS.CONTACT'>
-                    <div class="custom-menu-item">LIÊN HỆ</div>
+                <el-menu-item class='no-hover' @click='router.push(PATHS.CONTACT)'>
+                    <el-button type='danger' round class="shake">LIÊN HỆ</el-button>
                 </el-menu-item>
                 <el-menu-item
                     class='no-hover'
-                    @click='router.push("/login")'
+                    @click='router.push(PATHS.LOGIN)'
                 >
                     <el-button type='success' round>ĐĂNG NHẬP</el-button>
                 </el-menu-item>
@@ -177,4 +177,29 @@ onMounted(async () => {
 .custom-menu-item:hover {
     color: var(--el-color-success) !important;
 }
+
+@keyframes shake {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0);
+    }
+    10%, 90% {
+        transform: translate(-2px, -2px) rotate(-2deg);
+    }
+    20%, 80% {
+        transform: translate(2px, 2px) rotate(2deg);
+    }
+    30%, 50%, 70% {
+        transform: translate(-4px, -4px) rotate(-4deg);
+    }
+    40%, 60% {
+        transform: translate(4px, 4px) rotate(4deg);
+    }
+}
+
+.shake {
+    animation: shake 1.5s ease-in-out infinite;
+    animation-delay: 3s;
+    transform-origin: center;
+}
+
 </style>

@@ -166,7 +166,7 @@ onMounted(() => {
 @media only screen and (max-width: 767px) {
     .profile-page {
         margin-left: auto;
-        width: 85%;
+        width: 92%;
         margin-right: auto;
     }
 }

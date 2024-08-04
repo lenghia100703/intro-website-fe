@@ -5,7 +5,7 @@
                 <div class="title">Đoạn chat</div>
                 <div class="flex-grow"></div>
                 <div class='hidden-sm-and-down'>
-                    <el-button size="large" type="success" :icon="Edit" circle plain />
+                    <el-button size="large" type="info" :icon="Edit" circle plain />
                 </div>
             </div>
             <el-divider />

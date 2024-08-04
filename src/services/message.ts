@@ -17,3 +17,7 @@ export const getMessagesBySender = async (sender: any) => {
     return (await http.get(MessageAPI.GET_MESSAGE_BY_SENDER(sender))).data.data
 }
 
+export const deleteMessageWithEmail = async (email: any) => {
+    return (await http.delete(MessageAPI.DELETE_MESSAGE(email))).data.data
+}
+

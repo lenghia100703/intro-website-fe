@@ -82,7 +82,7 @@ onMounted(async () => {
 
             <div class='pagination'>
                 <el-pagination
-                    :page-size='3'
+                    :page-size='6'
                     layout='prev, pager, next'
                     :total='totalData'
                     @current-change='handleChangePage'

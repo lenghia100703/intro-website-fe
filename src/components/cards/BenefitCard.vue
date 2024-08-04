@@ -43,7 +43,7 @@ const props = withDefaults(
 }
 
 .custom-card {
-    max-width: 330px;
+    max-width: 60%;
     border-radius: 50px;
 }
 

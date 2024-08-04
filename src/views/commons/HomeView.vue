@@ -76,9 +76,14 @@ onMounted(async () => {
     <div class="container">
         <div class="benefit">
             <el-row justify="center" :gutter="30">
-                <el-col style="margin-bottom: 30px" :xs='24' :sm='12' :md='12' :lg='7' v-for="item in benefitCards">
-                    <BenefitCard :number="item.number" :icon="item.icon" :title="item.title"
-                                 :description="item.description" />
+                <el-col style="margin-bottom: 30px" :span="24" v-for="(item, index) in benefitCards" :key="index">
+                    <BenefitCard
+                        :number="item.number"
+                        :icon="item.icon"
+                        :title="item.title"
+                        :description="item.description"
+                        :style="{ float: (index % 2 === 1) ? 'right' : 'none' }"
+                    />
                 </el-col>
             </el-row>
         </div>
