@@ -35,10 +35,6 @@ watch(
 )
 
 onMounted(() => {
-    const banner = document.querySelector('img[alt="banner"]')
-    if (banner) {
-        bannerHeight.value = (banner as HTMLImageElement).height
-    }
     window.addEventListener('scroll', handleScroll)
 })
 
@@ -124,7 +120,6 @@ onBeforeUnmount(() => {
 #main {
     padding: 0;
     overflow: hidden;
-    margin-top: 60px;
 }
 
 .footer {
