@@ -46,8 +46,8 @@ const handleClick = () => {
 
 <style scoped>
 .img {
-    width: 350px;
-    height: 166px;
+    width: 100%;
+    height: 250px;
     border-radius: 20px;
     cursor: pointer;
 }

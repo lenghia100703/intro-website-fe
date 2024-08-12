@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 
 import FAIcon from '@/components/commons/FAIcon.vue'
+import { copyToClipboard } from '@/helpers/copyToClipboard.js'
 
 const props = withDefaults(
     defineProps<{
@@ -17,15 +18,22 @@ const props = withDefaults(
 </script>
 
 <template>
-    <el-card class="custom-contact-card" shadow="always">
-        <div class="icon-container">
-            <FAIcon :icon="props.icon" class="icon" color="#3878F7" />
-        </div>
-        <div class="title">{{ props.title }}</div>
-        <div class="description">
-            <el-text class="text">{{ props.description }}</el-text>
-        </div>
-    </el-card>
+    <el-tooltip
+        class="box-item"
+        effect="dark"
+        content="Click để sao chép"
+        placement="bottom"
+    >
+        <el-card class="custom-contact-card" shadow="always" @click="copyToClipboard(props.description)">
+            <div class="icon-container">
+                <FAIcon :icon="props.icon" class="icon" color="#3878F7" />
+            </div>
+            <div class="title">{{ props.title }}</div>
+            <div class="description">
+                <el-text class="text">{{ props.description }}</el-text>
+            </div>
+        </el-card>
+    </el-tooltip>
 </template>
 
 <style scoped>
@@ -33,7 +41,8 @@ const props = withDefaults(
     width: 330px;
     border-radius: 20px;
     text-align: center;
-    min-height: 260px
+    min-height: 260px;
+    cursor: pointer;
 }
 
 .icon-container {

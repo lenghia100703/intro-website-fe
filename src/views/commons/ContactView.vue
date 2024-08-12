@@ -121,8 +121,9 @@ onMounted(() => {
         </div>
         <div class="spacing"></div>
         <div class="content">
-            <div>
-                <el-button style="background-color: #f0f9eb; color: #67c23a" type="success" round plain>Liên hệ với
+            <div class="hidden-sm-and-down">
+                <el-button style="background-color: #f0f9eb; color: #67c23a" type="success" round plain size="large">
+                    Liên hệ với
                     chúng tôi
                 </el-button>
             </div>
@@ -169,7 +170,7 @@ onMounted(() => {
                     </div>
                     <br />
                     <div>
-                        <el-text size="large" tag="b">Địa chỉ liên hệ: </el-text>
+                        <el-text size="large" tag="b">Địa chỉ liên hệ:</el-text>
                         <el-text size="large">Số 73, Đại lộ Thịnh Lang, Phường Thịnh Lang, TP. Hòa Bình, Tỉnh Hòa Bình
                         </el-text>
                     </div>
@@ -184,16 +185,17 @@ onMounted(() => {
                     </div>
                     <br />
                     <div>
-                        <el-text size="large" tag="b">Email: </el-text>
+                        <el-text size="large" tag="b">Email:</el-text>
                         <el-text size="large" type="primary">
-                            <el-link style="font-size: 16px; margin-top: -5px" type="primary" href="mailto:baobianquycuong@gmail.com">
+                            <el-link style="font-size: 16px; margin-top: -5px" type="primary"
+                                     href="mailto:baobianquycuong@gmail.com">
                                 baobianquycuong@gmail.com
                             </el-link>
                         </el-text>
                     </div>
                     <br />
                     <div>
-                        <el-text size="large" tag="b">Hotline: </el-text>
+                        <el-text size="large" tag="b">Hotline:</el-text>
                         <el-text size="large" type="primary">084 688 1815 – 091 394 5746</el-text>
                     </div>
                 </el-col>
@@ -232,7 +234,7 @@ onMounted(() => {
 }
 
 .title-page {
-    background-color: #f4ffed;
+    background-color: var(--el-bg-color-default);
     padding: 50px 40px;
     text-align: center;
 }
@@ -271,6 +273,10 @@ onMounted(() => {
 
     .btn-submit {
         width: 100%;
+    }
+
+    .product-title {
+        font-size: 25px;
     }
 }
 </style>

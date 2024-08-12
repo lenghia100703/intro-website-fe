@@ -138,11 +138,6 @@ defineExpose({
     float: left;
 }
 
-.or {
-    width: 100%;
-    margin-bottom: 8px;
-}
-
 .left-dialog-footer {
     float: left;
 }
@@ -160,14 +155,6 @@ label {
     border-radius: 6px;
     position: absolute;
     z-index: 2;
-}
-
-.avatar-input {
-    opacity: 0;
-    width: 100px;
-    height: 100px;
-    z-index: 10;
-    cursor: pointer;
 }
 
 .avatar-input:hover ~ .btn-up {

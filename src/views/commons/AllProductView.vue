@@ -51,10 +51,15 @@ onMounted(async () => {
 
         <div class="content">
             <el-row justify="space-between">
-                <el-col :xs='24' :sm='16' :md='14' :lg='11' :span="11">
-
+                <el-col :xs='24' :sm='16' :md='14' :lg='11' :span="11" style="margin-bottom: 20px">
+                    <div class="hidden-sm-and-down">
+                        <el-button style="background-color: #f0f9eb; color: #67c23a" type="success" round plain
+                                   size="large">
+                            Sản phẩm
+                        </el-button>
+                    </div>
                 </el-col>
-                <el-col :xs='24' :sm='16' :md='14' :lg='8' :span="8"
+                <el-col :xs='24' :sm='16' :md='14' :lg='10' :span="8"
                         style="display: flex; justify-content: flex-end; align-items: center;">
                     <el-input
                         v-model="searchValue"
@@ -66,7 +71,8 @@ onMounted(async () => {
                         spellcheck="false"
                     >
                         <template #append>
-                            <el-button style="width: 60px" type="success" :icon="Search" @click='handleSearch(1, searchValue)' />
+                            <el-button style="width: 60px" type="success" :icon="Search"
+                                       @click='handleSearch(1, searchValue)' />
                         </template>
                     </el-input>
                 </el-col>
@@ -74,7 +80,10 @@ onMounted(async () => {
             <br />
 
             <el-row gutter="20">
-                <el-col :xs='24' :sm='16' :md='14' :lg='8' :span="8" v-for="item in products">
+                <el-col v-if="products <= 0">
+                    <h1 style="text-align: center">Không tìm thấy sản phẩm !</h1>
+                </el-col>
+                <el-col :xs='24' :sm='16' :md='14' :lg='8' :span="8" v-for="item in products" v-else>
                     <ProductCard :title="item.name" :img="item.image" :description="item.description"
                                  :to='"/detail-product/" + item.id' />
                 </el-col>
@@ -95,7 +104,7 @@ onMounted(async () => {
 <style scoped>
 
 .title-page {
-    background-color: #f4ffed;
+    background-color: var(--el-bg-color-default);
     padding: 50px 40px;
     text-align: center;
 }

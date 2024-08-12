@@ -166,10 +166,6 @@ onMounted(async () => {
     margin-left: 8px;
 }
 
-.hover-in-tag:hover {
-    color: var(--el-color-primary);
-}
-
 .custom-menu-item {
     font-weight: 700;
 }

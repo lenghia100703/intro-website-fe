@@ -242,7 +242,7 @@ onMounted(async () => {
 }
 
 .title-page {
-    background-color: #f4ffed;
+    background-color: var(--el-bg-color-default);
     padding: 50px 40px;
     text-align: center;
 }

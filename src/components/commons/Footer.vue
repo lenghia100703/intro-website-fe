@@ -72,7 +72,7 @@ import FAIcon from '@/components/commons/FAIcon.vue'
         </div>
         <el-divider class="container-footer" />
         <div style="text-align: center">
-            <img style="width: 100px" src="../../assets/images/logo.jpg" alt="icon-zalo" />
+            <img style="width: 100px" src="../../assets/images/logo_circle.png" alt="icon-zalo" />
         </div>
         <div style="text-align: center; font-size: 17px; font-weight: 600">
             Copyright © 2024 Công ty Cổ phần Đầu tư và Thương mại An Quý Cường
@@ -83,7 +83,7 @@ import FAIcon from '@/components/commons/FAIcon.vue'
 
 <style scoped>
 .main-footer {
-    background-color: #f4ffed;
+    background-color: var(--el-bg-color-default);
     background-repeat: no-repeat;
     background-size: cover;
     padding: 30px 0 24px;
@@ -117,14 +117,6 @@ import FAIcon from '@/components/commons/FAIcon.vue'
 .info span {
     position: absolute;
     left: 76px;
-}
-
-.tel {
-    top: 34px;
-}
-
-.image {
-    width: 70%;
 }
 
 .copyright {

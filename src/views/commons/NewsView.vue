@@ -50,14 +50,14 @@ onMounted(async () => {
         </div>
         <div class="spacing"></div>
         <div class="content">
-            <div>
-                <el-button style="background-color: #f0f9eb; color: #67c23a" type="success" round plain>Tin tức mới
-                </el-button>
-            </div>
-            <br />
             <el-row justify="space-between">
-                <el-col :xs='24' :sm='16' :md='14' :lg='11' :span="11">
-                    <div class="product-title">Theo dõi tin tức mới nhất của Công ty chúng tôi</div>
+                <el-col :xs='24' :sm='16' :md='14' :lg='11' :span="11" style="margin-bottom: 20px">
+                    <div class="hidden-sm-and-down">
+                        <el-button style="background-color: #f0f9eb; color: #67c23a" type="success" round plain
+                                   size="large">
+                            Tin tức mới
+                        </el-button>
+                    </div>
                 </el-col>
                 <el-col :xs='24' :sm='16' :md='14' :lg='10' :span="6"
                         style="display: flex; justify-content: flex-end; align-items: center;">
@@ -79,6 +79,9 @@ onMounted(async () => {
             </el-row>
             <br />
             <el-row gutter="20">
+                <el-col v-if="news <= 0">
+                    <h1 style="text-align: center">Không tìm thấy bài viết !</h1>
+                </el-col>
                 <el-col :xs='24' :sm='16' :md='14' :lg='8' :span="8" style="margin-bottom: 40px" v-for="item in news">
                     <NewsCard :title="item.title" :img="item.image" :description="item.description"
                               :to='"/detail-news/" + item.id' :createdAt="convertDateTime(item.createdAt)" />
@@ -102,7 +105,7 @@ onMounted(async () => {
 }
 
 .title-page {
-    background-color: #f4ffed;
+    background-color: var(--el-bg-color-default);
     padding: 50px 40px;
     text-align: center;
 }
@@ -119,11 +122,6 @@ onMounted(async () => {
 .content {
     width: 75%;
     margin: 0 auto;
-}
-
-.product-title {
-    font-size: 30px;
-    font-weight: 800;
 }
 
 .pagination {

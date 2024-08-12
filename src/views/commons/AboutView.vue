@@ -8,7 +8,8 @@
             <el-row justify="space-between">
                 <el-col :xs='24' :sm='16' :md='14' :lg='10' :span="10">
                     <div>
-                        <el-button style="background-color: #f0f9eb; color: #67c23a" type="success" round plain>
+                        <el-button style="background-color: #f0f9eb; color: #67c23a" type="success" round plain
+                                   size="large">
                             Giới thiệu
                         </el-button>
                     </div>
@@ -38,6 +39,71 @@
                     Với sứ mệnh "Bảo vệ và đồng hành cùng sản phẩm của bạn", chúng tôi cam kết mang đến cho khách hàng
                     những sản phẩm bao bì tốt nhất cùng dịch vụ hậu mãi chu đáo.
                     Hãy để chúng tôi đồng hành cùng bạn trong việc bảo vệ và nâng tầm giá trị hàng hóa của bạn.
+                </el-col>
+            </el-row>
+            <br />
+            <br />
+            <br />
+            <el-row justify="space-between">
+                <el-col :span="24">
+                    <div>
+                        <el-button style="background-color: #f0f9eb; color: #67c23a" type="success" round plain
+                                   size="large">
+                            Hoạt động
+                        </el-button>
+                    </div>
+                    <br />
+                    <div>
+                        <div class="event-text">
+                            Công ty chúng tôi tự hào về khả năng vận hành một hệ thống sản xuất đồng bộ và liên tục, từ
+                            khâu
+                            thiết kế, sản xuất, đến kiểm tra chất lượng. Với dây chuyền sản xuất hiện đại và công nghệ
+                            tiên
+                            tiến,
+                            chúng tôi không ngừng tối ưu hóa quy trình sản xuất để đạt hiệu quả cao nhất, đồng thời giảm
+                            thiểu tác động đến môi trường.
+                        </div>
+                        <br />
+                        <div style="text-align: center">
+                            <img class="event" src="../../assets/images/IMG_8.jpg" alt="img" />
+                        </div>
+                        <br />
+                        <div class="event-text">Chúng tôi luôn đặt khách hàng lên hàng đầu bằng việc cung cấp các dịch
+                            vụ tư
+                            vấn chuyên nghiệp,
+                            giúp khách hàng lựa chọn loại bao bì phù hợp nhất với nhu cầu. Đội ngũ kỹ thuật viên giàu
+                            kinh
+                            nghiệm của chúng tôi sẵn sàng giải quyết mọi vấn đề kỹ thuật, đảm bảo sản phẩm bao bì đạt
+                            chuẩn
+                            về độ bền, tính thẩm mỹ và khả năng bảo vệ sản phẩm tối ưu.
+                        </div>
+                        <br />
+                        <div style="text-align: center">
+                            <img class="event" src="../../assets/images/IMG_1.jpg" alt="img" />
+                        </div>
+                        <br />
+                        <div class="event-text">
+                            Ngoài ra, chúng tôi cũng đặc biệt chú trọng đến việc phát triển các sản phẩm bao bì thân
+                            thiện
+                            với môi trường, thông qua việc sử dụng nguyên liệu tái chế và công nghệ sản xuất tiên tiến.
+                            Mục
+                            tiêu của chúng tôi không chỉ là cung cấp sản phẩm bao bì chất lượng, mà còn góp phần bảo vệ
+                            môi
+                            trường và xây dựng mối quan hệ hợp tác bền vững với khách hàng.
+                        </div>
+                        <br />
+                        <div style="text-align: center">
+                            <img class="event" src="../../assets/images/IMG_6.jpg" alt="img" />
+                        </div>
+                        <br />
+                        <div class="event-text">
+                            Với quy trình sản xuất và kiểm tra chất lượng nghiêm ngặt, chúng tôi đảm bảo mỗi sản phẩm
+                            đến
+                            tay khách hàng đều đạt tiêu chuẩn cao nhất, giúp khách hàng an tâm trong việc đóng gói và
+                            vận
+                            chuyển hàng hóa. Sự hài lòng của khách hàng là thước đo thành công của chúng tôi.
+                        </div>
+                    </div>
                 </el-col>
             </el-row>
             <br />
@@ -104,7 +170,7 @@ onMounted(() => {
 }
 
 .title-page {
-    background-color: #f4ffed;
+    background-color: var(--el-bg-color-default);
     padding: 50px 40px;
     text-align: center;
 }
@@ -112,6 +178,15 @@ onMounted(() => {
 .content {
     width: 75%;
     margin: 0 auto;
+}
+
+.event {
+    width: 50%;
+}
+
+.event-text {
+    color: #687799;
+    font-size: 17px;
 }
 
 .spacing {
@@ -177,6 +252,14 @@ onMounted(() => {
 
     .border-card-right .border-card-left {
         border-bottom: 1px solid var(--el-card-border-color);
+    }
+
+    .event {
+        width: 100%;
+    }
+
+    .intro-title {
+        font-size: 30px;
     }
 }
 </style>

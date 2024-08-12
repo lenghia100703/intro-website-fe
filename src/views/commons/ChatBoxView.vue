@@ -41,7 +41,6 @@
 import { Edit } from '@element-plus/icons-vue'
 import MessageList from '@/components/commons/MessageList.vue'
 import MessageDetail from '@/components/commons/MessageDetail.vue'
-import { useRoute } from 'vue-router'
 import { onMounted, ref } from 'vue'
 import { useAuthenticationStore } from '@/stores/useAuthenticationStore'
 import { storeToRefs } from 'pinia'
@@ -51,7 +50,6 @@ import { getLocalStorage } from '@/helpers/localStorageHelper'
 
 const authenticationStore = useAuthenticationStore()
 const { authenticated } = storeToRefs(authenticationStore)
-const route = useRoute()
 const adminInfo = ref({
     avatar: '',
     username: '',

@@ -5,7 +5,7 @@ import ProductCard from '@/components/cards/ProductCard.vue'
 import { computed, onMounted, ref, watch } from 'vue'
 import { loadingFullScreen } from '@/utils/loadingFullScreen'
 import { getProductById, getProductByPage } from '@/services/product'
-import { ElMessage } from 'element-plus'
+import { copyToClipboard } from '@/helpers/copyToClipboard.js'
 
 const route = useRoute()
 const id = route.params.id
@@ -23,18 +23,6 @@ const loadData = async (id: any) => {
         list_products.value = filteredProducts.slice(0, 3)
     } catch (e) {
         console.log(e)
-    }
-}
-
-const copyToClipboard = async (text: string) => {
-    try {
-        await navigator.clipboard.writeText(text)
-        ElMessage({
-            type: 'success',
-            message: 'Đã sao chép vào Clipboard!',
-        })
-    } catch (e) {
-        console.error('Failed to copy: ', e)
     }
 }
 
@@ -80,7 +68,7 @@ onMounted(async () => {
                 <div class="contact">
                     <el-tooltip
                         class="box-item"
-                        effect="light"
+                        effect="dark"
                         content="Click để sao chép"
                         placement="right"
                     >
@@ -101,7 +89,7 @@ onMounted(async () => {
         <br />
         <br />
         <div>
-            <el-button style="background-color: #f0f9eb; color: #67c23a" type="success" round plain>
+            <el-button style="background-color: #f0f9eb; color: #67c23a" type="success" round plain size="large">
                 Một vài sản phẩm khác
             </el-button>
         </div>
@@ -117,7 +105,7 @@ onMounted(async () => {
 
 <style scoped>
 .title-page {
-    background-color: #f4ffed;
+    background-color: var(--el-bg-color-default);
     padding: 50px 40px;
     text-align: center;
 }
