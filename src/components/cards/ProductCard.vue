@@ -36,7 +36,7 @@ const handleClick = () => {
         <el-col :span="19" class="cards">
             <el-card style="border-radius: 20px; position: relative;">
                 <div class="title">{{ props.title }}</div>
-                <div class="text">{{ props.description }}</div>
+                <el-text tag="b" size="large" type="danger" class="text">Miễn phí thiết kế</el-text>
             </el-card>
         </el-col>
     </el-row>
@@ -84,7 +84,6 @@ const handleClick = () => {
 }
 
 .text {
-    color: #687799;
     font-size: 17px;
     display: -webkit-box;
     -webkit-box-orient: vertical;

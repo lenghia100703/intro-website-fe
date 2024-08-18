@@ -122,7 +122,7 @@ onMounted(() => {
         <div class="spacing"></div>
         <div class="content">
             <div class="hidden-sm-and-down">
-                <el-button style="background-color: #f0f9eb; color: #67c23a" type="success" round plain size="large">
+                <el-button style="background-color: #f0f9eb; color: #539f2f; font-size: 16px" type="success" round plain size="large">
                     Liên hệ với
                     chúng tôi
                 </el-button>
@@ -130,12 +130,12 @@ onMounted(() => {
             <br />
             <el-row justify="space-between">
                 <el-col :xs='24' :sm='16' :md='14' :lg='11' :span="11">
-                    <div class="product-title">Hãy liên hệ và tìm hiểu thêm về chúng tôi</div>
+                    <div class="product-title">Liên hệ với chúng tôi để được tư vấn</div>
                 </el-col>
             </el-row>
             <br />
             <el-row justify="space-between">
-                <el-col :xs='24' :sm='16' :md='14' :lg='11' :span="11" class="mobile-margin-bottom-css">
+                <el-col :xs='24' :sm='16' :md='14' :lg='10' :span="11" class="mobile-margin-bottom-css">
                     <el-form :hide-required-asterisk="true" label-position='top' :model='contactForm' :rules='rules'
                              ref='contactFormRef'>
                         <el-form-item label='Họ tên' prop='username'>
@@ -164,28 +164,28 @@ onMounted(() => {
                         </el-form-item>
                     </el-form>
                 </el-col>
-                <el-col :xs='24' :sm='16' :md='14' :lg='11' :span="11">
+                <el-col :xs='24' :sm='16' :md='14' :lg='12' :span="11">
                     <div>
-                        <el-text size="large" tag="b">Công ty Cổ phần Đầu tư và Thương mại An Quý Cường</el-text>
+                        <el-text style="font-size: 20px" size="large" tag="b">CÔNG TY CỔ PHẦN ĐẦU TƯ VÀ THƯƠNG MẠI AN QUÝ CƯỜNG</el-text>
                     </div>
                     <br />
                     <div>
-                        <el-text size="large" tag="b">Địa chỉ liên hệ:</el-text>
+                        <el-text size="large" tag="b">Địa chỉ liên hệ: </el-text>
                         <el-text size="large">Số 73, Đại lộ Thịnh Lang, Phường Thịnh Lang, TP. Hòa Bình, Tỉnh Hòa Bình
                         </el-text>
                     </div>
                     <br />
                     <div>
                         <el-text size="large" tag="b">
-                            Số giấy chứng nhận đăng ký kinh doanh:
+                            Mã số thuế:
                         </el-text>
-                        <el-text size="large">5400312309 cấp ngày 07/04/2009 tại Chi cục Thuế khu vực Hòa Bình - Đà
-                            Bắc
+                        <el-text size="large">
+                            5400312309
                         </el-text>
                     </div>
                     <br />
                     <div>
-                        <el-text size="large" tag="b">Email:</el-text>
+                        <el-text size="large" tag="b">Email: </el-text>
                         <el-text size="large" type="primary">
                             <el-link style="font-size: 16px; margin-top: -5px" type="primary"
                                      href="mailto:baobianquycuong@gmail.com">
@@ -195,7 +195,7 @@ onMounted(() => {
                     </div>
                     <br />
                     <div>
-                        <el-text size="large" tag="b">Hotline:</el-text>
+                        <el-text size="large" tag="b">Hotline: </el-text>
                         <el-text size="large" type="primary">084 688 1815 – 091 394 5746</el-text>
                     </div>
                 </el-col>
@@ -254,7 +254,7 @@ onMounted(() => {
 }
 
 .product-title {
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 800;
 }
 
@@ -273,10 +273,6 @@ onMounted(() => {
 
     .btn-submit {
         width: 100%;
-    }
-
-    .product-title {
-        font-size: 25px;
     }
 }
 </style>

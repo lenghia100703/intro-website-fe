@@ -8,7 +8,7 @@
             <el-row justify="space-between">
                 <el-col :xs='24' :sm='16' :md='14' :lg='10' :span="10">
                     <div>
-                        <el-button style="background-color: #f0f9eb; color: #67c23a" type="success" round plain
+                        <el-button style="background-color: #f0f9eb; color: #539f2f; font-size: 16px" type="success" round plain
                                    size="large">
                             Giới thiệu
                         </el-button>
@@ -47,7 +47,7 @@
             <el-row justify="space-between">
                 <el-col :span="24">
                     <div>
-                        <el-button style="background-color: #f0f9eb; color: #67c23a" type="success" round plain
+                        <el-button style="background-color: #f0f9eb; color: #539f2f; font-size: 16px" type="success" round plain
                                    size="large">
                             Hoạt động
                         </el-button>
@@ -116,7 +116,7 @@
                         <el-col :xs='24' :lg='12' :span="12">
                             <el-card style="border-top: 0; border-left: 0" shadow="none" class="box-card">
                                 <div class="card-content">
-                                    <span class="number">390k+</span>
+                                    <span class="number">500+</span>
                                     <span class="description">Khách hàng hài lòng</span>
                                 </div>
                             </el-card>
@@ -124,7 +124,7 @@
                         <el-col :xs='24' :lg='12' :span="12">
                             <el-card style="border-top: 0; border-right: 0" shadow="none" class="box-card">
                                 <div class="card-content">
-                                    <span class="number">15+</span>
+                                    <span class="number">5+</span>
                                     <span class="description">Năm kinh nghiệm</span>
                                 </div>
                             </el-card>
@@ -132,7 +132,7 @@
                         <el-col :xs='24' :lg='12' :span="12">
                             <el-card class="border-card-left box-card" shadow="none">
                                 <div class="card-content">
-                                    <span class="number">4+</span>
+                                    <span class="number">5+</span>
                                     <span class="description">Sản phẩm cốt lõi</span>
                                 </div>
                             </el-card>
@@ -185,7 +185,6 @@ onMounted(() => {
 }
 
 .event-text {
-    color: #687799;
     font-size: 17px;
 }
 
@@ -199,7 +198,6 @@ onMounted(() => {
 }
 
 .intro-text {
-    color: #687799;
     font-size: 17px;
 }
 

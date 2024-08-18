@@ -34,7 +34,7 @@ const handleClick = () => {
         <div class="title" @click="handleClick">
             {{ props.title }}
         </div>
-        <div>
+        <div style="margin: 4px 0">
             <span>
                 <FAIcon color="" icon="fa-regular fa-clock" style="margin-right: 4px" />
                 {{ props.createdAt }}
@@ -63,7 +63,6 @@ const handleClick = () => {
 }
 
 .description {
-    color: #687799;
     font-size: 17px;
     display: -webkit-box;
     -webkit-box-orient: vertical;

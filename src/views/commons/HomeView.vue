@@ -67,97 +67,138 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div style="margin-top: 10px; text-align: center">
+    <el-row justify="space-between" class="carousel-title">
+        <el-col :lg='11' :md='12' :sm='12' :span="11" :xs='12' class="mobile-margin-bottom-css">
+            <div>
+                <el-button plain round size="large" style="background-color: #f0f9eb; color: #539f2f; font-size: 16px"
+                           type="success">
+                    Hình ảnh sản xuất
+                </el-button>
+            </div>
+        </el-col>
+        <el-col :lg='11' :md='12' :sm='12' :span="11" :xs='12' class="mobile-margin-bottom-css">
+        </el-col>
+    </el-row>
+    <div class="carousel">
         <el-carousel :indicator-position='isMobile ? "none" : ""' :type='isMobile ? "" : "card"' arrow="always"
                      height="auto">
             <el-carousel-item v-for="(image, index) in images" :key="index" style="height: auto">
-                <img :src="image" alt="background" class="bg-img" />
+                <img :src="image" alt="background" class="bg-img-carousel" />
             </el-carousel-item>
         </el-carousel>
     </div>
     <br />
     <br />
     <div class="container">
-        <div class="benefit">
-            <!--            <el-row justify="center" :gutter="30">-->
-            <!--                <el-col style="margin-bottom: 30px" :span="24" v-for="(item, index) in benefitCards" :key="index">-->
-            <!--                    <BenefitCard-->
-            <!--                        :number="item.number"-->
-            <!--                        :icon="item.icon"-->
-            <!--                        :title="item.title"-->
-            <!--                        :description="item.description"-->
-            <!--                        :style="{ float: (index % 2 === 1) ? 'right' : 'none' }"-->
-            <!--                    />-->
-            <!--                </el-col>-->
-            <!--            </el-row>-->
-            <div class="hidden-md-and-up">
-                <el-button plain round size="large" style="background-color: #f0f9eb; color: #67c23a" type="success">
-                    Giới thiệu
-                </el-button>
+<!--        <div class="benefit">-->
+<!--            <el-row justify="space-between">-->
+<!--                <el-col :lg='11' :md='12' :sm='12' :span="11" :xs='12' class="mobile-margin-bottom-css">-->
+<!--                    <div>-->
+<!--                        <el-button plain round size="large" style="background-color: #f0f9eb; color: #67c23a"-->
+<!--                                   type="success">-->
+<!--                            Giới thiệu-->
+<!--                        </el-button>-->
+<!--                    </div>-->
+<!--                </el-col>-->
+<!--                <el-col :lg='6' :md='12' :sm='12' :span="6" :xs='12' class="button-more-style mobile-margin-bottom-css">-->
+<!--                    <el-button round size="large" type="success" @click="handleRoute(PATHS.ABOUT)">Xem thêm</el-button>-->
+<!--                </el-col>-->
+<!--            </el-row>-->
+<!--            <br />-->
+<!--            <el-row justify="space-between" align="middle">-->
+<!--                <el-col :lg='14' :md='14' :sm='16' :span="10" :xs='24'>-->
+<!--                    <div class="intro-title">-->
+<!--                        Về chúng tôi-->
+<!--                    </div>-->
+<!--                    <br />-->
+<!--                    <div class="intro-text">-->
+<!--                        <img class="bg-img-carousel" src="../../assets/images/IMG_1.jpg" alt="image"/>-->
+<!--                    </div>-->
+<!--                    <div class="intro-boss">Giám đốc: Lại Duy Chung</div>-->
+<!--                    <br />-->
+<!--                </el-col>-->
+<!--                <el-col :lg='10' :md='14' :sm='16' :span="12" :xs='24' class="intro-text">-->
+<!--                    Xưởng sản xuất bao bì được thành lập từ 2019. Với quy mô đầu tư nhà máy gần 5000m2 chúng tôi tập-->
+<!--                    trung vào lĩnh vực bìa carton và offset mang đến cho người tiêu dùng và các doanh nghiệp những sản-->
+<!--                    phảm đóng gói phù hợp. Phương châm của công ty đưa ra:-->
+<!--                    <br />-->
+<!--                    <el-text size="large" tag="b" type="primary">-->
+<!--                        "CHẤT LƯỢNG ỔN ĐỊNH - THIẾT KẾ ĐẸP MẮT - GIÁ THÀNH TỐT NHẤT"-->
+<!--                    </el-text>.-->
+<!--                </el-col>-->
+<!--            </el-row>-->
+<!--        </div>-->
+
+        <div class="value">
+            <div class="value-content">
+<!--                <el-row>-->
+<!--                    <div>-->
+<!--                        <el-button plain round style="background-color: #fff" text type="success">-->
+<!--                            Về chúng tôi-->
+<!--                        </el-button>-->
+<!--                    </div>-->
+<!--                </el-row>-->
+<!--                <br />-->
+                <el-row justify="center">
+                    <el-col :lg='11' :md='14' :sm='16' :span="12" :xs='24' class="intro-text">
+                        <div class="value-title">
+                            Về chúng tôi
+                        </div>
+                        <br />
+                        <el-row gutter="5" justify="space-between" style="margin-left: 20px">
+                            <el-col :span="23" class="mobile-margin-bottom-css">
+                                <div class="intro-text">
+                                    Xưởng sản xuất bao bì được thành lập từ 2019. Với quy mô đầu tư nhà máy gần 5000m2 chúng tôi tập
+                                    trung vào lĩnh vực bìa carton và offset mang đến cho người tiêu dùng và các doanh nghiệp những sản
+                                    phảm đóng gói phù hợp. Phương châm của công ty đưa ra:
+                                    <br />
+                                    <el-text size="large" tag="b" type="primary">
+                                        "CHẤT LƯỢNG ỔN ĐỊNH - THIẾT KẾ ĐẸP MẮT - GIÁ THÀNH TỐT NHẤT"
+                                    </el-text>.
+                                </div>
+                            </el-col>
+                        </el-row>
+                    </el-col>
+                    <el-col :lg='11' :md='14' :sm='16' :span="10" :xs='24' style="text-align: center">
+                        <div class="intro-text">
+                            <img class="bg-img-carousel" src="../../assets/images/IMG_1.jpg" alt="image"/>
+                        </div>
+                        <div class="intro-boss">Giám đốc: Lại Duy Chung</div>
+                        <br />
+                    </el-col>
+                </el-row>
             </div>
-            <br />
-            <el-row justify="space-between">
-                <el-col :lg='11' :md='12' :sm='12' :span="11" :xs='24' class="mobile-margin-bottom-css">
-                    <div class="product-title hidden-md-and-up">Cùng tìm hiểu về công ty chúng tôi</div>
-                    <div class="hidden-sm-and-down">
-                        <el-button plain round size="large" style="background-color: #f0f9eb; color: #67c23a"
-                                   type="success">
-                            Giới thiệu
-                        </el-button>
-                    </div>
-                </el-col>
-                <el-col :lg='6' :md='12' :sm='12' :span="6" :xs='24' class="button-more-style">
-                    <el-button round size="large" type="success" @click="handleRoute(PATHS.ABOUT)">Xem thêm</el-button>
-                </el-col>
-            </el-row>
-            <br />
-            <el-row justify="space-between">
-                <el-col :lg='10' :md='14' :sm='16' :span="10" :xs='24'>
-                    <div class="intro-title">
-                        An Quý Cường - Giải pháp cho bao bì và bìa carton
-                    </div>
-                    <br />
-                    <div class="intro-boss">Giám đốc: Lại Duy Chung</div>
-                    <br />
-                    <div class="intro-text">
-                        Chúng tôi là công ty chuyên sản xuất bao bì chất lượng cao, cung cấp giải pháp đóng gói an toàn
-                        và hiệu quả cho mọi loại hàng hóa.
-                    </div>
-                </el-col>
-                <el-col :lg='12' :md='14' :sm='16' :span="12" :xs='24' class="intro-text">
-                    Công ty chúng tôi sở hữu dây chuyền sản xuất hiện đại, công nghệ tiên tiến cùng đội ngũ kỹ thuật
-                    viên giàu kinh nghiệm,
-                    luôn sẵn sàng đáp ứng mọi nhu cầu khắt khe của thị trường. Chúng tôi cung cấp đa dạng các loại bao
-                    bì như thùng carton, bao bì nhựa, bao bì giấy, đảm bảo tính thẩm mỹ và độ bền cao.
-                    <br />
-                    Ngoài ra, chúng tôi cũng đặc biệt chú trọng đến việc phát triển các giải pháp bao bì thân thiện với
-                    môi trường, góp phần bảo vệ hành tinh xanh.
-                    Sản phẩm của chúng tôi không chỉ đáp ứng các tiêu chuẩn chất lượng quốc tế mà còn giúp khách hàng
-                    quảng bá thương hiệu một cách hiệu quả thông qua dịch vụ in ấn chuyên nghiệp.
-                    <br />
-                    Với sứ mệnh "Bảo vệ và đồng hành cùng sản phẩm của bạn", chúng tôi cam kết mang đến cho khách hàng
-                    những sản phẩm bao bì tốt nhất cùng dịch vụ hậu mãi chu đáo.
-                    Hãy để chúng tôi đồng hành cùng bạn trong việc bảo vệ và nâng tầm giá trị hàng hóa của bạn.
-                </el-col>
-            </el-row>
         </div>
 
         <div class="value">
             <div class="value-content">
+<!--                <el-row>-->
+<!--                    <div>-->
+<!--                        <el-button plain round style="background-color: #fff" text type="success">-->
+<!--                            Giá trị cốt lõi-->
+<!--                        </el-button>-->
+<!--                    </div>-->
+<!--                </el-row>-->
+<!--                <br />-->
                 <el-row justify="space-evenly">
-                    <el-col :lg='11' :md='12' :sm='12' :span="11" :xs='24'>
-                        <div>
-                            <el-button plain round style="background-color: #fff" text type="success">Giá trị cốt lõi
-                            </el-button>
+                    <el-col :lg='13' :md='12' :sm='12' :span="11" :xs='24'
+                            style="display: flex; align-items: center; justify-content: center">
+                        <div class="border-image">
+                            <img alt="background" class="bg-img" src='../../assets/images/IMG_6.jpg' />
                         </div>
+                    </el-col>
+                    <el-col :lg='11' :md='12' :sm='12' :span="11" :xs='24' style="text-align: center">
                         <div class="value-title">
                             Sứ mệnh và Tầm nhìn
                         </div>
                         <br />
-                        <el-row gutter="5" justify="space-between">
+                        <el-row gutter="5" justify="space-between" style="text-align: left">
                             <el-col :span="23" class="mobile-margin-bottom-css">
-                                <div>
-                                    Với sứ mệnh “Bảo vệ và đồng hành cùng sản phẩm của bạn”
+                                <div class="intro-text">
+                                    Với sứ mệnh
+                                    <el-text tag="b" style="font-size: 18px; color: #333333">
+                                        “Bảo vệ và đồng hành cùng sản phẩm của bạn”
+                                    </el-text>
                                     chúng tôi mang đến bao bì chất lượng cao, giá hợp lí. An Quý Cường
                                     không ngừng đổi mới và áp dụng công nghệ tiên tiến nhằm nâng cao chất
                                     lượng sản phẩm và dịch vụ, trở thành công ty dẫn đầu trong ngành sản xuất bao bì
@@ -166,32 +207,21 @@ onUnmounted(() => {
                             </el-col>
                         </el-row>
                     </el-col>
-                    <el-col :lg='13' :md='12' :sm='12' :span="11" :xs='24'
-                            style="display: flex; align-items: center; justify-content: right">
-                        <img alt="background" class="bg-img" src='../../assets/images/IMG_6.jpg' />
-                    </el-col>
                 </el-row>
             </div>
         </div>
 
         <div class="product">
-            <div class="mobile-center-css hidden-md-and-up">
-                <el-button plain round size="large" style="background-color: #f0f9eb; color: #67c23a" type="success">
-                    Sản phẩm tiêu biểu
-                </el-button>
-            </div>
-            <br />
             <el-row justify="space-between">
-                <el-col :lg='11' :md='12' :sm='12' :span="11" :xs='24' class="mobile-margin-bottom-css">
-                    <div class="product-title hidden-md-and-up">Cùng khám phá các sản phẩm của công ty</div>
-                    <div class="mobile-center-css hidden-sm-and-down">
-                        <el-button plain round size="large" style="background-color: #f0f9eb; color: #67c23a"
+                <el-col :lg='11' :md='12' :sm='12' :span="11" :xs='12' class="mobile-margin-bottom-css">
+                    <div class="mobile-center-css">
+                        <el-button plain round size="large" style="background-color: #f0f9eb; color: #539f2f; font-size: 16px"
                                    type="success">
-                            Sản phẩm tiêu biểu
+                            Sản phẩm
                         </el-button>
                     </div>
                 </el-col>
-                <el-col :lg='6' :md='12' :sm='12' :span="6" :xs='24' class="button-more-style">
+                <el-col :lg='6' :md='12' :sm='12' :span="6" :xs='12' class="button-more-style mobile-margin-bottom-css">
                     <el-button round size="large" type="success" @click="handleRoute(PATHS.ALL_PRODUCT)">
                         Xem tất cả
                     </el-button>
@@ -211,23 +241,16 @@ onUnmounted(() => {
         </div>
 
         <div class="news">
-            <div class="mobile-center-css hidden-md-and-up">
-                <el-button plain round size="large" style="background-color: #f0f9eb; color: #67c23a" type="success">
-                    Tin tức mới
-                </el-button>
-            </div>
-            <br />
             <el-row justify="space-between">
-                <el-col :lg='11' :md='12' :sm='12' :span="11" :xs='24' class="mobile-margin-bottom-css">
-                    <div class="product-title hidden-md-and-up">Theo dõi tin tức mới nhất của công ty</div>
-                    <div class="mobile-center-css hidden-sm-and-down">
-                        <el-button plain round size="large" style="background-color: #f0f9eb; color: #67c23a"
+                <el-col :lg='11' :md='12' :sm='12' :span="11" :xs='12' class="mobile-margin-bottom-css">
+                    <div class="mobile-center-css">
+                        <el-button plain round size="large" style="background-color: #f0f9eb; color: #539f2f; font-size: 16px"
                                    type="success">
                             Tin tức mới
                         </el-button>
                     </div>
                 </el-col>
-                <el-col :lg='6' :md='12' :sm='12' :span="6" :xs='24' class="button-more-style">
+                <el-col :lg='6' :md='12' :sm='12' :span="6" :xs='12' class="button-more-style mobile-margin-bottom-css">
                     <el-button round size="large" type="success" @click="handleRoute(PATHS.NEWS)">Xem tất cả</el-button>
                 </el-col>
             </el-row>
@@ -235,7 +258,8 @@ onUnmounted(() => {
             <el-row gutter="20">
                 <el-col v-for="item in news" v-if="news.length > 0" :lg='8' :md='12' :sm='12' :span="8" :xs='24'
                         style="margin-bottom: 20px">
-                    <NewsCard :createdAt="convertDateTime(item.createdAt)" :description="item.description" :img="item.image"
+                    <NewsCard :createdAt="convertDateTime(item.createdAt)" :description="item.description"
+                              :img="item.image"
                               :title="item.title" :to='"/detail-news/" + item.id' />
                 </el-col>
                 <el-col v-else style="text-align: center">
@@ -254,6 +278,15 @@ onUnmounted(() => {
     padding-bottom: 100px;
 }
 
+.carousel-title {
+    width: 75%;
+    margin: 30px auto 10px;
+}
+
+.carousel {
+    text-align: center;
+}
+
 .value {
     margin-top: 100px;
     border-radius: 50px;
@@ -264,6 +297,7 @@ onUnmounted(() => {
 .value-title {
     font-size: 35px;
     font-weight: 800;
+    text-align: center;
 }
 
 .button-more-style {
@@ -286,8 +320,14 @@ onUnmounted(() => {
     margin-top: 100px;
 }
 
-.bg-img {
+.bg-img-carousel {
     width: 70%;
+    border-radius: 16px;
+}
+
+.bg-img {
+    width: 100%;
+    border-radius: 16px;
 }
 
 .intro-title {
@@ -296,16 +336,19 @@ onUnmounted(() => {
 }
 
 .intro-text {
-    color: #687799;
-    font-size: 17px;
+    font-size: 18px;
 }
 
 .intro-boss {
     font-size: 20px;
     font-weight: 700;
-    color: var(--el-color-primary);
+    color: #333333;
 }
 
+.border-image {
+    border-radius: 20px;
+    width: 70%;
+}
 
 @media only screen and (max-width: 883px) {
     .container {
@@ -318,11 +361,11 @@ onUnmounted(() => {
         margin-bottom: 30px;
     }
 
-    .button-more-style {
-        justify-content: center;
+    .carousel-title {
+        width: 85%;
     }
 
-    .bg-img {
+    .bg-img-carousel {
         width: 100%;
         height: auto;
     }
@@ -346,6 +389,10 @@ onUnmounted(() => {
 
     .value-title {
         text-align: center;
+    }
+
+    .border-image {
+        width: 100%;
     }
 }
 </style>

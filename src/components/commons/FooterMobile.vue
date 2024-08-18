@@ -7,14 +7,14 @@ import FAIcon from '@/components/commons/FAIcon.vue'
     <div class='main-footer'>
         <div class='container-footer'>
             <el-row>
-                <el-col :span='24'>
-                    <p class='title'>VỀ CHÚNG TÔI</p>
-                    <p>
-                        Chúng tôi là công ty chuyên sản xuất bao bì chất lượng cao, cung cấp giải pháp đóng gói an toàn
-                        và hiệu quả cho mọi loại hàng hóa. Với công nghệ hiện đại và đội ngũ chuyên nghiệp,
-                        chúng tôi cam kết mang đến sản phẩm vượt trội và dịch vụ tận tâm.
-                    </p>
-                </el-col>
+<!--                <el-col :span='24'>-->
+<!--                    <p class='title'>VỀ CHÚNG TÔI</p>-->
+<!--                    <p>-->
+<!--                        Chúng tôi là công ty chuyên sản xuất bao bì chất lượng cao, cung cấp giải pháp đóng gói an toàn-->
+<!--                        và hiệu quả cho mọi loại hàng hóa. Với công nghệ hiện đại và đội ngũ chuyên nghiệp,-->
+<!--                        chúng tôi cam kết mang đến sản phẩm vượt trội và dịch vụ tận tâm.-->
+<!--                    </p>-->
+<!--                </el-col>-->
                 <el-col :span='24'>
                     <p class='title'>CÔNG TY CỔ PHẦN ĐẦU TƯ VÀ THƯƠNG MẠI AN QUÝ CƯỜNG</p>
                     <el-row :gutter='12'>

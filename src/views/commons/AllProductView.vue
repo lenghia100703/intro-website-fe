@@ -53,7 +53,7 @@ onMounted(async () => {
             <el-row justify="space-between">
                 <el-col :xs='24' :sm='16' :md='14' :lg='11' :span="11" style="margin-bottom: 20px">
                     <div class="hidden-sm-and-down">
-                        <el-button style="background-color: #f0f9eb; color: #67c23a" type="success" round plain
+                        <el-button style="background-color: #f0f9eb; color: #539f2f; font-size: 16px" type="success" round plain
                                    size="large">
                             Sản phẩm
                         </el-button>

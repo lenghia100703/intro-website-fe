@@ -138,7 +138,6 @@ h2 {
 }
 
 p, li {
-    color: #687799;
     font-size: 17px;
 }
 

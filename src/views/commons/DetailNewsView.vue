@@ -89,7 +89,6 @@ onMounted(async () => {
 }
 
 .news-desc {
-    color: #687799;
     font-size: 17px;
 }
 

@@ -26,15 +26,15 @@ const handleScroll = () => {
         }
     }
 
-    if (headerMobile) {
-        if (window.scrollY > 0) {
-            headerMobile.classList.add('fixed-header')
-            main.classList.add('mobile-margin-top')
-        } else {
-            headerMobile.classList.remove('fixed-header')
-            main.classList.remove('mobile-margin-top')
-        }
-    }
+    // if (headerMobile) {
+    //     if (window.scrollY > 0) {
+    //         headerMobile.classList.add('fixed-header')
+    //         main.classList.add('mobile-margin-top')
+    //     } else {
+    //         headerMobile.classList.remove('fixed-header')
+    //         main.classList.remove('mobile-margin-top')
+    //     }
+    // }
 }
 
 watch(

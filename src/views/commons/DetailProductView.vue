@@ -55,13 +55,13 @@ onMounted(async () => {
             <el-col :xs='24' :sm='16' :md='14' :lg='11' :span="11">
                 <div class="name-product">{{ product?.name }}</div>
                 <div>
-                    <el-text type="info" size="large" tag="b">Giá:</el-text>
+                    <el-text size="large" tag="b">Giá: </el-text>
                     <el-text size="large" tag="b" type="danger">Liên hệ giá tốt nhất</el-text>
                 </div>
                 <el-divider />
                 <div class="name-product">Thông tin chi tiết</div>
                 <div class="desc-product">
-                    <el-text type="info" size="large" tag="b" v-html="formattedDescription">
+                    <el-text size="large" tag="b" v-html="formattedDescription">
                     </el-text>
                 </div>
                 <el-divider />
@@ -89,7 +89,7 @@ onMounted(async () => {
         <br />
         <br />
         <div>
-            <el-button style="background-color: #f0f9eb; color: #67c23a" type="success" round plain size="large">
+            <el-button style="background-color: #f0f9eb; color: #539f2f; font-size: 16px" type="success" round plain size="large">
                 Một vài sản phẩm khác
             </el-button>
         </div>
