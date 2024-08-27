@@ -48,7 +48,7 @@ onMounted(async () => {
         <div class="title-page">
             <h1 class="news-title">Tin tức - Bài viết</h1>
         </div>
-        <div class="spacing"></div>
+        <div class="spacing hidden-sm-and-down"></div>
         <div class="content">
             <el-row justify="space-between">
                 <el-col :xs='24' :sm='16' :md='14' :lg='11' :span="11" style="margin-bottom: 20px">
@@ -105,7 +105,6 @@ onMounted(async () => {
 }
 
 .title-page {
-    background-color: var(--el-bg-color-default);
     padding: 50px 40px;
     text-align: center;
 }

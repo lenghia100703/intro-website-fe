@@ -37,9 +37,6 @@ onMounted(async () => {
             <el-menu class='menu' mode='horizontal' text-color="#333" :ellipsis='false' active-text-color="#67c23a"
                      background-color='#fff' menu-trigger='click'
                      :default-active='$route.path' router>
-                <el-menu-item class='desktop-logo-container no-hover' @click='router.push("/")'>
-                    <img class="desktop-logo" src="../../assets/images/logo.jpg" alt="logo" />
-                </el-menu-item>
 
                 <div class='flex-grow'></div>
                 <el-menu-item class='no-hover' :route='PATHS.HOME' :index='PATHS.HOME'>
@@ -79,6 +76,7 @@ onMounted(async () => {
                         <span class='avatar'>{{ authenticationStore?.userInfo?.username }}</span>
                     </span>
                 </el-menu-item>
+                <div class='flex-grow'></div>
             </el-menu>
         </template>
 
@@ -86,9 +84,6 @@ onMounted(async () => {
             <el-menu class='menu' mode='horizontal' text-color="#333" :ellipsis='false' active-text-color="#67c23a"
                      background-color='#fff' menu-trigger='click'
                      :default-active='$route.path' router>
-                <el-menu-item class='desktop-logo-container no-hover' @click='router.push("/")'>
-                    <img class="desktop-logo" src="../../assets/images/logo.jpg" alt="logo" />
-                </el-menu-item>
                 <div class='flex-grow'></div>
                 <el-menu-item class='no-hover' :route='PATHS.HOME' :index='PATHS.HOME'>
                     <div class="custom-menu-item">TRANG CHỦ</div>
@@ -127,6 +122,7 @@ onMounted(async () => {
                 >
                     <el-button type='success' round>ĐĂNG NHẬP</el-button>
                 </el-menu-item>
+                <div class='flex-grow'></div>
             </el-menu>
         </template>
     </div>
@@ -137,11 +133,6 @@ onMounted(async () => {
 <style scoped>
 .header-content {
     box-shadow: 0 3px 5px -2px #b8b8b8;
-}
-
-.desktop-logo {
-    width: auto;
-    height: 55px;
 }
 
 .menu {

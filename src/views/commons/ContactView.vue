@@ -2,7 +2,6 @@
 
 import { onMounted, reactive, ref } from 'vue'
 import { loadingFullScreen } from '@/utils/loadingFullScreen'
-import { GoogleMap, Marker } from 'vue3-google-map'
 import ContactCard from '@/components/cards/ContactCard.vue'
 import { ElForm, ElMessage, type FormRules } from 'element-plus'
 import { useRouter } from 'vue-router'
@@ -108,9 +107,7 @@ const submitForm = (formEl: typeof ElForm | null) => {
 }
 
 onMounted(() => {
-
     loadingFullScreen()
-
 })
 </script>
 
@@ -119,10 +116,11 @@ onMounted(() => {
         <div class="title-page">
             <h1 class="contact-title">Liên hệ</h1>
         </div>
-        <div class="spacing"></div>
+        <div class="spacing hidden-sm-and-down"></div>
         <div class="content">
             <div class="hidden-sm-and-down">
-                <el-button style="background-color: #f0f9eb; color: #539f2f; font-size: 16px" type="success" round plain size="large">
+                <el-button style="background-color: #f0f9eb; color: #539f2f; font-size: 16px" type="success" round plain
+                           size="large">
                     Liên hệ với
                     chúng tôi
                 </el-button>
@@ -166,11 +164,13 @@ onMounted(() => {
                 </el-col>
                 <el-col :xs='24' :sm='16' :md='14' :lg='12' :span="11">
                     <div>
-                        <el-text style="font-size: 20px" size="large" tag="b">CÔNG TY CỔ PHẦN ĐẦU TƯ VÀ THƯƠNG MẠI AN QUÝ CƯỜNG</el-text>
+                        <el-text style="font-size: 20px" size="large" tag="b">CÔNG TY CỔ PHẦN ĐẦU TƯ VÀ THƯƠNG MẠI AN
+                            QUÝ CƯỜNG
+                        </el-text>
                     </div>
                     <br />
                     <div>
-                        <el-text size="large" tag="b">Địa chỉ liên hệ: </el-text>
+                        <el-text size="large" tag="b">Địa chỉ liên hệ:</el-text>
                         <el-text size="large">Số 73, Đại lộ Thịnh Lang, Phường Thịnh Lang, TP. Hòa Bình, Tỉnh Hòa Bình
                         </el-text>
                     </div>
@@ -185,7 +185,7 @@ onMounted(() => {
                     </div>
                     <br />
                     <div>
-                        <el-text size="large" tag="b">Email: </el-text>
+                        <el-text size="large" tag="b">Email:</el-text>
                         <el-text size="large" type="primary">
                             <el-link style="font-size: 16px; margin-top: -5px" type="primary"
                                      href="mailto:baobianquycuong@gmail.com">
@@ -195,7 +195,7 @@ onMounted(() => {
                     </div>
                     <br />
                     <div>
-                        <el-text size="large" tag="b">Hotline: </el-text>
+                        <el-text size="large" tag="b">Hotline:</el-text>
                         <el-text size="large" type="primary">084 688 1815 – 091 394 5746</el-text>
                     </div>
                 </el-col>
@@ -214,14 +214,16 @@ onMounted(() => {
             <br />
             <el-row>
                 <el-col>
-                    <GoogleMap
-                        api-key="AIzaSyAAW4kIQfRSxfpKQaysriN2G766CvY5Kbw"
-                        style="width: 100%; height: 400px"
-                        :center="center"
-                        :zoom="16"
-                    >
-                        <Marker :options="{ position: center }" />
-                    </GoogleMap>
+                    <div class="map-outer">
+                        <div class="map-canvas">
+                            <iframe width="100%" height="400" id="map-canvas"
+                                    src="https://maps.google.com/maps?q=S%E1%BB%91%2073,%20%C4%90%E1%BA%A1i%20l%E1%BB%99%20Th%E1%BB%8Bnh%20Lang,%20Ph%C6%B0%E1%BB%9Dng%20Th%E1%BB%8Bnh%20Lang,%20TP.%20H%C3%B2a%20B%C3%ACnh,%20T%E1%BB%89nh%20H%C3%B2a%20B%C3%ACnh&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                            ></iframe>
+                            <a href="https://embedgooglemap.net/124/"></a>
+                            <br />
+                            <a href="https://www.embedgooglemap.net"></a>
+                        </div>
+                    </div>
                 </el-col>
             </el-row>
         </div>
@@ -234,7 +236,6 @@ onMounted(() => {
 }
 
 .title-page {
-    background-color: var(--el-bg-color-default);
     padding: 50px 40px;
     text-align: center;
 }
@@ -256,6 +257,19 @@ onMounted(() => {
 .product-title {
     font-size: 25px;
     font-weight: 800;
+}
+
+.map-outer {
+    text-align: right;
+    height: 400px;
+    width: 100%;
+}
+
+.map-canvas {
+    overflow: hidden;
+    background: none !important;
+    height: 400px;
+    width: 100%;
 }
 
 @media only screen and (max-width: 767px) {

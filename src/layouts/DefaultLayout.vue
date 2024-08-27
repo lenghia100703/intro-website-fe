@@ -15,26 +15,14 @@ const bannerHeight = ref(245)
 const handleScroll = () => {
     const header = document.getElementById('header')
     const main = document.getElementById('main')
-    const headerMobile = document.getElementById('header-mobile')
 
     if (header) {
-        main.classList.remove('mobile-margin-top')
         if (window.scrollY > bannerHeight.value) {
             header.classList.add('fixed-header')
         } else {
             header.classList.remove('fixed-header')
         }
     }
-
-    // if (headerMobile) {
-    //     if (window.scrollY > 0) {
-    //         headerMobile.classList.add('fixed-header')
-    //         main.classList.add('mobile-margin-top')
-    //     } else {
-    //         headerMobile.classList.remove('fixed-header')
-    //         main.classList.remove('mobile-margin-top')
-    //     }
-    // }
 }
 
 watch(
@@ -129,10 +117,6 @@ onBeforeUnmount(() => {
     position: fixed;
     top: 0;
     z-index: 1000;
-}
-
-.mobile-margin-top {
-    margin-top: 60px;
 }
 
 #main {

@@ -1,13 +1,16 @@
 <script setup lang="ts">
 
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
+import { ArrowRight } from '@element-plus/icons-vue'
 import ProductCard from '@/components/cards/ProductCard.vue'
 import { computed, onMounted, ref, watch } from 'vue'
 import { loadingFullScreen } from '@/utils/loadingFullScreen'
 import { getProductById, getProductByPage } from '@/services/product'
 import { copyToClipboard } from '@/helpers/copyToClipboard.js'
+import { PATHS } from '@/router/paths.js'
 
 const route = useRoute()
+const router = useRouter()
 const id = route.params.id
 const product = ref()
 const list_products = ref([])
@@ -41,11 +44,14 @@ onMounted(async () => {
 </script>
 
 <template>
-    <div class="title-page">
-        <h1 class="intro-title">Chi tiết sản phẩm</h1>
-    </div>
     <div class="spacing"></div>
     <div class="content">
+        <el-breadcrumb :separator-icon="ArrowRight">
+            <el-breadcrumb-item :to="{ path: PATHS.HOME }">Trang chủ</el-breadcrumb-item>
+            <el-breadcrumb-item :to="{path: PATHS.ALL_PRODUCT}">Tất cả sản phẩm</el-breadcrumb-item>
+            <el-breadcrumb-item>{{ product?.name }}</el-breadcrumb-item>
+        </el-breadcrumb>
+        <br />
         <el-row>
             <el-col class="mobile-margin-bottom-css" :xs='24' :sm='16' :md='14' :lg='11' :span="11">
                 <div>
@@ -59,7 +65,7 @@ onMounted(async () => {
                     <el-text size="large" tag="b" type="danger">Liên hệ giá tốt nhất</el-text>
                 </div>
                 <el-divider />
-                <div class="name-product">Thông tin chi tiết</div>
+                <div class="name-product">Mô tả sản phẩm</div>
                 <div class="desc-product">
                     <el-text size="large" tag="b" v-html="formattedDescription">
                     </el-text>
@@ -70,16 +76,29 @@ onMounted(async () => {
                         class="box-item"
                         effect="dark"
                         content="Click để sao chép"
-                        placement="right"
+                        placement="bottom-end"
                     >
                         <div class="contact-info">
                             <div style="font-weight: 600">
-                                TƯ VẤN BÁN HÀNG
+                                TƯ VẤN TRỰC TIẾP
                             </div>
                             <div style="color: yellow; font-size: 24px; font-weight: 800">
                                 <span @click="copyToClipboard('0846881815')">084 688 1815 </span>
                                 <span class="hidden-sm-and-up">-</span>
                                 <span @click="copyToClipboard('0913945746')"> 091 394 5746</span>
+                            </div>
+                        </div>
+                    </el-tooltip>
+                    <el-text tag="b" size="large" type="danger" style="margin: 20px 20px">HOẶC</el-text>
+                    <el-tooltip
+                        class="box-item"
+                        effect="dark"
+                        content="Bấm để liên hệ"
+                        placement="bottom-end"
+                    >
+                        <div class="contact-info">
+                            <div style="color: yellow; font-size: 22px; font-weight: 700">
+                                <div @click="router.push(PATHS.CONTACT)">LIÊN HỆ VỚI CHÚNG TÔI</div>
                             </div>
                         </div>
                     </el-tooltip>
@@ -104,10 +123,9 @@ onMounted(async () => {
 </template>
 
 <style scoped>
-.title-page {
-    background-color: var(--el-bg-color-default);
-    padding: 50px 40px;
-    text-align: center;
+.contact {
+    display: flex;
+    align-items: center;
 }
 
 .content {
@@ -117,23 +135,18 @@ onMounted(async () => {
 }
 
 .spacing {
-    height: 50px;
-}
-
-.intro-title {
-    font-size: 35px;
-    font-weight: 800;
+    height: 25px;
 }
 
 .name-product {
-    font-size: 22px;
+    font-size: 26px;
     font-weight: 700;
 }
 
 .contact-info {
     width: 160px;
     text-align: center;
-    background-color: red;
+    background-color: var(--el-color-danger);
     color: white;
     padding: 8px 12px;
     border-radius: 12px;
@@ -161,6 +174,11 @@ onMounted(async () => {
 
     .mobile-margin-bottom-css {
         margin-bottom: 30px;
+    }
+
+    .contact {
+        display: flex;
+        flex-direction: column;
     }
 }
 </style>

@@ -47,7 +47,7 @@ onMounted(async () => {
         <div class="title-page">
             <h1 class="intro-title">Tất cả sản phẩm</h1>
         </div>
-        <div class="spacing"></div>
+        <div class="spacing hidden-sm-and-down"></div>
 
         <div class="content">
             <el-row justify="space-between">
@@ -104,7 +104,6 @@ onMounted(async () => {
 <style scoped>
 
 .title-page {
-    background-color: var(--el-bg-color-default);
     padding: 50px 40px;
     text-align: center;
 }

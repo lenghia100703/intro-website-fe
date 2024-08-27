@@ -63,7 +63,7 @@ onMounted(async () => {
         <div class="title-page">
             <h1 class="intro-title">Quản lý tin tức - sự kiện</h1>
         </div>
-        <div class="spacing"></div>
+        <div class="spacing hidden-sm-and-down"></div>
         <div class="content">
             <div class='search'>
                 <div class='left'>
@@ -241,7 +241,6 @@ onMounted(async () => {
 }
 
 .title-page {
-    background-color: var(--el-bg-color-default);
     padding: 50px 40px;
     text-align: center;
 }

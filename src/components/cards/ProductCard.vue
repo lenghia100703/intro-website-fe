@@ -27,7 +27,7 @@ const handleClick = () => {
     <el-row justify="center" class="card-container">
         <el-col :span="24" class="img-container">
             <div class="image-wrapper">
-                <img class="img" :src="props.img" alt="san-pham" />
+                <img style="cursor: pointer" class="img" @click="handleClick" :src="props.img" alt="san-pham" />
                 <div class="card-button">
                     <el-button @click="handleClick" type="success" size="large" :icon="Right" circle />
                 </div>
@@ -35,7 +35,7 @@ const handleClick = () => {
         </el-col>
         <el-col :span="19" class="cards">
             <el-card style="border-radius: 20px; position: relative;">
-                <div class="title">{{ props.title }}</div>
+                <div @click="handleClick" class="title">{{ props.title }}</div>
                 <el-text tag="b" size="large" type="danger" class="text">Miễn phí thiết kế</el-text>
             </el-card>
         </el-col>
@@ -81,6 +81,11 @@ const handleClick = () => {
 .title {
     font-size: 20px;
     font-weight: 700;
+    cursor: pointer;
+}
+
+.title:hover {
+    color: var(--el-color-success);
 }
 
 .text {

@@ -28,9 +28,6 @@ onMounted(async () => {
 
 <template>
     <div class="news">
-        <div class="title-page">
-            <h1 class="news-title">Tin tức - Bài viết</h1>
-        </div>
         <div class="spacing"></div>
         <div class="content">
             <el-row justify="space-between">
@@ -61,17 +58,6 @@ onMounted(async () => {
 <style scoped>
 .news {
     margin: 0 auto;
-}
-
-.title-page {
-    background-color: var(--el-bg-color-default);
-    padding: 50px 40px;
-    text-align: center;
-}
-
-.news-title {
-    font-size: 35px;
-    font-weight: 800;
 }
 
 .spacing {

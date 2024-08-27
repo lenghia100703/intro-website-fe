@@ -1,42 +1,46 @@
 <template>
     <div class="about-us">
         <div class="title-page">
-            <h1 class="intro-title">Về chúng tôi</h1>
+            <h1 class="intro-title">An Quý Cường - Giải pháp cho bao bì và bìa carton</h1>
         </div>
-        <div class="spacing"></div>
+        <div class="spacing hidden-sm-and-down"></div>
         <div class="content">
+            <el-row>
+                <div>
+                    <el-button style="background-color: #f0f9eb; color: #539f2f; font-size: 16px" type="success" round plain
+                               size="large">
+                        Giới thiệu
+                    </el-button>
+                </div>
+            </el-row>
+            <br />
+            <el-row>
+                <div class="intro-title">Giám đốc: Lại Duy Chung</div>
+            </el-row>
+
             <el-row justify="space-between">
-                <el-col :xs='24' :sm='16' :md='14' :lg='10' :span="10">
-                    <div>
-                        <el-button style="background-color: #f0f9eb; color: #539f2f; font-size: 16px" type="success" round plain
-                                   size="large">
-                            Giới thiệu
-                        </el-button>
-                    </div>
-                    <br />
-                    <div class="intro-title">
-                        An Quý Cường - Giải pháp cho bao bì và bìa carton
-                    </div>
-                    <br />
-                    <div class="intro-boss">Giám đốc: Lại Duy Chung</div>
-                    <br />
+                <el-col :xs='24' :sm='16' :md='14' :lg='11' :span="11">
                     <div class="intro-text">
                         Chúng tôi là công ty chuyên sản xuất bao bì chất lượng cao, cung cấp giải pháp đóng gói an toàn
                         và hiệu quả cho mọi loại hàng hóa.
+                        <br />
+                        Công ty chúng tôi sở hữu dây chuyền sản xuất hiện đại, công nghệ tiên tiến cùng đội ngũ kỹ thuật
+                        viên giàu kinh nghiệm,
+                        luôn sẵn sàng đáp ứng mọi nhu cầu khắt khe của thị trường. Chúng tôi cung cấp đa dạng các loại bao
+                        bì như thùng carton, bao bì nhựa, bao bì giấy, đảm bảo tính thẩm mỹ và độ bền cao.
                     </div>
                 </el-col>
-                <el-col :xs='24' :sm='16' :md='14' :lg='12' :span="12" class="intro-text">
-                    Công ty chúng tôi sở hữu dây chuyền sản xuất hiện đại, công nghệ tiên tiến cùng đội ngũ kỹ thuật
-                    viên giàu kinh nghiệm,
-                    luôn sẵn sàng đáp ứng mọi nhu cầu khắt khe của thị trường. Chúng tôi cung cấp đa dạng các loại bao
-                    bì như thùng carton, bao bì nhựa, bao bì giấy, đảm bảo tính thẩm mỹ và độ bền cao.
-                    <br />
+                <el-col :xs='24' :sm='16' :md='14' :lg='11' :span="11" class="intro-text">
                     Ngoài ra, chúng tôi cũng đặc biệt chú trọng đến việc phát triển các giải pháp bao bì thân thiện với
                     môi trường, góp phần bảo vệ hành tinh xanh.
                     Sản phẩm của chúng tôi không chỉ đáp ứng các tiêu chuẩn chất lượng quốc tế mà còn giúp khách hàng
                     quảng bá thương hiệu một cách hiệu quả thông qua dịch vụ in ấn chuyên nghiệp.
                     <br />
-                    Với sứ mệnh "Bảo vệ và đồng hành cùng sản phẩm của bạn", chúng tôi cam kết mang đến cho khách hàng
+                    Với sứ mệnh
+                    <el-text tag="b" style="font-size: 18px; color: #333333">
+                        “Bảo vệ và đồng hành cùng sản phẩm của bạn”
+                    </el-text>
+                    , chúng tôi cam kết mang đến cho khách hàng
                     những sản phẩm bao bì tốt nhất cùng dịch vụ hậu mãi chu đáo.
                     Hãy để chúng tôi đồng hành cùng bạn trong việc bảo vệ và nâng tầm giá trị hàng hóa của bạn.
                 </el-col>
@@ -170,7 +174,6 @@ onMounted(() => {
 }
 
 .title-page {
-    background-color: var(--el-bg-color-default);
     padding: 50px 40px;
     text-align: center;
 }
@@ -185,6 +188,8 @@ onMounted(() => {
 }
 
 .event-text {
+    width: 90%;
+    margin: 0 auto;
     font-size: 17px;
 }
 
@@ -199,12 +204,6 @@ onMounted(() => {
 
 .intro-text {
     font-size: 17px;
-}
-
-.intro-boss {
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--el-color-primary);
 }
 
 .box-card {
@@ -258,6 +257,10 @@ onMounted(() => {
 
     .intro-title {
         font-size: 30px;
+    }
+
+    .event-text {
+        width: 100%;
     }
 }
 </style>

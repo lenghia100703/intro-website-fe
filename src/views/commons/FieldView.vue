@@ -2,7 +2,7 @@
     <div class="title-page">
         <h1 class="intro-title">Lĩnh Vực Sản Xuất</h1>
     </div>
-    <div class="spacing"></div>
+    <div class="spacing hidden-sm-and-down"></div>
     <div class="content">
         <section>
             <h2>Giới Thiệu</h2>
@@ -118,7 +118,6 @@ onMounted(() => {
 }
 
 .title-page {
-    background-color: var(--el-bg-color-default);
     padding: 50px 40px;
     text-align: center;
 }
